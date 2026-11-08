@@ -1,0 +1,56 @@
+{
+  "name": "@trentesix/devis",
+  "version": "0.1.0",
+  "description": "Devis, the quote tool's look: a worksite's structure with bank-note green and serif money; calm, with a notary's seal.",
+  "keywords": [
+    "design-system",
+    "css-variables",
+    "design-tokens",
+    "motion",
+    "theme",
+    "devis"
+  ],
+  "homepage": "https://github.com/trentesix/trentesix/tree/main/packages/devis#readme",
+  "bugs": "https://github.com/trentesix/trentesix/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentesix/trentesix.git",
+    "directory": "packages/devis"
+  },
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "look.css",
+    "fonts.css",
+    "moments.css",
+    "all.css",
+    "tokens.js",
+    "tokens.d.ts",
+    "tokens.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./tokens.d.ts",
+      "default": "./tokens.js"
+    },
+    "./look.css": "./look.css",
+    "./fonts.css": "./fonts.css",
+    "./moments.css": "./moments.css",
+    "./all.css": "./all.css",
+    "./tokens.json": "./tokens.json"
+  },
+  "dependencies": {
+    "@trentesix/core": "workspace:^",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource-variable/martian-mono": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0"
+  }
+}

@@ -1,0 +1,487 @@
+/* Folio. Generated from tokens.json by scripts/build.mjs. Do not edit. */
+:root[data-look='folio'],
+[data-look='folio'] {
+  --paper: #f5f6f8;
+  --paper-raised: #ffffff;
+  --paper-sunk: #edeff2;
+  --paper-tint: #f0f3f7;
+  --field: #ffffff;
+  --ink: #1a2029;
+  --ink-muted: #4f5a68;
+  --ink-subtle: #5e6978;
+  --rule: #dde1e6;
+  --ink-line: #7d8794;
+  --chocolate: #ffffff;
+  --chocolate-soft: #ffffff;
+  --on-chocolate: #1a2029;
+  --on-chocolate-muted: #4f5a68;
+  --code: #1a2029;
+  --on-code: #e8ebef;
+  --on-code-muted: #9aa4b2;
+  --code-rule: #2c3440;
+  --code-keyword: #8db4f5;
+  --code-string: #7fd4a8;
+  --code-function: #f0b37e;
+  --code-focus: #6ea0f2;
+  --mustard: #e8f0fc;
+  --on-mustard: #1c56b3;
+  --mustard-soft: #fff4db;
+  --panel-highlight: #e8f0fc;
+  --on-panel-highlight: #1c56b3;
+  --orange: #1f5fc4;
+  --action: #1f5fc4;
+  --on-action: #ffffff;
+  --rust: #b42318;
+  --rust-soft: #fdecea;
+  --avocado: #18794e;
+  --success: #18794e;
+  --success-soft: #e6f4ec;
+  --warning-ink: #8a5a00;
+  --teal: #0b6e85;
+  --teal-soft: #e2f3f7;
+  --plum: #7a3fa0;
+  --focus: #1f5fc4;
+  --on-plum: #ffffff;
+  --on-avocado: #ffffff;
+  --shadow-press: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-lift: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-dialog: 0 16px 40px rgba(16, 24, 40, 0.18), 0 2px 6px rgba(16, 24, 40, 0.08);
+  --shadow-drag: 0 12px 24px rgba(16, 24, 40, 0.18);
+  --shadow-highlight: 0 0 0 3px #e8f0fc;
+  --shadow-panel-highlight: none;
+  --folio-canvas: #f5f6f8;
+  --folio-surface: #ffffff;
+  --folio-surface-sunk: #edeff2;
+  --folio-surface-hover: #f0f3f7;
+  --folio-field: #ffffff;
+  --folio-border: #dde1e6;
+  --folio-border-strong: #7d8794;
+  --folio-text: #1a2029;
+  --folio-text-muted: #4f5a68;
+  --folio-text-subtle: #5e6978;
+  --folio-inverse: #1a2029;
+  --folio-on-inverse: #f5f6f8;
+  --folio-on-inverse-accent: #8db4f5;
+  --folio-code: #1a2029;
+  --folio-code-text: #e8ebef;
+  --folio-code-text-muted: #9aa4b2;
+  --folio-code-border: #2c3440;
+  --folio-code-keyword: #8db4f5;
+  --folio-code-string: #7fd4a8;
+  --folio-code-function: #f0b37e;
+  --folio-code-focus: #6ea0f2;
+  --folio-accent: #1f5fc4;
+  --folio-accent-hover: #194fa6;
+  --folio-on-accent: #ffffff;
+  --folio-accent-soft: #e8f0fc;
+  --folio-accent-text: #1c56b3;
+  --folio-danger: #b42318;
+  --folio-on-danger: #ffffff;
+  --folio-danger-soft: #fdecea;
+  --folio-success: #18794e;
+  --folio-on-success: #ffffff;
+  --folio-success-soft: #e6f4ec;
+  --folio-warning: #8a5a00;
+  --folio-warning-soft: #fff4db;
+  --folio-info: #0b6e85;
+  --folio-info-soft: #e2f3f7;
+  --folio-focus: #1f5fc4;
+  --folio-overlay: rgba(16, 24, 40, 0.45);
+  --folio-presence-1: #1f5fc4;
+  --folio-presence-2: #18794e;
+  --folio-presence-3: #a04f06;
+  --folio-presence-4: #0b6e85;
+  --folio-presence-5: #b42318;
+  --folio-presence-6: #7a3fa0;
+  --folio-on-presence: #ffffff;
+  --folio-type-article: #1f5fc4;
+  --folio-type-event: #0b6e85;
+  --folio-type-media: #7a3fa0;
+  --folio-type-person: #18794e;
+  --folio-shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --folio-shadow-s: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --folio-shadow-m: 0 4px 12px rgba(16, 24, 40, 0.1), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --folio-shadow-l: 0 16px 40px rgba(16, 24, 40, 0.18), 0 2px 6px rgba(16, 24, 40, 0.08);
+  --folio-shadow-drag: 0 12px 24px rgba(16, 24, 40, 0.18);
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+  --radius-xl: 12px;
+  --border-object: 1px;
+  --border-strong: 1px;
+  --stripe-band: 0px;
+  --duration-snap: 100ms;
+  --duration-pop: 150ms;
+  --duration-glide: 250ms;
+  --duration-drift: 400ms;
+  --ease-spring: cubic-bezier(0.2, 0, 0, 1);
+  --ease-glide: cubic-bezier(0.2, 0, 0, 1);
+  --ease-drift: cubic-bezier(0.2, 0, 0, 1);
+  --spring-pop: linear(
+    0,
+    0.056,
+    0.164,
+    0.29,
+    0.415,
+    0.529,
+    0.628,
+    0.71,
+    0.778,
+    0.831,
+    0.873,
+    0.906,
+    0.931,
+    0.949,
+    0.963,
+    0.974,
+    0.981,
+    0.987,
+    0.991,
+    0.994,
+    0.996,
+    0.997,
+    0.998,
+    0.999,
+    0.999,
+    1
+  );
+  --spring-pop-duration: 417ms;
+  --spring-settle: linear(
+    0,
+    0.075,
+    0.211,
+    0.36,
+    0.499,
+    0.618,
+    0.715,
+    0.791,
+    0.85,
+    0.893,
+    0.925,
+    0.948,
+    0.964,
+    0.976,
+    0.984,
+    0.989,
+    0.993,
+    0.995,
+    0.997,
+    0.998,
+    0.999,
+    0.999,
+    1
+  );
+  --spring-settle-duration: 367ms;
+  --ease-pen: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-pen: 420ms;
+  --font-display: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-celebrate: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-empty: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --outline: var(--folio-border);
+  --outline-control: var(--folio-border-strong);
+  --outline-field: var(--ink-line);
+  --outline-field-active: var(--folio-accent);
+  --border-field: 1px;
+  --divider: 1px solid var(--rule);
+  --focus-ring: 2px;
+  --focus-edge: var(--paper);
+  --press: 0px;
+  --lift: 0px;
+  --radius-button: 6px;
+  --radius-badge: 4px;
+  --label-size: 13px;
+  --label-weight: 500;
+  --label-tracking: 0;
+  --label-case: none;
+  --field-label-size: 13px;
+  --field-label-tracking: 0;
+  --field-label-case: none;
+  --label-color: var(--ink);
+  --backdrop: var(--folio-overlay);
+  --fs-hero: 28px;
+  --fs-poster: 48px;
+  --fs-entry: 26px;
+  --fs-page: 22px;
+  --fs-num: 20px;
+  --fs-section: 16px;
+  --fs-field: 16px;
+  --fs-sub: 15px;
+  --fs-mark: 15px;
+  --fs-item: 14px;
+  --fs-18: 16px;
+  --fs-17: 15px;
+  --fs-16: 14px;
+  --fs-15: 14px;
+  --fs-14: 13px;
+  --fw-bold: 600;
+  --fw-heavy: 600;
+  --fs-dialog: 18px;
+  --r-22: 8px;
+  --r-16: 8px;
+  --r-12: 6px;
+  --r-10: 6px;
+  --r-9: 4px;
+  --fs-empty: 16px;
+  --fw-empty: 600;
+  --ui-size: 14px;
+  --link: var(--folio-accent-text);
+  --inverse: var(--folio-inverse);
+  --on-inverse: var(--folio-on-inverse);
+  --on-inverse-accent: var(--folio-on-inverse-accent);
+  --on-chocolate-accent: var(--folio-accent-text);
+  --selected-soft: var(--folio-accent-soft);
+  --text-display: 600 28px/1.2 var(--font-body);
+  --text-display-tracking: -0.01em;
+  --text-page-title: 600 22px/1.3 var(--font-body);
+  --text-page-title-tracking: 0;
+  --text-title: 600 16px/1.4 var(--font-body);
+  --text-title-tracking: 0;
+  --text-section: 600 16px/1.4 var(--font-body);
+  --text-section-tracking: 0;
+  --text-item: 600 14px/1.4 var(--font-body);
+  --text-item-tracking: 0;
+  --text-body-l: 400 16px/1.65 var(--font-body);
+  --text-body-l-tracking: 0;
+  --text-body: 400 14px/1.5 var(--font-body);
+  --text-body-tracking: 0;
+  --text-body-strong: 500 14px/1.5 var(--font-body);
+  --text-body-strong-tracking: 0;
+  --text-small: 400 13px/1.45 var(--font-body);
+  --text-small-tracking: 0;
+  --text-label: 500 13px/1.4 var(--font-body);
+  --text-label-tracking: 0;
+  --text-code: 400 13px/1.6 var(--font-mono);
+  --text-code-tracking: 0;
+  --text-kbd: 500 11px/1.2 var(--font-mono);
+  --text-kbd-tracking: 0;
+  --text-voice: italic 400 16px/1.65 var(--font-body);
+  --text-voice-tracking: 0;
+  --text-celebrate: 600 28px/1.2 var(--font-display);
+  --text-celebrate-tracking: 0;
+  --text-empty: 600 16px/1.4 var(--font-body);
+  --text-empty-tracking: 0;
+  --temper: calm;
+  --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+  --font-money: initial;
+  --font-letter: initial;
+  --font-mark: initial;
+  --postmark-rest: initial;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-look='folio']:not([data-theme='light']),
+  :root:not([data-theme='light']) [data-look='folio']:not([data-theme='light']) {
+    --paper: #111418;
+    --paper-raised: #191d23;
+    --paper-sunk: #0d1014;
+    --paper-tint: #222830;
+    --field: #14181d;
+    --ink: #e8ebef;
+    --ink-muted: #aab3bf;
+    --ink-subtle: #939daa;
+    --rule: #2c333c;
+    --ink-line: #6e7987;
+    --chocolate: #191d23;
+    --chocolate-soft: #191d23;
+    --on-chocolate: #e8ebef;
+    --on-chocolate-muted: #aab3bf;
+    --code: #1a2029;
+    --on-code: #e8ebef;
+    --on-code-muted: #9aa4b2;
+    --code-rule: #2c3440;
+    --code-keyword: #8db4f5;
+    --code-string: #7fd4a8;
+    --code-function: #f0b37e;
+    --code-focus: #6ea0f2;
+    --mustard: #17253b;
+    --on-mustard: #8db4f5;
+    --mustard-soft: #33270d;
+    --panel-highlight: #17253b;
+    --on-panel-highlight: #8db4f5;
+    --orange: #6ea0f2;
+    --action: #6ea0f2;
+    --on-action: #0d1014;
+    --rust: #f2877d;
+    --rust-soft: #3a1714;
+    --avocado: #5cc08f;
+    --success: #5cc08f;
+    --success-soft: #12301f;
+    --warning-ink: #e5b454;
+    --teal: #5ec2da;
+    --teal-soft: #10292f;
+    --plum: #c59be0;
+    --focus: #6ea0f2;
+    --on-plum: #0d1014;
+    --on-avocado: #0d1014;
+    --shadow-press: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-lift: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-dialog: 0 16px 40px rgba(0, 0, 0, 0.65);
+    --shadow-drag: 0 12px 24px rgba(0, 0, 0, 0.6);
+    --shadow-highlight: 0 0 0 3px #17253b;
+    --shadow-panel-highlight: none;
+    --folio-canvas: #111418;
+    --folio-surface: #191d23;
+    --folio-surface-sunk: #0d1014;
+    --folio-surface-hover: #222830;
+    --folio-field: #14181d;
+    --folio-border: #2c333c;
+    --folio-border-strong: #6e7987;
+    --folio-text: #e8ebef;
+    --folio-text-muted: #aab3bf;
+    --folio-text-subtle: #939daa;
+    --folio-inverse: #e8ebef;
+    --folio-on-inverse: #111418;
+    --folio-on-inverse-accent: #1c56b3;
+    --folio-code: #1a2029;
+    --folio-code-text: #e8ebef;
+    --folio-code-text-muted: #9aa4b2;
+    --folio-code-border: #2c3440;
+    --folio-code-keyword: #8db4f5;
+    --folio-code-string: #7fd4a8;
+    --folio-code-function: #f0b37e;
+    --folio-code-focus: #6ea0f2;
+    --folio-accent: #6ea0f2;
+    --folio-accent-hover: #8db4f5;
+    --folio-on-accent: #0d1014;
+    --folio-accent-soft: #17253b;
+    --folio-accent-text: #8db4f5;
+    --folio-danger: #f2877d;
+    --folio-on-danger: #0d1014;
+    --folio-danger-soft: #3a1714;
+    --folio-success: #5cc08f;
+    --folio-on-success: #0d1014;
+    --folio-success-soft: #12301f;
+    --folio-warning: #e5b454;
+    --folio-warning-soft: #33270d;
+    --folio-info: #5ec2da;
+    --folio-info-soft: #10292f;
+    --folio-focus: #6ea0f2;
+    --folio-overlay: rgba(0, 0, 0, 0.6);
+    --folio-presence-1: #6ea0f2;
+    --folio-presence-2: #5cc08f;
+    --folio-presence-3: #eda25f;
+    --folio-presence-4: #5ec2da;
+    --folio-presence-5: #f2877d;
+    --folio-presence-6: #c59be0;
+    --folio-on-presence: #0d1014;
+    --folio-type-article: #6ea0f2;
+    --folio-type-event: #5ec2da;
+    --folio-type-media: #c59be0;
+    --folio-type-person: #5cc08f;
+    --folio-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --folio-shadow-s: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --folio-shadow-m: 0 4px 12px rgba(0, 0, 0, 0.55);
+    --folio-shadow-l: 0 16px 40px rgba(0, 0, 0, 0.65);
+    --folio-shadow-drag: 0 12px 24px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-look='folio'][data-theme='dark'],
+:root[data-theme='dark'] [data-look='folio']:not([data-theme='light']),
+[data-look='folio'][data-theme='dark'] {
+  --paper: #111418;
+  --paper-raised: #191d23;
+  --paper-sunk: #0d1014;
+  --paper-tint: #222830;
+  --field: #14181d;
+  --ink: #e8ebef;
+  --ink-muted: #aab3bf;
+  --ink-subtle: #939daa;
+  --rule: #2c333c;
+  --ink-line: #6e7987;
+  --chocolate: #191d23;
+  --chocolate-soft: #191d23;
+  --on-chocolate: #e8ebef;
+  --on-chocolate-muted: #aab3bf;
+  --code: #1a2029;
+  --on-code: #e8ebef;
+  --on-code-muted: #9aa4b2;
+  --code-rule: #2c3440;
+  --code-keyword: #8db4f5;
+  --code-string: #7fd4a8;
+  --code-function: #f0b37e;
+  --code-focus: #6ea0f2;
+  --mustard: #17253b;
+  --on-mustard: #8db4f5;
+  --mustard-soft: #33270d;
+  --panel-highlight: #17253b;
+  --on-panel-highlight: #8db4f5;
+  --orange: #6ea0f2;
+  --action: #6ea0f2;
+  --on-action: #0d1014;
+  --rust: #f2877d;
+  --rust-soft: #3a1714;
+  --avocado: #5cc08f;
+  --success: #5cc08f;
+  --success-soft: #12301f;
+  --warning-ink: #e5b454;
+  --teal: #5ec2da;
+  --teal-soft: #10292f;
+  --plum: #c59be0;
+  --focus: #6ea0f2;
+  --on-plum: #0d1014;
+  --on-avocado: #0d1014;
+  --shadow-press: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-dialog: 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-drag: 0 12px 24px rgba(0, 0, 0, 0.6);
+  --shadow-highlight: 0 0 0 3px #17253b;
+  --shadow-panel-highlight: none;
+  --folio-canvas: #111418;
+  --folio-surface: #191d23;
+  --folio-surface-sunk: #0d1014;
+  --folio-surface-hover: #222830;
+  --folio-field: #14181d;
+  --folio-border: #2c333c;
+  --folio-border-strong: #6e7987;
+  --folio-text: #e8ebef;
+  --folio-text-muted: #aab3bf;
+  --folio-text-subtle: #939daa;
+  --folio-inverse: #e8ebef;
+  --folio-on-inverse: #111418;
+  --folio-on-inverse-accent: #1c56b3;
+  --folio-code: #1a2029;
+  --folio-code-text: #e8ebef;
+  --folio-code-text-muted: #9aa4b2;
+  --folio-code-border: #2c3440;
+  --folio-code-keyword: #8db4f5;
+  --folio-code-string: #7fd4a8;
+  --folio-code-function: #f0b37e;
+  --folio-code-focus: #6ea0f2;
+  --folio-accent: #6ea0f2;
+  --folio-accent-hover: #8db4f5;
+  --folio-on-accent: #0d1014;
+  --folio-accent-soft: #17253b;
+  --folio-accent-text: #8db4f5;
+  --folio-danger: #f2877d;
+  --folio-on-danger: #0d1014;
+  --folio-danger-soft: #3a1714;
+  --folio-success: #5cc08f;
+  --folio-on-success: #0d1014;
+  --folio-success-soft: #12301f;
+  --folio-warning: #e5b454;
+  --folio-warning-soft: #33270d;
+  --folio-info: #5ec2da;
+  --folio-info-soft: #10292f;
+  --folio-focus: #6ea0f2;
+  --folio-overlay: rgba(0, 0, 0, 0.6);
+  --folio-presence-1: #6ea0f2;
+  --folio-presence-2: #5cc08f;
+  --folio-presence-3: #eda25f;
+  --folio-presence-4: #5ec2da;
+  --folio-presence-5: #f2877d;
+  --folio-presence-6: #c59be0;
+  --folio-on-presence: #0d1014;
+  --folio-type-article: #6ea0f2;
+  --folio-type-event: #5ec2da;
+  --folio-type-media: #c59be0;
+  --folio-type-person: #5cc08f;
+  --folio-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --folio-shadow-s: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --folio-shadow-m: 0 4px 12px rgba(0, 0, 0, 0.55);
+  --folio-shadow-l: 0 16px 40px rgba(0, 0, 0, 0.65);
+  --folio-shadow-drag: 0 12px 24px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}

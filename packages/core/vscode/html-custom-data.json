@@ -1,0 +1,415 @@
+{
+  "version": 1.1,
+  "globalAttributes": [
+    {
+      "name": "data-moment",
+      "description": {
+        "kind": "markdown",
+        "value": "A named motion from `@trentesix/core/moments.css`. Space-separated, so one element can carry more than one."
+      },
+      "values": [
+        {
+          "name": "arrival",
+          "description": {
+            "kind": "markdown",
+            "value": "**PresenceStack.** someone joins: their avatar slides into the stack, then part `ring` pings three times (Discothèque) or its `ink` circle draws itself around the avatar (Folio)."
+          }
+        },
+        {
+          "name": "change-mark",
+          "description": {
+            "kind": "markdown",
+            "value": "**ChangeMark.** something someone else just changed (yours is a `flash`), when added: part `bar` draws down the edge, part `highlight` sweeps the words, then both fade over about 4 s."
+          }
+        },
+        {
+          "name": "code-cells",
+          "description": {
+            "kind": "markdown",
+            "value": "**CodeField.** parts `cell` (`data-filled`), each holding its digit in a child element; `data-state=\"done\"` closes the gaps and draws a tick; `failed` shakes or edges in rust, then the digits leave right to left (clear them after about 1 s)."
+          }
+        },
+        {
+          "name": "copied",
+          "description": {
+            "kind": "markdown",
+            "value": "**CopyButton.** part `icon` holds the copy glyph and the tick's SVG (the one with part `ink`) in one centred cell; `data-state=\"done\"` swaps them and draws the tick. Part `tag` (\"Copied\") rises and fades after a second."
+          }
+        },
+        {
+          "name": "counter",
+          "description": {
+            "kind": "markdown",
+            "value": "**Count, Badge.** `count(el, value)` rolls the digits that changed; it fills the element with digit columns (part `digit`), so the element holds only the number."
+          }
+        },
+        {
+          "name": "curtain",
+          "description": {
+            "kind": "markdown",
+            "value": "**Sign-in page.** `data-state=\"done\"` when signed in: the five children of part `bands` sweep up and lift away (Discothèque), or are pulled across as hazard tape and lift away (Devis); part `card` steps back and part `view` (the Studio) rises (Folio)."
+          }
+        },
+        {
+          "name": "develop",
+          "description": {
+            "kind": "markdown",
+            "value": "**Upload tile.** an uploaded image develops like a print with the upload: set `--progress` (0 to 1). Part `image` goes from soft to sharp (Folio: grey to colour), part `progress` fills; `data-state=\"done\"` flashes (Discothèque) or draws the `ink` tick in part `badge` (Folio)."
+          }
+        },
+        {
+          "name": "dialog",
+          "description": {
+            "kind": "markdown",
+            "value": "**Dialog, Popover, Menu.** Discothèque rises 16 px with `--spring-pop` and its shadow grows as it lands; Folio rises 8 px from 98% with `--spring-settle`. The backdrop (`::backdrop`, or part `backdrop` next to the panel) fades. `data-state=\"leaving\"` closes it."
+          }
+        },
+        {
+          "name": "field-error",
+          "description": {
+            "kind": "markdown",
+            "value": "**TextField, every field.** on the box around the input; `data-invalid`: Discothèque shakes once, Folio draws a rust line under the field. Part `message` (inside, or a sibling after it) drops in (Folio: rises)."
+          }
+        },
+        {
+          "name": "flash",
+          "description": {
+            "kind": "markdown",
+            "value": "**Anything you just changed.** something you just changed, away from where you clicked, when added or with `flash(el)` (which plays it again on an element already marked): the background takes `--flash` and fades back to its own. Discothèque hits at once in marigold, holds a beat and fades over three drifts; Folio's pale wash soaks in like ink, then dries. Under reduced motion the colour still shows and fades in 200 ms. Someone else's change is a `change-mark`."
+          }
+        },
+        {
+          "name": "hold",
+          "description": {
+            "kind": "markdown",
+            "value": "**Button `intent=\"destroy\"`.** `hold(button, {ms, onConfirm})`; part `fill` grows while held, drains if released early. The button gets `data-state=\"busy\"` while held and `done` at the end."
+          }
+        },
+        {
+          "name": "lift",
+          "description": {
+            "kind": "markdown",
+            "value": "**Sortable lists.** `data-state=\"lifted\"`: the row rises and tilts (Discothèque) or lifts 1.5% with a shadow (Folio)."
+          }
+        },
+        {
+          "name": "milestone",
+          "description": {
+            "kind": "markdown",
+            "value": "**Celebration.** first publish and other firsts, when added: part `card` lands, its `ink` seal draws, one burst: ten strips in part `confetti` (Discothèque) or part `rays` (Folio). `data-state=\"leaving\"` fades it."
+          }
+        },
+        {
+          "name": "notary",
+          "description": {
+            "kind": "markdown",
+            "value": "**Accepted document (Devis).** the seal pressed on a document that now binds: an SVG with two `ink` circles (`pathLength=\"1\"`, outer first), a `word` and a `date` text, on its own paper disc at -8deg. Devis presses it in with `--spring-pop` and jolts the `thud` around it 1 px; other looks draw the rings and fade the words in. `data-state=\"rest\"` shows it without playing (a record opened later); `leaving` fades it."
+          }
+        },
+        {
+          "name": "pen",
+          "description": {
+            "kind": "markdown",
+            "value": "**AI suggestion diff.** when added, part `del` gets a line drawn through it, then part `ins` writes itself in, underline and all. `data-state=\"done\"` (accepted) folds `del` away and settles `ins` into plain ink."
+          }
+        },
+        {
+          "name": "postmark",
+          "description": {
+            "kind": "markdown",
+            "value": "**Sent reply (Relais).** a cancellation mark added to the page when something is sent: an SVG with `ink` rings and wavy lines (`pathLength=\"1\"`, rings first) and a `date` text. Relais presses it in with `--spring-settle`, then it settles back to `--postmark-rest` (0.72); other looks draw the ink in order and fade the date in. `data-state=\"leaving\"` fades it."
+          }
+        },
+        {
+          "name": "press",
+          "description": {
+            "kind": "markdown",
+            "value": "**Button.** `data-moment=\"press\"`; reacts to `:active` and `data-pressed`. Discothèque presses into its shadow (`--press`; set it lower on a button without one), Folio sinks 1 px and darkens a shade. Lands in 90 ms and lets go 90 ms later at the earliest. `data-state=\"busy\"` shows the busy cue: stripes roll inside (Discothèque), a line runs along the bottom (Folio)."
+          }
+        },
+        {
+          "name": "save",
+          "description": {
+            "kind": "markdown",
+            "value": "**SaveButton.** `data-state=\"dirty|busy|done|failed\"`; dirty shows a dot (part `dot`) that pings once, busy shows the busy cue, done draws a tick (part `ink`), failed shakes (Folio: a rust line along the bottom). `data-shortcut` flashes the press when ⌘S was used. This is also the unsaved state and the ⌘S press."
+          }
+        },
+        {
+          "name": "seal",
+          "description": {
+            "kind": "markdown",
+            "value": "**StatusPill.** Folio's publish, and approve and schedule in both looks. `data-state=\"done\"`: part `fill` sweeps in, the `ink` writes itself in order (a ring, then a tick), part `rays` sparks once, part `edge` draws down the card, part `label` firms up, part `badge` pops onto an avatar. `failed` (changes asked) does the same without ink."
+          }
+        },
+        {
+          "name": "slide",
+          "description": {
+            "kind": "markdown",
+            "value": "**Segmented, Tabs.** part `indicator`, placed by `slide()` through `--x` and `--w`; glides between options."
+          }
+        },
+        {
+          "name": "stamp",
+          "description": {
+            "kind": "markdown",
+            "value": "**Stamp (Discothèque).** thuds down with a slight turn when added, and lifts off after 1.8 s; the page gives a 2 px jolt (`data-moment=\"thud\"` on the container, which jolts when a stamp lands in it or on `data-state=\"done\"`; in Devis, 1 px when a `notary` seal is pressed in it)."
+          }
+        },
+        {
+          "name": "sweep",
+          "description": {
+            "kind": "markdown",
+            "value": "**New row or panel (Relais).** the element holds a part `band`, which arrives once along its top edge and fades after about 1.5 s. Relais sweeps the airmail stripe in from the left (`--sweep-height` is `--stripe-band`); other looks draw a 3 px `--mustard` line. `--sweep-fill` sets its background."
+          }
+        },
+        {
+          "name": "switch",
+          "description": {
+            "kind": "markdown",
+            "value": "**Switch.** part `thumb`, on/off from `aria-checked` (or a checked input inside); the thumb stretches while pressed (6 px / 4 px), then lands with `--spring-pop`. Settings: `--switch-thumb`, `--switch-travel`, `--switch-stretch`."
+          }
+        },
+        {
+          "name": "thud",
+          "description": {
+            "kind": "markdown",
+            "value": "The container a `stamp` lands in: it jolts 2px when a stamp lands, or on `data-state=\"done\"`."
+          }
+        },
+        {
+          "name": "ticker",
+          "description": {
+            "kind": "markdown",
+            "value": "**LiveBand.** part `track` scrolls (give it two copies side by side; `--ticker-time`, 70 s); stops while the element holding it is hovered or focused (a Play button beside it doesn't pause it) and with `data-state=\"paused\"`; under reduced motion it starts paused and `data-state=\"running\"` plays it. Part `dot` pulses while it runs."
+          }
+        },
+        {
+          "name": "toast",
+          "description": {
+            "kind": "markdown",
+            "value": "**Toast.** enters from below; part `timer` is the clock (`--toast-time`, 5 s): `toastTimer(el)` resolves when its bar runs out and pauses on hover and focus. `data-state=\"leaving\"` exits; remove the toast on `animationend`."
+          }
+        },
+        {
+          "name": "unfold",
+          "description": {
+            "kind": "markdown",
+            "value": "**Drawer, Disclosure.** `data-state=\"open\"`: height and opacity, with `@starting-style`; Discothèque settles with a spring."
+          }
+        },
+        {
+          "name": "wait",
+          "description": {
+            "kind": "markdown",
+            "value": "**Skeleton.** appears only after 200 ms, so fast loads show no skeleton at all; parts `bone` shimmer, and stop under reduced motion."
+          }
+        },
+        {
+          "name": "wind",
+          "description": {
+            "kind": "markdown",
+            "value": "**Schedule button.** `data-state=\"done\"`: part `minute` winds two turns and part `hour` three quarters, landing on `--hour` (270deg by default); then the pill (a `seal`) reads the time."
+          }
+        }
+      ]
+    },
+    {
+      "name": "data-state",
+      "description": { "kind": "markdown", "value": "The state a moment shows." },
+      "values": [
+        {
+          "name": "busy",
+          "description": {
+            "kind": "markdown",
+            "value": "Working: the busy cue (press, save, hold while held)."
+          }
+        },
+        {
+          "name": "dirty",
+          "description": { "kind": "markdown", "value": "Unsaved changes (save)." }
+        },
+        {
+          "name": "done",
+          "description": { "kind": "markdown", "value": "Finished: the moment plays its ending." }
+        },
+        {
+          "name": "failed",
+          "description": {
+            "kind": "markdown",
+            "value": "Failed or changes asked: a shake or a rust line."
+          }
+        },
+        {
+          "name": "leaving",
+          "description": {
+            "kind": "markdown",
+            "value": "Closing: plays the exit (toast, milestone, dialog)."
+          }
+        },
+        { "name": "lifted", "description": { "kind": "markdown", "value": "Picked up (lift)." } },
+        { "name": "open", "description": { "kind": "markdown", "value": "Open (unfold)." } },
+        { "name": "paused", "description": { "kind": "markdown", "value": "Stopped (ticker)." } },
+        {
+          "name": "rest",
+          "description": {
+            "kind": "markdown",
+            "value": "Shown as it stands, without playing: a record opened later (notary)."
+          }
+        },
+        {
+          "name": "running",
+          "description": {
+            "kind": "markdown",
+            "value": "Playing, even under reduced motion (ticker)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "data-part",
+      "description": {
+        "kind": "markdown",
+        "value": "A part of a moment, on a child of the element with `data-moment`."
+      },
+      "values": [
+        {
+          "name": "backdrop",
+          "description": { "kind": "markdown", "value": "Used by: `dialog`." }
+        },
+        {
+          "name": "badge",
+          "description": { "kind": "markdown", "value": "Used by: `seal`, `develop`." }
+        },
+        { "name": "band", "description": { "kind": "markdown", "value": "Used by: `sweep`." } },
+        { "name": "bands", "description": { "kind": "markdown", "value": "Used by: `curtain`." } },
+        {
+          "name": "bar",
+          "description": { "kind": "markdown", "value": "Used by: `change-mark`." }
+        },
+        { "name": "bone", "description": { "kind": "markdown", "value": "Used by: `wait`." } },
+        {
+          "name": "card",
+          "description": { "kind": "markdown", "value": "Used by: `milestone`, `curtain`." }
+        },
+        {
+          "name": "cell",
+          "description": { "kind": "markdown", "value": "Used by: `code-cells`." }
+        },
+        {
+          "name": "confetti",
+          "description": { "kind": "markdown", "value": "Used by: `milestone`." }
+        },
+        {
+          "name": "date",
+          "description": { "kind": "markdown", "value": "Used by: `postmark`, `notary`." }
+        },
+        { "name": "del", "description": { "kind": "markdown", "value": "Used by: `pen`." } },
+        { "name": "digit", "description": { "kind": "markdown", "value": "Used by: `counter`." } },
+        {
+          "name": "dot",
+          "description": { "kind": "markdown", "value": "Used by: `save`, `ticker`." }
+        },
+        { "name": "edge", "description": { "kind": "markdown", "value": "Used by: `seal`." } },
+        {
+          "name": "fill",
+          "description": { "kind": "markdown", "value": "Used by: `hold`, `seal`." }
+        },
+        {
+          "name": "highlight",
+          "description": { "kind": "markdown", "value": "Used by: `change-mark`." }
+        },
+        { "name": "hour", "description": { "kind": "markdown", "value": "Used by: `wind`." } },
+        { "name": "icon", "description": { "kind": "markdown", "value": "Used by: `copied`." } },
+        { "name": "image", "description": { "kind": "markdown", "value": "Used by: `develop`." } },
+        {
+          "name": "indicator",
+          "description": { "kind": "markdown", "value": "Used by: `slide`." }
+        },
+        {
+          "name": "ink",
+          "description": {
+            "kind": "markdown",
+            "value": "Used by: `save`, `copied`, `seal`, `postmark`, `notary`, `milestone`, `arrival`, `develop`."
+          }
+        },
+        { "name": "ins", "description": { "kind": "markdown", "value": "Used by: `pen`." } },
+        { "name": "label", "description": { "kind": "markdown", "value": "Used by: `seal`." } },
+        {
+          "name": "message",
+          "description": { "kind": "markdown", "value": "Used by: `field-error`." }
+        },
+        { "name": "minute", "description": { "kind": "markdown", "value": "Used by: `wind`." } },
+        {
+          "name": "progress",
+          "description": { "kind": "markdown", "value": "Used by: `develop`." }
+        },
+        {
+          "name": "rays",
+          "description": { "kind": "markdown", "value": "Used by: `seal`, `milestone`." }
+        },
+        { "name": "ring", "description": { "kind": "markdown", "value": "Used by: `arrival`." } },
+        { "name": "tag", "description": { "kind": "markdown", "value": "Used by: `copied`." } },
+        { "name": "thumb", "description": { "kind": "markdown", "value": "Used by: `switch`." } },
+        { "name": "timer", "description": { "kind": "markdown", "value": "Used by: `toast`." } },
+        { "name": "track", "description": { "kind": "markdown", "value": "Used by: `ticker`." } },
+        { "name": "view", "description": { "kind": "markdown", "value": "Used by: `curtain`." } },
+        { "name": "word", "description": { "kind": "markdown", "value": "Used by: `notary`." } }
+      ]
+    },
+    {
+      "name": "data-look",
+      "description": {
+        "kind": "markdown",
+        "value": "On `<html>`: the look. Discothèque needs no attribute."
+      },
+      "values": [
+        { "name": "devis", "description": { "kind": "markdown", "value": "Devis" } },
+        { "name": "folio", "description": { "kind": "markdown", "value": "Folio" } },
+        { "name": "relais", "description": { "kind": "markdown", "value": "Relais" } }
+      ]
+    },
+    {
+      "name": "data-theme",
+      "description": {
+        "kind": "markdown",
+        "value": "On `<html>`: forces a theme. Without it the system setting decides."
+      },
+      "values": [
+        {
+          "name": "light",
+          "description": {
+            "kind": "markdown",
+            "value": "Discothèque: Lights on, Devis: Day, Folio: Light, Relais: Day"
+          }
+        },
+        {
+          "name": "dark",
+          "description": {
+            "kind": "markdown",
+            "value": "Discothèque: Lights off, Devis: Night, Folio: Dark, Relais: Night"
+          }
+        }
+      ]
+    },
+    {
+      "name": "data-motion",
+      "description": {
+        "kind": "markdown",
+        "value": "On `<html>`: overrides the system's reduced-motion setting."
+      },
+      "values": [
+        {
+          "name": "reduce",
+          "description": {
+            "kind": "markdown",
+            "value": "Nothing travels, grows, bounces or repeats; fades stay short."
+          }
+        },
+        {
+          "name": "full",
+          "description": { "kind": "markdown", "value": "Full motion, whatever the system says." }
+        }
+      ]
+    }
+  ]
+}

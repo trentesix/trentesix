@@ -1,0 +1,1345 @@
+/* The moments every look shares: their mechanics, the keyframes, reduced motion, and the default
+   way each moment plays. A look adds its own after this file (@trentesix/<look>/moments.css):
+   the calm looks their calm rules, each look what differs. Load this one first. */
+
+/*
+ * Moments: every named motion in an app built on Trentesix, keyed on data-moment, data-state and data-part.
+ * The contract, with the markup each moment expects, is docs/motion.md.
+ *
+ * Load it after base.css and a look's look.css: it reads the looks' motion tokens (springs as
+ * linear(), the pen).
+ * Discothèque is print you can touch (pop, thud, bounce once); Folio is ink that draws itself
+ * (no bounce, one flourish per moment), so Folio's rules follow each moment's own. Relais, the
+ * email desk, is calm and firm like Folio (no bounce, no tilt, no shake) and shares its rules,
+ * with postal touches of its own in the Relais section near the end: the postmark pressed in
+ * when a reply is sent, and the airmail stripe sweeping along a row that just arrived. Devis, the
+ * quote tool, shares the calm rules too but keeps Discothèque's hazard-stripe busy cue and hi-vis
+ * flash; its own section presses the notary seal onto an accepted quote.
+ *
+ * Reduced motion runs on three variables instead of a blanket rule, so nothing is skipped:
+ * distances, scales and turns are multiplied by --travel, loops count --loop, and fades and
+ * drawn lines last min(<duration>, var(--motion-cap)). Timers and progress use none of them.
+ * Moments move things with transform; position moment elements with translate or inset.
+ */
+
+/* ── Reduced motion ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --travel: 1;
+  --loop: infinite;
+  --motion-cap: 100s;
+
+  /* The duration tokens with the cap applied: what an animation that fades or draws should last.
+     They follow the page's look. Delays and timers take the plain tokens. */
+  --motion-snap: min(var(--duration-snap), var(--motion-cap));
+  --motion-pop: min(var(--spring-pop-duration), var(--motion-cap));
+  --motion-settle: min(var(--spring-settle-duration), var(--motion-cap));
+  --motion-glide: min(var(--duration-glide), var(--motion-cap));
+  --motion-drift: min(var(--duration-drift), var(--motion-cap));
+  --motion-pen: min(var(--duration-pen), var(--motion-cap));
+  /* Long enough for a change to be seen: three drifts. */
+  --motion-linger: min(calc(var(--duration-drift) * 3), var(--motion-cap));
+
+  /* The fill of trentesix-flash and the flash moment. */
+  --flash: color-mix(in srgb, var(--mustard) 40%, transparent);
+
+  /* Per-look settings a component may override on its own element. */
+  --switch-thumb: 20px;
+  --switch-travel: 24px;
+  --switch-stretch: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full']) {
+    --travel: 0;
+    --loop: 1;
+    --motion-cap: 200ms;
+  }
+}
+:root[data-motion='reduce'] {
+  --travel: 0;
+  --loop: 1;
+  --motion-cap: 200ms;
+}
+
+/* A hidden part stays hidden even when its own CSS sets display (a grid list with hidden on it
+   would otherwise sit under a flying title). */
+[data-moment][hidden]:not([hidden='until-found']),
+[data-moment] [hidden]:not([hidden='until-found']) {
+  display: none !important;
+}
+
+/* ── Shared keyframes ───────────────────────────────────────────────────────────────────────── */
+
+/* Arriving and leaving, for moments and for component CSS alike (docs/motion.md › Arriving and
+   leaving). trentesix-enter comes in from --enter-x, --enter-y, --enter-scale, --enter-turn and
+   --enter-opacity; trentesix-leave goes out to the --leave-* ones. Distances, scales and turns are
+   multiplied by --travel, so under reduced motion only the fade is left. The offsets don't
+   inherit: each is read on the element that animates, so a toast's 90 px never reaches the badge
+   inside it. */
+@keyframes trentesix-enter {
+  from {
+    opacity: var(--enter-opacity, 0);
+    transform: translate(
+        calc(var(--enter-x, 0px) * var(--travel)),
+        calc(var(--enter-y, 0px) * var(--travel))
+      )
+      scale(calc(1 - (1 - var(--enter-scale, 1)) * var(--travel)))
+      rotate(calc(var(--enter-turn, 0deg) * var(--travel)));
+  }
+}
+@keyframes trentesix-leave {
+  to {
+    opacity: var(--leave-opacity, 0);
+    transform: translate(
+        calc(var(--leave-x, 0px) * var(--travel)),
+        calc(var(--leave-y, 0px) * var(--travel))
+      )
+      scale(calc(1 - (1 - var(--leave-scale, 1)) * var(--travel)))
+      rotate(calc(var(--leave-turn, 0deg) * var(--travel)));
+  }
+}
+/* "You just changed this": the background starts as --flash and fades back to its own. A colour,
+   so it stays under reduced motion (capped like every fade). */
+@keyframes trentesix-flash {
+  from {
+    background-color: var(--flash);
+  }
+}
+@keyframes trentesix-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+/* A pen stroke on a pathLength="1" path. Hidden for its first frame so a round cap leaves no dot. */
+@keyframes trentesix-draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+/* Lines that draw themselves along x or y: a drawn line, so never multiplied by --travel. */
+/* stylelint-disable trentesix/keyframes-travel -- a line drawing itself is not travel */
+@keyframes trentesix-line-x {
+  from {
+    scale: 0 1;
+  }
+}
+@keyframes trentesix-line-y {
+  from {
+    scale: 1 0;
+  }
+}
+/* stylelint-enable trentesix/keyframes-travel */
+@keyframes trentesix-shake {
+  20% {
+    translate: calc(-5px * var(--travel)) 0;
+  }
+  40% {
+    translate: calc(5px * var(--travel)) 0;
+  }
+  60% {
+    translate: calc(-4px * var(--travel)) 0;
+  }
+  80% {
+    translate: calc(3px * var(--travel)) 0;
+  }
+}
+@keyframes trentesix-ping {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(calc(1 + 0.9 * var(--travel)));
+  }
+}
+@keyframes trentesix-hide {
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes trentesix-show {
+  from {
+    visibility: hidden;
+  }
+}
+
+/* Every drawn line is a pathLength="1" path: one dash as long as the path. */
+[data-moment] [data-part='ink'] {
+  stroke-dasharray: 1;
+}
+
+/* stylelint-disable trentesix/motion-tokens -- Each moment's own timings (a stamp lifts off after
+   1.8 s, the confetti falls for 1.5 s, the steps of a seal 60 ms apart) are its choreography, and
+   part of its contract in docs/motion.md the way token values are. Most are still capped with
+   --motion-cap or multiplied by --travel. Component CSS uses the tokens. */
+
+/* ── press · Button ─────────────────────────────────────────────────────────────────────────── */
+/* Every press is seen: it lands in 90 ms and lets go 90 ms later at the earliest, so a quick
+   click still shows. Discothèque sinks into its shadow (a button without one can set --press
+   lower); Folio sinks 1 px and darkens a shade. */
+
+[data-moment~='press'] {
+  transition:
+    translate calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle) 90ms,
+    box-shadow var(--motion-settle) var(--spring-settle) 90ms,
+    filter var(--motion-settle) ease 90ms;
+}
+[data-moment~='press']:is(:active, [data-pressed]):not(:disabled, [aria-disabled='true']) {
+  translate: calc(var(--press) * var(--travel)) calc(var(--press) * var(--travel));
+  transition:
+    translate 90ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 90ms cubic-bezier(0.2, 0, 0, 1),
+    filter 90ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* The busy cue, shared by every button that waits: Discothèque's stripes roll inside it,
+   Folio's line runs along its bottom edge. Under reduced motion both hold still. */
+:where([data-moment~='press'], [data-moment~='save'])[data-state='busy'] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+:is([data-moment~='press'], [data-moment~='save'])[data-state='busy']::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, var(--mustard) 0 8px, transparent 8px 16px);
+  background-size: 200% 100%;
+  animation: trentesix-roll calc(600ms * var(--travel)) linear var(--loop);
+}
+@keyframes trentesix-roll {
+  to {
+    background-position: -22.6px 0;
+  }
+}
+/* stylelint-disable-next-line trentesix/keyframes-travel -- its duration is multiplied by --travel instead */
+@keyframes trentesix-edge-run {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 250% 0;
+  }
+}
+
+/* ── switch · Switch ────────────────────────────────────────────────────────────────────────── */
+/* Pressed, the thumb stretches toward where it is going; let go, it lands with the pop spring.
+   Size and distance come from --switch-thumb, --switch-travel and --switch-stretch. */
+
+[data-moment~='switch'] [data-part='thumb'] {
+  width: var(--switch-thumb);
+  transition:
+    translate calc(var(--spring-pop-duration) * var(--travel)) var(--spring-pop),
+    width calc(var(--spring-pop-duration) * var(--travel)) var(--spring-pop);
+}
+:is([data-moment~='switch'][aria-checked='true'], [data-moment~='switch']:has(:checked))
+  [data-part='thumb'] {
+  translate: var(--switch-travel) 0;
+}
+[data-moment~='switch']:is(:active, [data-pressed]) [data-part='thumb'] {
+  width: calc(var(--switch-thumb) + var(--switch-stretch) * var(--travel));
+  transition-duration: calc(var(--duration-snap) * var(--travel));
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+:is([data-moment~='switch'][aria-checked='true'], [data-moment~='switch']:has(:checked)):is(
+    :active,
+    [data-pressed]
+  )
+  [data-part='thumb'] {
+  translate: calc(var(--switch-travel) - var(--switch-stretch) * var(--travel)) 0;
+}
+
+/* ── slide · Segmented, Tabs ────────────────────────────────────────────────────────────────── */
+/* The indicator sits where slide() puts it (--x, --w); slide() also plays the move. */
+
+:where([data-moment~='slide']) {
+  position: relative;
+}
+[data-moment~='slide'] [data-part='indicator'] {
+  position: absolute;
+  left: 0;
+  translate: var(--x, 0) 0;
+  width: var(--w, 0);
+  pointer-events: none;
+}
+
+/* ── field-error · TextField ────────────────────────────────────────────────────────────────── */
+/* On the box around the input. Discothèque shakes once; Folio draws a rust line under it. A
+   message marked data-part="message" (inside, or a sibling after it) drops in or rises. */
+
+:where([data-moment~='field-error']) {
+  position: relative;
+}
+[data-moment~='field-error'][data-invalid]:not([data-invalid='false']) {
+  animation: trentesix-shake 360ms var(--ease-shake);
+}
+:is(
+  [data-moment~='field-error'][data-invalid]:not([data-invalid='false']) [data-part='message'],
+  [data-moment~='field-error'][data-invalid]:not([data-invalid='false']) ~ [data-part='message']
+) {
+  --enter-y: -6px;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) 140ms both;
+}
+
+/* ── save · SaveButton ──────────────────────────────────────────────────────────────────────── */
+/* dirty: a dot pops in and pings once. busy: the busy cue (see press). done: the tick writes
+   itself. failed: Discothèque shakes, Folio draws a rust line along the bottom. data-shortcut
+   (set when ⌘S saved) flashes the press as if the button were clicked. */
+
+:where([data-moment~='save']) [data-part='dot'] {
+  display: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+:where([data-moment~='save'][data-state='dirty']) [data-part='dot'] {
+  display: inline-block;
+}
+[data-moment~='save'][data-state='dirty'] [data-part='dot'] {
+  --enter-scale: 0;
+  animation:
+    trentesix-enter var(--motion-pop) var(--spring-pop) both,
+    trentesix-dot-ping calc(700ms * var(--travel)) ease-out 120ms;
+}
+@keyframes trentesix-dot-ping {
+  from {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  to {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+[data-moment~='save'][data-state='done'] [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) 60ms both;
+}
+[data-moment~='save'][data-state='failed'] {
+  animation: trentesix-shake 360ms var(--ease-shake);
+}
+[data-moment~='save'][data-shortcut] {
+  animation:
+    trentesix-press-in 90ms cubic-bezier(0.2, 0, 0, 1) forwards,
+    trentesix-press-out var(--motion-settle) var(--spring-settle) 150ms forwards;
+}
+@keyframes trentesix-press-in {
+  to {
+    translate: calc(var(--press) * var(--travel)) calc(var(--press) * var(--travel));
+    box-shadow: 0 0 0 transparent;
+  }
+}
+@keyframes trentesix-press-out {
+  from {
+    translate: calc(var(--press) * var(--travel)) calc(var(--press) * var(--travel));
+    box-shadow: 0 0 0 transparent;
+  }
+}
+@keyframes trentesix-press-in-calm {
+  to {
+    translate: 0 calc(1px * var(--travel));
+    filter: brightness(0.92);
+  }
+}
+@keyframes trentesix-press-out-calm {
+  from {
+    translate: 0 calc(1px * var(--travel));
+    filter: brightness(0.92);
+  }
+}
+
+/* ── copied · CopyButton ────────────────────────────────────────────────────────────────────── */
+/* The icon box stacks the copy glyph and the tick in one grid cell, centred, so the tick lands
+   exactly on the icon. done: the glyph gives way and the tick writes itself; a tag marked
+   data-part="tag" rises above the button and fades after a second. */
+
+:where([data-moment~='copied']) [data-part='icon'] {
+  display: inline-grid;
+  place-items: center;
+}
+[data-moment~='copied'] [data-part='icon'] > * {
+  grid-area: 1 / 1;
+  transition: opacity min(160ms, var(--motion-cap));
+}
+[data-moment~='copied'] [data-part='icon'] svg {
+  display: block;
+}
+[data-moment~='copied'] [data-part='icon'] > :has([data-part='ink']),
+[data-moment~='copied'][data-state='done'] [data-part='icon'] > :not(:has([data-part='ink'])) {
+  opacity: 0;
+}
+[data-moment~='copied'][data-state='done'] [data-part='icon'] > :has([data-part='ink']) {
+  opacity: 1;
+  transition-duration: min(120ms, var(--motion-cap));
+}
+[data-moment~='copied'][data-state='done'] [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) 40ms both;
+}
+[data-moment~='copied'] [data-part='tag'] {
+  opacity: 0;
+  pointer-events: none;
+}
+[data-moment~='copied'][data-state='done'] [data-part='tag'] {
+  --enter-y: 6px;
+  animation:
+    trentesix-enter var(--motion-pop) var(--spring-pop),
+    trentesix-tag-out min(200ms, var(--motion-cap)) linear 1100ms forwards;
+  opacity: 1;
+}
+@keyframes trentesix-tag-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* ── counter · Count, Badge ─────────────────────────────────────────────────────────────────── */
+/* count() splits the number into digit columns; each column stacks its digits in one cell and
+   clips them, so a digit rolls out as the next rolls in. */
+
+[data-moment~='counter'] {
+  font-variant-numeric: tabular-nums;
+}
+:where([data-moment~='counter']) [data-part='digit'] {
+  display: inline-grid;
+  height: 1lh;
+  overflow: clip;
+  vertical-align: top;
+}
+[data-moment~='counter'] [data-part='digit'] > * {
+  grid-area: 1 / 1;
+}
+
+/* ── code-cells · CodeField ─────────────────────────────────────────────────────────────────── */
+/* Each cell holds its digit in a child element. Filled: the digit drops in (Folio: rises and the
+   cell takes the accent). done: the gaps close and the tick writes itself. failed: the cells
+   shake (Folio: their edges turn rust), then the digits leave right to left. */
+
+[data-moment~='code-cells'] [data-part='cell'] {
+  transition: border-color var(--motion-pop);
+}
+[data-moment~='code-cells'] [data-part='cell'][data-filled] > * {
+  --enter-y: var(--m-cell-y, -10px);
+  animation: trentesix-enter var(--m-cell-time, var(--motion-pop))
+    var(--m-cell-ease, var(--spring-pop)) both;
+}
+:is(
+  [data-moment~='code-cells']:has(> [data-part='cell']),
+  [data-moment~='code-cells'] :has(> [data-part='cell'])
+) {
+  transition: gap calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle);
+}
+:is(
+  [data-moment~='code-cells'][data-state='done']:has(> [data-part='cell']),
+  [data-moment~='code-cells'][data-state='done'] :has(> [data-part='cell'])
+) {
+  gap: 3px;
+}
+[data-moment~='code-cells'][data-state='done'] [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) 80ms both;
+}
+/* The second selector matches in the calm looks (data-look on :root), to outrank Folio's accent
+   edge. */
+[data-moment~='code-cells'][data-state='failed'] [data-part='cell'],
+:root[data-look] [data-moment~='code-cells'][data-state='failed'] [data-part='cell'] {
+  border-color: var(--rust);
+}
+[data-moment~='code-cells'][data-state='failed'] [data-part='cell'] > * {
+  --leave-y: 6px;
+  animation: trentesix-leave min(140ms, var(--motion-cap)) ease calc(700ms + var(--m-i, 0) * 40ms)
+    forwards;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(2) > * {
+  --m-i: 1;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(3) > * {
+  --m-i: 2;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(4) > * {
+  --m-i: 3;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(5) > * {
+  --m-i: 4;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(6) > * {
+  --m-i: 5;
+}
+[data-moment~='code-cells'] [data-part='cell']:nth-last-child(n + 7) > * {
+  --m-i: 6;
+}
+
+/* ── hold · Button intent="destroy" ─────────────────────────────────────────────────────────── */
+/* hold() grows the fill while the button is held and drains it if let go early. The fill sits
+   under the label: the button isolates, so a z-index of -1 still paints above its background. */
+
+:where([data-moment~='hold']) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+[data-moment~='hold'] [data-part='fill'] {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform-origin: left;
+  transform: scaleX(0);
+  /* stylelint-disable-next-line color-no-hex -- a darkening wash on any fill; no token is black in every theme */
+  background: color-mix(in srgb, #000 30%, transparent);
+  pointer-events: none;
+}
+
+/* ── toast · Toast ──────────────────────────────────────────────────────────────────────────── */
+/* Enters from below (Discothèque pops up 90 px; Folio settles 12 px). The timer bar is the
+   clock: it runs --toast-time, pauses while the toast is hovered or focused, and toastTimer()
+   resolves when it ends. It runs the same under reduced motion. data-state="leaving" exits,
+   quicker than it came and without a spring. */
+
+[data-moment~='toast'] {
+  --enter-y: 90px;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) both;
+}
+/* Leaving rules start with :root so they outrank Folio's arrival rules. */
+:root [data-moment~='toast'][data-state='leaving'] {
+  --leave-y: 60px;
+  animation: trentesix-leave min(180ms, var(--motion-cap)) var(--ease-glide) forwards;
+}
+[data-moment~='toast'] [data-part='timer'] {
+  transform-origin: left;
+  animation: trentesix-timer var(--toast-time, 5s) linear forwards;
+}
+[data-moment~='toast']:is(:hover, :focus-within) [data-part='timer'] {
+  animation-play-state: paused;
+}
+/* stylelint-disable-next-line trentesix/keyframes-travel -- a timer, which runs as usual under reduced motion */
+@keyframes trentesix-timer {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ── stamp and thud · Stamp (Discothèque) ───────────────────────────────────────────────────── */
+/* The stamp slams down from big and turned, rests at -10°, and lifts off after 1.8 s. The
+   container it lands in (data-moment="thud") takes the hit: a 2 px jolt as the stamp lands. */
+
+[data-moment~='stamp'] {
+  rotate: -10deg;
+  animation:
+    trentesix-stamp var(--motion-pop) var(--spring-pop) both,
+    trentesix-stamp-lift min(400ms, var(--motion-cap)) ease 1800ms forwards;
+  pointer-events: none;
+}
+@keyframes trentesix-stamp {
+  from {
+    opacity: 0;
+    transform: scale(calc(1 + 1.4 * var(--travel))) rotate(calc(-14deg * var(--travel)));
+  }
+}
+@keyframes trentesix-stamp-lift {
+  to {
+    opacity: 0;
+    transform: scale(calc(1 - 0.04 * var(--travel)));
+  }
+}
+[data-moment~='thud']:is([data-state='done'], :has([data-moment~='stamp'])) {
+  animation: trentesix-thud 260ms ease-out 110ms;
+}
+@keyframes trentesix-thud {
+  35% {
+    transform: translateY(calc(2px * var(--travel)));
+  }
+}
+
+/* ── seal · StatusPill ──────────────────────────────────────────────────────────────────────── */
+/* done (and failed, for "changes asked"): the fill sweeps in from the left, the ink writes
+   itself in order (a ring, then its tick), eight rays spark once, an edge line draws down the
+   card and a badge pops onto an avatar. Every part is optional. */
+
+[data-moment~='seal'] [data-part='fill'] {
+  transform-origin: left;
+  scale: 0 1;
+}
+[data-moment~='seal']:is([data-state='done'], [data-state='failed']) [data-part='fill'] {
+  scale: 1 1;
+  animation: trentesix-line-x var(--motion-pen) var(--ease-pen) both;
+}
+[data-moment~='seal']:not([data-state='done']) [data-part='ink'] {
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+[data-moment~='seal'] :is([data-part='edge'], [data-part='rays'], [data-part='badge']) {
+  opacity: 0;
+}
+[data-moment~='seal']:is([data-state='done'], [data-state='failed']) [data-part='edge'] {
+  opacity: 1;
+  transform-origin: top;
+  animation: trentesix-line-y var(--motion-pen) var(--ease-pen) 60ms both;
+}
+[data-moment~='seal']:is([data-state='done'], [data-state='failed']) [data-part='label'] {
+  animation: trentesix-label var(--motion-pen) var(--ease-pen) both;
+}
+@keyframes trentesix-label {
+  from {
+    opacity: 0.4;
+  }
+}
+[data-moment~='seal'][data-state='done'] [data-part='badge'] {
+  --enter-scale: 0.3;
+  opacity: 1;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) 260ms both;
+}
+
+/* Ink in a seal or a milestone writes in order: the first line at 120 ms, then 300 ms apart. */
+:is([data-moment~='seal'][data-state='done'], [data-moment~='milestone']) [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) 120ms both;
+}
+:is([data-moment~='seal'][data-state='done'], [data-moment~='milestone'])
+  [data-part='ink']:nth-child(2) {
+  animation-delay: 420ms;
+}
+:is([data-moment~='seal'][data-state='done'], [data-moment~='milestone'])
+  [data-part='ink']:nth-child(n + 3) {
+  animation-delay: 720ms;
+}
+:is([data-moment~='seal'], [data-moment~='milestone']) [data-part='rays'] {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+:is([data-moment~='seal'][data-state='done'], [data-moment~='milestone']) [data-part='rays'] {
+  animation: trentesix-rays min(620ms, var(--motion-cap)) cubic-bezier(0.2, 0.6, 0.3, 1) 780ms both;
+}
+@keyframes trentesix-rays {
+  from {
+    opacity: 0;
+    transform: scale(calc(1 - 0.3 * var(--travel)));
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(calc(1 + 0.25 * var(--travel)));
+  }
+}
+
+/* ── change-mark · ChangeMark ───────────────────────────────────────────────────────────────── */
+/* Something someone else just changed: a bar draws down the edge, a highlighter sweeps the new
+   words, and both fade. Runs when the mark is added to the page. */
+
+[data-moment~='change-mark'] [data-part='bar'] {
+  transform-origin: top;
+  animation:
+    trentesix-line-y var(--motion-pen) var(--ease-pen) both,
+    trentesix-mark-fade min(3000ms, var(--motion-cap)) var(--ease-drift) 1400ms forwards;
+}
+[data-moment~='change-mark'] [data-part='highlight'] {
+  transform-origin: left;
+  animation:
+    trentesix-line-x var(--motion-pen) var(--ease-pen) 120ms both,
+    trentesix-mark-fade min(3000ms, var(--motion-cap)) var(--ease-drift) 1520ms forwards;
+}
+@keyframes trentesix-mark-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+/* ── flash · anything you just changed ──────────────────────────────────────────────────────── */
+/* Something you just changed, somewhere other than where you clicked (a value an option rewrote,
+   a row a save updated): its background takes --flash and fades back to its own. Discothèque
+   hits at once in marigold, holds a beat and fades; Folio's wash soaks in like ink and dries.
+   Runs when the attribute is added; flash() plays it again. Someone else's change is a
+   change-mark instead. Under reduced motion the colour still shows, and fades quicker. */
+
+[data-moment~='flash'] {
+  animation: trentesix-flash var(--motion-linger) ease-out var(--duration-pop) backwards;
+}
+@keyframes trentesix-flash-in {
+  60%,
+  to {
+    background-color: var(--flash);
+  }
+}
+
+/* ── milestone · Celebration ────────────────────────────────────────────────────────────────── */
+/* First publish and other firsts. The card drops in (Discothèque: from 24 px above, tilted a
+   degree; Folio: settles 10 px), its seal writes itself, and one burst follows: ten strips of
+   colour fall once behind it (Discothèque) or eight rays spark (Folio). data-state="leaving"
+   fades it. Under reduced motion the strips are simply there, scattered, and fade with it. */
+
+[data-moment~='milestone'] [data-part='card'] {
+  --enter-y: -24px;
+  rotate: -1deg;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) both;
+}
+:root
+  [data-moment~='milestone'][data-state='leaving']
+  :is([data-part='card'], [data-part='confetti']) {
+  animation: trentesix-mark-fade min(260ms, var(--motion-cap)) linear forwards;
+}
+[data-moment~='milestone'] [data-part='confetti'] {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+}
+[data-moment~='milestone'] [data-part='confetti'] > * {
+  --m-d: -12;
+  --m-f: 130;
+  position: absolute;
+  top: -24px;
+  left: calc((var(--m-n, 0) + 0.5) * 10% + var(--m-nudge, 8px));
+  width: 9px;
+  height: 22px;
+  border-radius: 3px;
+  opacity: 0;
+  background: var(--m-c, var(--rust));
+  animation: trentesix-confetti calc(1500ms + var(--m-k, 0) * 160ms) cubic-bezier(0.3, 0, 0.6, 1)
+    calc(120ms + var(--m-j, 0) * 70ms) both;
+}
+/* stylelint-disable-next-line trentesix/keyframes-travel -- reduced motion gives the strips a still pose (below) */
+@keyframes trentesix-confetti {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  80% {
+    opacity: 1;
+    transform: translate(calc(var(--m-d) * 1px), 60cqh) rotate(calc(var(--m-d) * 9deg));
+  }
+  to {
+    opacity: 0;
+    transform: translate(calc(var(--m-d) * 1.3px), calc(100cqh + 30px))
+      rotate(calc(var(--m-d) * 12deg));
+  }
+}
+/* Ten strips, each with its own column, drift, fall time and colour. */
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(2) {
+  --m-n: 1;
+  --m-d: 19;
+  --m-f: 160;
+  --m-k: 1;
+  --m-j: 1;
+  --m-nudge: -8px;
+  --m-c: var(--orange);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(3) {
+  --m-n: 2;
+  --m-d: -26;
+  --m-f: 190;
+  --m-k: 2;
+  --m-j: 2;
+  --m-c: var(--mustard);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(4) {
+  --m-n: 3;
+  --m-d: 33;
+  --m-k: 3;
+  --m-j: 3;
+  --m-nudge: -8px;
+  --m-c: var(--avocado);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(5) {
+  --m-n: 4;
+  --m-d: -16;
+  --m-f: 160;
+  --m-j: 4;
+  --m-c: var(--teal);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(6) {
+  --m-n: 5;
+  --m-d: 23;
+  --m-f: 190;
+  --m-k: 1;
+  --m-nudge: -8px;
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(7) {
+  --m-n: 6;
+  --m-d: -30;
+  --m-k: 2;
+  --m-j: 1;
+  --m-c: var(--orange);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(8) {
+  --m-n: 7;
+  --m-d: 13;
+  --m-f: 160;
+  --m-k: 3;
+  --m-j: 2;
+  --m-nudge: -8px;
+  --m-c: var(--mustard);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(9) {
+  --m-n: 8;
+  --m-d: -20;
+  --m-f: 190;
+  --m-j: 3;
+  --m-c: var(--avocado);
+}
+[data-moment~='milestone'] [data-part='confetti'] > :nth-child(10) {
+  --m-n: 9;
+  --m-d: 27;
+  --m-k: 1;
+  --m-j: 4;
+  --m-nudge: -8px;
+  --m-c: var(--teal);
+}
+
+/* ── arrival · PresenceStack ────────────────────────────────────────────────────────────────── */
+/* Someone joins: their avatar slides into the stack, unhurried, so it never looks like it came
+   from your click. Discothèque: its ring pings three times. Folio: the ring draws itself once
+   around the avatar and stays. */
+
+[data-moment~='arrival'] {
+  --enter-x: 18px;
+  animation: trentesix-enter var(--motion-drift) var(--ease-glide) both;
+}
+[data-moment~='arrival'] [data-part='ring'] {
+  position: absolute;
+  inset: -3px;
+  pointer-events: none;
+  opacity: 0;
+  animation: trentesix-ping 900ms cubic-bezier(0.2, 0.6, 0.3, 1) calc(var(--duration-drift) * 0.6) 3
+    both;
+}
+
+/* ── curtain · Sign-in page ─────────────────────────────────────────────────────────────────── */
+/* data-state="done" when signed in. Discothèque: five bands rise from the bottom one after
+   another, cover the card, and lift away on the Studio. Devis: five lengths of hazard tape are
+   pulled across, from alternate sides, and lift away the same. Folio: the card steps back and
+   the Studio (data-part="view") rises in. */
+
+[data-moment~='curtain'] [data-part='bands'] {
+  display: none;
+}
+[data-moment~='curtain'][data-state='done'] [data-part='bands'] > * {
+  --m-i: 0;
+  transform-origin: bottom;
+  animation:
+    trentesix-band-in min(300ms, var(--motion-cap)) var(--ease-glide) calc((4 - var(--m-i)) * 45ms)
+      both,
+    trentesix-band-out min(420ms, var(--motion-cap)) var(--ease-glide)
+      calc(560ms + (4 - var(--m-i)) * 45ms) forwards;
+}
+[data-moment~='curtain'] [data-part='bands'] > :nth-child(1) {
+  background: var(--rust);
+}
+[data-moment~='curtain'] [data-part='bands'] > :nth-child(2) {
+  --m-i: 1;
+  background: var(--orange);
+}
+[data-moment~='curtain'] [data-part='bands'] > :nth-child(3) {
+  --m-i: 2;
+  background: var(--mustard);
+}
+[data-moment~='curtain'] [data-part='bands'] > :nth-child(4) {
+  --m-i: 3;
+  background: var(--avocado);
+}
+[data-moment~='curtain'] [data-part='bands'] > :nth-child(5) {
+  --m-i: 4;
+  background: var(--teal);
+}
+@keyframes trentesix-band-in {
+  from {
+    transform: scaleY(calc(1 - var(--travel)));
+  }
+}
+/* Lifting away is travel; under reduced motion the bands fade instead (opacity is --travel). */
+@keyframes trentesix-band-out {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateY(calc(-100cqh * var(--travel)));
+    opacity: var(--travel);
+  }
+}
+
+/* ── develop · Upload tile ──────────────────────────────────────────────────────────────────── */
+/* The picture develops with the upload: set --progress (0 to 1) as it goes. Discothèque: from a
+   warm blur to sharp colour, then a flash; Folio: from grey to colour along a hairline, then a
+   tick in the corner. This is progress, so it runs the same under reduced motion. */
+
+[data-moment~='develop'] {
+  animation: trentesix-fade-in min(200ms, var(--motion-cap)) both;
+}
+[data-moment~='develop'][data-state='done'] {
+  --progress: 1;
+}
+[data-moment~='develop'] [data-part='image'] {
+  filter: blur(calc(7px * (1 - var(--progress, 1)))) sepia(calc(0.85 * (1 - var(--progress, 1))))
+    saturate(calc(0.6 + 0.4 * var(--progress, 1)))
+    brightness(calc(1.18 - 0.18 * var(--progress, 1)));
+  transition: filter 200ms linear;
+}
+[data-moment~='develop'] [data-part='progress'] {
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+  transition: transform 200ms linear;
+}
+[data-moment~='develop'][data-state='done'] [data-part='progress'] {
+  animation: trentesix-mark-fade min(300ms, var(--motion-cap)) forwards;
+}
+[data-moment~='develop'] [data-part='badge'] {
+  opacity: 0;
+}
+[data-moment~='develop'][data-state='done'] [data-part='badge'] {
+  opacity: 1;
+  animation: trentesix-fade-in min(160ms, var(--motion-cap)) both;
+}
+[data-moment~='develop'][data-state='done'] [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) 60ms both;
+}
+
+/* ── pen · Suggestion diff ──────────────────────────────────────────────────────────────────── */
+/* The suggestion rises in; a line strikes through the old words (data-part="del"), then the new
+   words (data-part="ins") write themselves in behind it, like a proofreader's pen. done
+   (accepted): the struck words fold away and the new ones settle into plain ink. */
+
+[data-moment~='pen'] {
+  --enter-y: 4px;
+  animation: trentesix-enter var(--motion-glide) var(--ease-glide) both;
+}
+:where([data-moment~='pen']) [data-part='del'] {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: bottom;
+  overflow: clip;
+  interpolate-size: allow-keywords;
+}
+[data-moment~='pen'] [data-part='del']::after {
+  content: '';
+  position: absolute;
+  inset: 55% 0 auto;
+  height: 2px;
+  background: currentColor;
+  transform-origin: left;
+  pointer-events: none;
+  animation: trentesix-line-x var(--motion-pen) var(--ease-pen) 260ms both;
+}
+[data-moment~='pen'] [data-part='ins'] {
+  animation: trentesix-write min(calc(var(--duration-pen) * 1.6), var(--motion-cap))
+    cubic-bezier(0.4, 0, 0.3, 1) calc(260ms + var(--duration-pen) * 0.7) both;
+}
+@keyframes trentesix-write {
+  from {
+    clip-path: inset(0 calc(100% * var(--travel)) 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+[data-moment~='pen'] [data-part='del'] {
+  transition:
+    width calc(var(--duration-glide) * var(--travel)) var(--ease-glide),
+    margin calc(var(--duration-glide) * var(--travel)) var(--ease-glide),
+    opacity var(--motion-glide) var(--ease-glide);
+}
+[data-moment~='pen'][data-state='done'] [data-part='del'] {
+  width: 0;
+  margin-inline-end: -4px;
+  opacity: 0;
+}
+[data-moment~='pen'] [data-part='ins'] {
+  transition:
+    border-color min(500ms, var(--motion-cap)) ease-out,
+    text-decoration-color min(500ms, var(--motion-cap)) ease-out,
+    background-size min(500ms, var(--motion-cap)) ease-out;
+}
+[data-moment~='pen'][data-state='done'] [data-part='ins'] {
+  border-color: transparent;
+  text-decoration-color: transparent;
+  background-size: 100% 0%;
+}
+
+/* ── wind · Schedule button ─────────────────────────────────────────────────────────────────── */
+/* done: the minute hand winds two turns and the hour hand three quarters, landing on --hour
+   (the time picked, 270deg by default). Discothèque's hands spring into place; Folio's settle. */
+
+[data-moment~='wind'] :is([data-part='minute'], [data-part='hour']) {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+}
+[data-moment~='wind'][data-state='done'] [data-part='minute'] {
+  animation: trentesix-wind-minute min(760ms, var(--motion-cap)) cubic-bezier(0.3, 1.3, 0.5, 1) both;
+}
+[data-moment~='wind'][data-state='done'] [data-part='hour'] {
+  rotate: var(--hour, 270deg);
+  animation: trentesix-wind-hour min(760ms, var(--motion-cap)) cubic-bezier(0.3, 1.3, 0.5, 1) both;
+}
+@keyframes trentesix-wind-minute {
+  from {
+    rotate: calc(-720deg * var(--travel));
+  }
+}
+@keyframes trentesix-wind-hour {
+  from {
+    rotate: calc(var(--hour, 270deg) - 270deg * var(--travel));
+  }
+}
+
+/* ── unfold · Drawer, Disclosure ────────────────────────────────────────────────────────────── */
+/* data-state="open": height and opacity, and the children follow 30 ms apart (Folio: 20 ms; the
+   first eight). Discothèque's height lands with a spring. Closing is a third quicker. With
+   @starting-style, a drawer that is added already open unfolds too. */
+
+[data-moment~='unfold'] {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  transition:
+    height calc(var(--duration-glide) * 0.66 * var(--travel)) var(--ease-glide),
+    opacity min(calc(var(--duration-glide) * 0.66), var(--motion-cap)) var(--ease-glide),
+    visibility calc(var(--duration-glide) * 0.66);
+}
+[data-moment~='unfold']:not([data-state='open']) {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+[data-moment~='unfold'][data-state='open'] {
+  transition:
+    height calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle),
+    opacity var(--motion-glide) var(--ease-glide),
+    visibility 0s;
+}
+[data-moment~='unfold'] > * {
+  transition:
+    opacity var(--motion-glide) var(--ease-glide),
+    transform calc(var(--duration-glide) * var(--travel)) var(--ease-glide);
+}
+[data-moment~='unfold']:not([data-state='open']) > * {
+  opacity: 0;
+  transform: translateY(calc(-8px * var(--travel)));
+}
+[data-moment~='unfold'][data-state='open'] > * {
+  transition-delay: calc(60ms + var(--m-i, 7) * var(--m-stagger, 30ms));
+}
+[data-moment~='unfold'] > :nth-child(1) {
+  --m-i: 0;
+}
+[data-moment~='unfold'] > :nth-child(2) {
+  --m-i: 1;
+}
+[data-moment~='unfold'] > :nth-child(3) {
+  --m-i: 2;
+}
+[data-moment~='unfold'] > :nth-child(4) {
+  --m-i: 3;
+}
+[data-moment~='unfold'] > :nth-child(5) {
+  --m-i: 4;
+}
+[data-moment~='unfold'] > :nth-child(6) {
+  --m-i: 5;
+}
+[data-moment~='unfold'] > :nth-child(7) {
+  --m-i: 6;
+}
+@starting-style {
+  [data-moment~='unfold'][data-state='open'] {
+    height: 0;
+    opacity: 0;
+  }
+  [data-moment~='unfold'][data-state='open'] > * {
+    opacity: 0;
+    transform: translateY(calc(-8px * var(--travel)));
+  }
+}
+
+/* ── dialog · Dialog, Popover, Menu ─────────────────────────────────────────────────────────── */
+/* Discothèque rises 16 px and lands with the pop spring, its hard shadow growing under it as it
+   touches down; Folio rises 8 px from 98% and settles. The backdrop fades: a <dialog>'s
+   ::backdrop, or an element marked data-part="backdrop" next to the panel. data-state="leaving"
+   closes it, quicker and without rising. */
+
+[data-moment~='dialog'] {
+  --enter-y: 16px;
+  animation:
+    trentesix-enter var(--motion-pop) var(--spring-pop) both,
+    trentesix-shadow-in min(260ms, var(--motion-cap)) ease-out 90ms both;
+}
+@keyframes trentesix-shadow-in {
+  from {
+    box-shadow: 0 0 0 transparent;
+  }
+}
+[data-moment~='dialog']::backdrop,
+[data-moment~='dialog'] ~ [data-part='backdrop'],
+[data-part='backdrop']:has(~ [data-moment~='dialog']) {
+  animation: trentesix-fade-in var(--motion-glide) var(--ease-glide) both;
+}
+:root [data-moment~='dialog'][data-state='leaving'] {
+  --leave-y: 4px;
+  animation: trentesix-leave min(160ms, var(--motion-cap)) ease-in forwards;
+}
+[data-moment~='dialog'][data-state='leaving']::backdrop,
+[data-moment~='dialog'][data-state='leaving'] ~ [data-part='backdrop'],
+[data-part='backdrop']:has(~ [data-moment~='dialog'][data-state='leaving']) {
+  animation: trentesix-mark-fade min(160ms, var(--motion-cap)) linear forwards;
+}
+
+/* ── lift · Sortable lists ──────────────────────────────────────────────────────────────────── */
+/* data-state="lifted": the row rises and tilts (Discothèque) or lifts 1.5% with a soft shadow
+   (Folio). While lifted it follows the pointer through transform without lag; the other rows
+   glide out of its way, and on drop it lands with the settle spring. */
+
+[data-moment~='lift'] {
+  transition:
+    transform calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle),
+    scale calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle),
+    rotate calc(var(--spring-settle-duration) * var(--travel)) var(--spring-settle),
+    box-shadow var(--motion-settle) var(--spring-settle);
+}
+[data-moment~='lift'][data-state='lifted'] {
+  z-index: 1;
+  scale: calc(1 + 0.02 * var(--travel));
+  rotate: calc(-1.5deg * var(--travel));
+  box-shadow: var(--shadow-drag);
+  transition:
+    scale calc(var(--duration-snap) * var(--travel)) var(--ease-spring),
+    rotate calc(var(--duration-snap) * var(--travel)) var(--ease-spring),
+    box-shadow var(--motion-snap) var(--ease-spring);
+}
+
+/* ── wait · Skeleton ────────────────────────────────────────────────────────────────────────── */
+/* Nothing for 200 ms, so a fast load never flashes a skeleton. Then the bones (data-part="bone")
+   fade in with a slow, soft sweep that holds still under reduced motion. */
+
+[data-moment~='wait'] {
+  animation: trentesix-fade-in min(150ms, var(--motion-cap)) linear 200ms both;
+}
+[data-moment~='wait'] [data-part='bone'] {
+  background: linear-gradient(
+    100deg,
+    var(--paper-sunk) 0 42%,
+    color-mix(in srgb, var(--paper-tint) 70%, var(--paper-sunk)) 50%,
+    var(--paper-sunk) 58% 100%
+  );
+  background-size: 300% 100%;
+  animation: trentesix-shimmer calc(2200ms * var(--travel)) linear var(--loop);
+}
+@keyframes trentesix-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* ── lights · Theme switch ──────────────────────────────────────────────────────────────────── */
+/* switchLights() sets data-lights on <html> for the length of its View Transition, so the
+   browser's own cross-fade steps aside only for it. */
+
+:root[data-lights]::view-transition-old(root),
+:root[data-lights]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ── ticker · LiveBand ──────────────────────────────────────────────────────────────────────── */
+/* The track scrolls for --ticker-time and stops while the element holding it is hovered or
+   focused, or with data-state="paused".
+   Under reduced motion it starts paused; data-state="running" plays it (a Play button). The
+   live dot pulses while it runs. Give the track two copies of the items, side by side. */
+
+[data-moment~='ticker'] [data-part='track'] {
+  animation: trentesix-ticker var(--ticker-time, 70s) linear infinite;
+}
+[data-moment~='ticker'] [data-part='dot'] {
+  animation: trentesix-live calc(1400ms * var(--travel)) ease-in-out var(--loop);
+}
+/* Hover and focus pause it only on the element holding the track, so a Play button beside it
+   starts the crawl at once. */
+[data-moment~='ticker'][data-state='paused'] :is([data-part='track'], [data-part='dot']),
+[data-moment~='ticker']:is(:hover, :focus-within) > [data-part='track'],
+[data-moment~='ticker'] :is(:hover, :focus-within) > [data-part='track'] {
+  animation-play-state: paused;
+}
+/* stylelint-disable-next-line trentesix/keyframes-travel -- the ticker starts paused under reduced motion */
+@keyframes trentesix-ticker {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes trentesix-live {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ── postmark · a sent reply ────────────────────────────────────────────────────────────────── */
+/* A cancellation mark: two rings and wavy lines in --action, with the date in part "date". Added
+   to the page when something is sent (a reply, a message), it plays once. Neutral default: the
+   rings and lines draw themselves in order and the date fades in. Relais presses it in whole with
+   the settle spring, then lets it settle back (--postmark-rest). Rest turn -8deg is the object's,
+   not the text's. data-state="leaving" fades it. Parts: "ink" (circles and paths with
+   pathLength="1", rings first), "date" (an SVG text). */
+
+:where([data-moment~='postmark']) {
+  display: inline-block;
+  color: var(--action);
+  rotate: -8deg;
+  pointer-events: none;
+}
+:where([data-moment~='postmark']) [data-part='ink'] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+:where([data-moment~='postmark']) [data-part='date'] {
+  fill: currentColor;
+  font: 600 10px/1 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+[data-moment~='postmark'] [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) both;
+}
+[data-moment~='postmark'] [data-part='ink']:nth-child(2) {
+  animation-delay: 120ms;
+}
+[data-moment~='postmark'] [data-part='ink']:nth-child(n + 3) {
+  animation-delay: 300ms;
+}
+[data-moment~='postmark'] [data-part='date'] {
+  animation: trentesix-fade-in var(--motion-pen) var(--ease-pen) 480ms both;
+}
+:root [data-moment~='postmark'][data-state='leaving'] {
+  animation: trentesix-mark-fade min(260ms, var(--motion-cap)) linear forwards;
+}
+
+/* ── sweep · a row or panel that just arrived ───────────────────────────────────────────────── */
+/* A band along the top edge of the element (part "band", a child) arrives once and fades:
+   something new came in on its own. Neutral default: a --mustard line draws along the edge, like
+   a change-mark's bar. Relais sweeps its airmail stripe in from the left, --stripe-band tall,
+   holds it for a moment, then fades it. Set --sweep-height and --sweep-fill to change the band;
+   it is placed with inset, so a component may move it to another edge. */
+
+:where([data-moment~='sweep']) {
+  position: relative;
+}
+[data-moment~='sweep'] [data-part='band'] {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--sweep-height, 3px);
+  background: var(--sweep-fill, var(--mustard));
+  pointer-events: none;
+  transform-origin: left;
+  animation:
+    trentesix-line-x var(--motion-pen) var(--ease-pen) both,
+    trentesix-mark-fade min(900ms, var(--motion-cap)) var(--ease-drift) 1500ms forwards;
+}
+/* The stripe is unveiled from the left while its pattern slides the same way. */
+
+/* ── notary · an accepted document ──────────────────────────────────────────────────────────── */
+/* The seal a notary presses on a document that now binds: a double ring in --orange (Devis's seal
+   gold) around a word and a date, on its own paper disc, resting at -8deg (an object keeps its
+   angle). Added when the client accepts, it plays once. Neutral default: the rings draw
+   themselves, outer then inner, and the word and the date fade in. Devis presses it in whole: from
+   1.5 times its size, a few degrees turned, with the pop spring's one small overshoot, and the
+   container holding it (data-moment="thud") takes a 1 px jolt. data-state="rest" shows it as it
+   stands, without playing (a record opened later); "leaving" fades it. Parts: "ink" (circles
+   with pathLength="1", outer first), "word" and "date" (SVG text). */
+
+:where([data-moment~='notary']) {
+  display: inline-block;
+  color: var(--orange);
+  background: var(--paper-raised);
+  border-radius: 50%;
+  rotate: -8deg;
+  pointer-events: none;
+}
+:where([data-moment~='notary']) svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+:where([data-moment~='notary']) [data-part='ink'] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+:where([data-moment~='notary']) [data-part='ink']:nth-child(2) {
+  stroke-width: 1.25;
+}
+:where([data-moment~='notary']) [data-part='word'] {
+  fill: currentColor;
+  font: 400 20px/1 var(--font-money, var(--font-display));
+}
+:where([data-moment~='notary']) [data-part='date'] {
+  fill: currentColor;
+  font: 600 10px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+[data-moment~='notary']:not([data-state='rest']) [data-part='ink'] {
+  animation: trentesix-draw var(--motion-pen) var(--ease-pen) both;
+}
+[data-moment~='notary']:not([data-state='rest']) [data-part='ink']:nth-child(2) {
+  animation-delay: 160ms;
+}
+[data-moment~='notary']:not([data-state='rest']) :is([data-part='word'], [data-part='date']) {
+  animation: trentesix-fade-in var(--motion-pen) var(--ease-pen) 380ms both;
+}
+:root [data-moment~='notary'][data-state='leaving'] {
+  animation: trentesix-mark-fade min(260ms, var(--motion-cap)) linear forwards;
+}
+
+/* stylelint-enable trentesix/motion-tokens */
+
+/* ── Reduced motion, where a moment ends somewhere else ─────────────────────────────────────── */
+/* Written twice: once for the system setting, once for data-motion="reduce". */
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full'])
+    [data-moment~='ticker']:not([data-state='running'])
+    [data-part='track'] {
+    animation-play-state: paused;
+  }
+  :root:not([data-motion='full']) [data-moment~='arrival'] [data-part='ring'] {
+    opacity: 0.9;
+    animation: trentesix-fade-in var(--motion-cap) calc(var(--duration-drift) * 0.6) both;
+  }
+  :root:not([data-motion='full']) [data-moment~='milestone'] [data-part='confetti'] > * {
+    opacity: 1;
+    transform: translate(calc(var(--m-d) * 1px), calc(var(--m-f) * 1px))
+      rotate(calc(var(--m-d) * 3deg));
+    animation: trentesix-fade-in var(--motion-cap) both;
+  }
+}
+:root[data-motion='reduce']
+  [data-moment~='ticker']:not([data-state='running'])
+  [data-part='track'] {
+  animation-play-state: paused;
+}
+:root[data-motion='reduce'] [data-moment~='arrival'] [data-part='ring'] {
+  opacity: 0.9;
+  animation: trentesix-fade-in var(--motion-cap) calc(var(--duration-drift) * 0.6) both;
+}
+:root[data-motion='reduce'] [data-moment~='milestone'] [data-part='confetti'] > * {
+  opacity: 1;
+  transform: translate(calc(var(--m-d) * 1px), calc(var(--m-f) * 1px))
+    rotate(calc(var(--m-d) * 3deg));
+  animation: trentesix-fade-in var(--motion-cap) both;
+}

@@ -1,0 +1,371 @@
+{
+  "about": "Colour pairs that must stay readable, checked by pnpm check in every look and both themes. fg and bg are variable names without the dashes, resolved the way css/*.css resolves them. min is the WCAG contrast ratio: 4.5 for text, 3 for large text (24px, or 18.5px bold) and for parts of the UI that carry meaning, like focus rings and the edges of controls. fg can be a list when a mark is drawn in more than one colour, like Discothèque's two-band focus ring: the pair passes when any of them reads on bg. looks limits a pair to one look. docs/foundations.md shows these tables; pnpm build writes them.",
+  "pairs": [
+    {
+      "fg": "ink",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink",
+      "bg": "paper-raised",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink",
+      "bg": "paper-sunk",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink",
+      "bg": "paper-tint",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink",
+      "bg": "field",
+      "min": 4.5,
+      "for": "typing"
+    },
+    {
+      "fg": "ink-muted",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink-muted",
+      "bg": "paper-raised",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink-muted",
+      "bg": "paper-sunk",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "ink-subtle",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "any text (never the only copy)"
+    },
+    {
+      "fg": "ink-subtle",
+      "bg": "paper-raised",
+      "min": 4.5,
+      "for": "any text (never the only copy)"
+    },
+    {
+      "fg": "ink-subtle",
+      "bg": "field",
+      "min": 4.5,
+      "for": "placeholders"
+    },
+    {
+      "fg": "link",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "links"
+    },
+    {
+      "fg": "link",
+      "bg": "paper-raised",
+      "min": 4.5,
+      "for": "links"
+    },
+    {
+      "fg": "on-action",
+      "bg": "action",
+      "min": 4.5,
+      "for": "button labels"
+    },
+    {
+      "fg": "on-mustard",
+      "bg": "mustard",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "on-panel-highlight",
+      "bg": "panel-highlight",
+      "min": 4.5,
+      "for": "any text"
+    },
+    {
+      "fg": "rust",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "error text"
+    },
+    {
+      "fg": "rust",
+      "bg": "rust-soft",
+      "min": 4.5,
+      "for": "error text in a problem box"
+    },
+    {
+      "fg": "success",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "success text"
+    },
+    {
+      "fg": "success",
+      "bg": "success-soft",
+      "min": 4.5,
+      "for": "live pills"
+    },
+    {
+      "fg": "on-action",
+      "bg": "success",
+      "min": 4.5,
+      "for": "success button labels"
+    },
+    {
+      "fg": "on-avocado",
+      "bg": "avocado",
+      "min": 3,
+      "for": "large text on avocado fills"
+    },
+    {
+      "fg": "warning-ink",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "warning text"
+    },
+    {
+      "fg": "warning-ink",
+      "bg": "mustard-soft",
+      "min": 4.5,
+      "for": "warning suggestions"
+    },
+    {
+      "fg": "teal",
+      "bg": "paper",
+      "min": 4.5,
+      "for": "info text"
+    },
+    {
+      "fg": "teal",
+      "bg": "teal-soft",
+      "min": 4.5,
+      "for": "scheduled pills"
+    },
+    {
+      "fg": "on-plum",
+      "bg": "plum",
+      "min": 4.5,
+      "for": "presence tabs"
+    },
+    {
+      "fg": "on-plum",
+      "bg": "teal",
+      "min": 4.5,
+      "for": "type squares"
+    },
+    {
+      "fg": "on-chocolate",
+      "bg": "chocolate",
+      "min": 4.5,
+      "for": "top bar"
+    },
+    {
+      "fg": "on-chocolate",
+      "bg": "chocolate-soft",
+      "min": 4.5,
+      "for": "sidebar"
+    },
+    {
+      "fg": "on-chocolate-muted",
+      "bg": "chocolate",
+      "min": 4.5,
+      "for": "secondary text in the top bar"
+    },
+    {
+      "fg": "on-inverse",
+      "bg": "inverse",
+      "min": 4.5,
+      "for": "toasts"
+    },
+    {
+      "fg": "on-inverse-accent",
+      "bg": "inverse",
+      "min": 4.5,
+      "for": "the action word in a toast"
+    },
+    {
+      "fg": "on-code",
+      "bg": "code",
+      "min": 4.5,
+      "for": "code"
+    },
+    {
+      "fg": "on-code-muted",
+      "bg": "code",
+      "min": 4.5,
+      "for": "comments and labels in code"
+    },
+    {
+      "fg": "code-keyword",
+      "bg": "code",
+      "min": 4.5,
+      "for": "keywords in code"
+    },
+    {
+      "fg": "code-string",
+      "bg": "code",
+      "min": 4.5,
+      "for": "strings in code"
+    },
+    {
+      "fg": "code-function",
+      "bg": "code",
+      "min": 4.5,
+      "for": "function names in code"
+    },
+    {
+      "fg": "ink-line",
+      "bg": "field",
+      "min": 3,
+      "for": "input edges"
+    },
+    {
+      "fg": "ink-line",
+      "bg": "paper",
+      "min": 3,
+      "for": "input edges"
+    },
+    {
+      "fg": "ink-line",
+      "bg": "paper-sunk",
+      "min": 3,
+      "for": "input edges"
+    },
+    {
+      "fg": "outline-control",
+      "bg": "paper",
+      "min": 3,
+      "for": "control edges"
+    },
+    {
+      "fg": "outline-control",
+      "bg": "paper-raised",
+      "min": 3,
+      "for": "control edges"
+    },
+    {
+      "fg": "focus",
+      "bg": "focus-edge",
+      "min": 3,
+      "for": "focus ring: the two bands",
+      "looks": ["discotheque"]
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "paper",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "paper-raised",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "paper-sunk",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "panel-highlight",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "field",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "chocolate",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "chocolate-soft",
+      "min": 3,
+      "for": "focus ring"
+    },
+    {
+      "fg": "code-focus",
+      "bg": "code",
+      "min": 3,
+      "for": "focus ring in a code well"
+    },
+    {
+      "fg": ["focus", "focus-edge"],
+      "bg": "inverse",
+      "min": 3,
+      "for": "the focus ring on a toast"
+    },
+    {
+      "fg": "link",
+      "bg": "paper-sunk",
+      "min": 4.5,
+      "for": "links in sunk panels"
+    },
+    {
+      "fg": "warning-ink",
+      "bg": "paper-raised",
+      "min": 4.5,
+      "for": "warning text on cards"
+    },
+    {
+      "fg": "warning-ink",
+      "bg": "paper-sunk",
+      "min": 4.5,
+      "for": "warning text in sunk panels"
+    },
+    {
+      "fg": "on-chocolate-accent",
+      "bg": "chocolate",
+      "min": 4.5,
+      "for": "accent text on chocolate"
+    }
+  ],
+  "avoid": [
+    {
+      "fg": "orange",
+      "bg": "paper",
+      "why": "Decoration and display italics of 28px and up only."
+    },
+    {
+      "fg": "ink",
+      "bg": "avocado",
+      "why": "Use `--on-avocado`, and keep text on avocado large."
+    },
+    {
+      "fg": "focus",
+      "bg": "paper",
+      "why": "Mustard alone: draw the ring with its `--focus-edge` (see Focus).",
+      "looks": ["discotheque"]
+    },
+    {
+      "fg": "rule",
+      "bg": "paper",
+      "why": "Decorative: never the only edge of a control."
+    }
+  ]
+}

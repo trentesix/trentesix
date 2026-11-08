@@ -1,0 +1,98 @@
+/* Relais's own moments, after the calm rules the build puts first. */
+
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root[data-look='relais'] {
+  --flash: var(--selected-soft);
+  --switch-stretch: 4px;
+}
+:root[data-look='relais']
+  :is([data-moment~='press'], [data-moment~='save'])[data-state='busy']::before {
+  inset: auto auto 0 0;
+  width: 40%;
+  height: 2px;
+  background: currentColor;
+  translate: 75% 0;
+  animation: trentesix-edge-run calc(1100ms * var(--travel)) var(--ease-pen) var(--loop);
+}
+:root[data-look='relais'] [data-moment~='code-cells'] [data-part='cell'][data-filled] {
+  border-color: var(--action);
+}
+:root[data-look='relais'] [data-moment~='flash'] {
+  --m-soak: min(calc(var(--duration-pen) + var(--duration-snap)), var(--motion-cap));
+  animation:
+    trentesix-flash-in var(--m-soak) var(--ease-pen),
+    trentesix-flash var(--motion-linger) var(--ease-drift) var(--m-soak);
+}
+:root[data-look='relais'] [data-moment~='curtain'][data-state='done'] [data-part='card'] {
+  --leave-scale: 0.98;
+  animation: trentesix-leave min(200ms, var(--motion-cap)) ease-in forwards;
+}
+:root[data-look='relais'] [data-moment~='curtain'][data-state='done'] [data-part='view'] {
+  --enter-y: 8px;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) 200ms both;
+}
+:root[data-look='relais'] [data-moment~='postmark'] {
+  --enter-scale: 1.32;
+  --enter-turn: 5deg;
+  animation:
+    trentesix-enter var(--motion-settle) var(--spring-settle) both,
+    trentesix-postmark-rest min(900ms, var(--motion-cap)) var(--ease-drift) 1600ms forwards;
+}
+:root[data-look='relais'] [data-moment~='postmark'] :is([data-part='ink'], [data-part='date']) {
+  animation: none;
+}
+:root[data-look='relais'] [data-moment~='postmark'][data-state='leaving'] {
+  animation: trentesix-mark-fade min(260ms, var(--motion-cap)) linear forwards;
+}
+:root[data-look='relais'] [data-moment~='sweep'] [data-part='band'] {
+  height: var(--sweep-height, var(--stripe-band));
+  background: var(--sweep-fill, var(--relais-airmail));
+  transform-origin: center;
+  animation:
+    trentesix-sweep var(--motion-drift) var(--ease-glide) both,
+    trentesix-fade-in var(--motion-snap) linear both,
+    trentesix-mark-fade min(700ms, var(--motion-cap)) var(--ease-drift)
+      calc(var(--duration-drift) + 1400ms) forwards;
+}
+
+/* ── Relais · what differs from Folio ───────────────────────────────────────────────────────── */
+/* Relais shares Folio's calm rules above (press, field-error, save, toast, code-cells, flash,
+   milestone, arrival, curtain, develop, wind, unfold, dialog, lift). Here is the rest: the busy
+   cue is a short run of the airmail stripe, the stamp is pressed on rather than slammed, the seal
+   doesn't spark, and nothing jolts. */
+
+:root[data-look='relais']
+  :is([data-moment~='press'], [data-moment~='save'])[data-state='busy']::before {
+  height: 3px;
+  background: var(--relais-airmail);
+}
+:root[data-look='relais'] [data-moment~='stamp'] {
+  --enter-scale: 1.25;
+  rotate: -4deg;
+  animation:
+    trentesix-enter var(--motion-settle) var(--spring-settle) both,
+    trentesix-stamp-lift min(400ms, var(--motion-cap)) ease 1800ms forwards;
+}
+:root[data-look='relais'] [data-moment~='thud'] {
+  animation: none;
+}
+:root[data-look='relais'] [data-moment~='seal'] [data-part='rays'] {
+  display: none;
+}
+@keyframes trentesix-postmark-rest {
+  to {
+    opacity: var(--postmark-rest, 0.72);
+  }
+}
+@keyframes trentesix-sweep {
+  from {
+    clip-path: inset(0 calc(100% * var(--travel)) 0 0);
+    background-position: calc(-62px * var(--travel)) 0;
+  }
+  to {
+    clip-path: inset(0);
+    background-position: 0 0;
+  }
+}
+/* stylelint-enable trentesix/motion-tokens */

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moments</title>
+    <!-- Every package, in the order a page loads one look's (all.css): the base, the looks, the
+         fonts aside, then core's moments and each look's. -->
+    <link rel="stylesheet" href="../../packages/core/base.css" />
+    <link rel="stylesheet" href="../../packages/discotheque/look.css" />
+    <link rel="stylesheet" href="../../packages/folio/look.css" />
+    <link rel="stylesheet" href="../../packages/devis/look.css" />
+    <link rel="stylesheet" href="../../packages/relais/look.css" />
+    <link rel="stylesheet" href="../../packages/core/moments.css" />
+    <link rel="stylesheet" href="../../packages/discotheque/moments.css" />
+    <link rel="stylesheet" href="../../packages/folio/moments.css" />
+    <link rel="stylesheet" href="../../packages/devis/moments.css" />
+    <link rel="stylesheet" href="../../packages/relais/moments.css" />
+    <link rel="stylesheet" href="specimens.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-body);
+      }
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: 16px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      /* A shorter toast keeps the test quick; it still has to last all of it. */
+      [data-name='toast'] {
+        --toast-time: 1.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav aria-label="Look" style="display: flex; gap: 16px; margin-bottom: 16px">
+      <a href="?look=discotheque">Discothèque</a>
+      <a href="?look=folio">Folio</a>
+      <a href="?look=devis">Devis</a>
+      <a href="?look=devis&motion=reduce">Devis, reduced motion</a>
+      <a href="?look=relais">Relais</a>
+      <a href="?look=relais&motion=reduce">Relais, reduced motion</a>
+      <a href="?theme=dark" id="theme">Dark</a>
+    </nav>
+    <main></main>
+    <script type="module">
+      // The look, theme and motion come from the query string
+      // (?look=folio&theme=dark&motion=reduce), so the same page serves every run. Without theme=
+      // or motion= the system setting decides.
+      import { specimens } from './specimens.js';
+
+      const query = new URLSearchParams(location.search);
+      const html = document.documentElement;
+      if (query.get('look')) html.dataset.look = query.get('look');
+      if (query.get('motion')) html.dataset.motion = query.get('motion');
+      if (query.get('theme')) html.dataset.theme = query.get('theme');
+      // The theme link keeps the look and motion, and switches between dark and light.
+      const themeLink = document.getElementById('theme');
+      const other = new URLSearchParams(query);
+      other.set('theme', query.get('theme') === 'dark' ? 'light' : 'dark');
+      themeLink.href = `?${other}`;
+      themeLink.textContent = query.get('theme') === 'dark' ? 'Light' : 'Dark';
+
+      const main = document.querySelector('main');
+      const plays = {};
+      for (const spec of specimens) {
+        const card = document.createElement('section');
+        card.className = 'moment-specimen';
+        card.dataset.name = spec.name;
+        card.innerHTML = `<div class="card-head"><h3>${spec.name}</h3><span class="lives">${spec.lives}</span><button type="button" class="btn small play">Play</button></div><div class="stage"></div><p class="says">${spec.says}</p>`;
+        main.append(card);
+        const stage = card.querySelector('.stage');
+        plays[spec.name] = spec.setup(stage);
+        card.querySelector('.play').onclick = () => plays[spec.name]();
+      }
+      /** Plays one specimen, or all of them at once, and resolves when they're done. */
+      window.playMoments = (names = Object.keys(plays)) =>
+        Promise.all(names.map((name) => plays[name]()));
+      window.momentNames = Object.keys(plays);
+    </script>
+  </body>
+</html>

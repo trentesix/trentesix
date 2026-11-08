@@ -1,0 +1,74 @@
+{
+  "name": "@trentesix/core",
+  "version": "0.1.0",
+  "description": "Trentesix core: the base variables every look starts from, the moments, the motion helper, the contrast checker and the stylelint rules.",
+  "keywords": [
+    "design-system",
+    "css-variables",
+    "design-tokens",
+    "motion",
+    "theme"
+  ],
+  "homepage": "https://github.com/trentesix/trentesix/tree/main/packages/core#readme",
+  "bugs": "https://github.com/trentesix/trentesix/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentesix/trentesix.git",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "README.md",
+    "base.css",
+    "contrast.d.ts",
+    "contrast.json",
+    "contrast.mjs",
+    "docs",
+    "moments.css",
+    "motion.d.ts",
+    "motion.js",
+    "stylelint",
+    "tokens.d.ts",
+    "tokens.js",
+    "tokens.json",
+    "vscode"
+  ],
+  "exports": {
+    ".": {
+      "types": "./tokens.d.ts",
+      "default": "./tokens.js"
+    },
+    "./base.css": "./base.css",
+    "./moments.css": "./moments.css",
+    "./motion": {
+      "types": "./motion.d.ts",
+      "default": "./motion.js"
+    },
+    "./contrast": {
+      "types": "./contrast.d.ts",
+      "default": "./contrast.mjs"
+    },
+    "./contrast.json": "./contrast.json",
+    "./tokens.json": "./tokens.json",
+    "./stylelint": "./stylelint/index.js",
+    "./vscode/css-custom-data.json": "./vscode/css-custom-data.json",
+    "./vscode/html-custom-data.json": "./vscode/html-custom-data.json",
+    "./docs/*": "./docs/*",
+    "./README.md": "./README.md"
+  },
+  "peerDependencies": {
+    "stylelint": "^17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "stylelint": {
+      "optional": true
+    }
+  }
+}

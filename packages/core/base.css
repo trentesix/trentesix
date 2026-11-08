@@ -1,0 +1,183 @@
+/* The base every look starts from: spacing, radii, borders, motion, families and the look
+   variables, on :root. Load it before a look. Generated from tokens.json by scripts/build.mjs. Do not edit. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-14: 56px;
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+  --border-object: 2px;
+  --border-strong: 3px;
+  --stripe-band: 6px;
+  --duration-snap: 120ms;
+  --duration-pop: 320ms;
+  --duration-glide: 360ms;
+  --duration-drift: 600ms;
+  --ease-spring: cubic-bezier(0.3, 1.6, 0.5, 1);
+  --ease-glide: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --ease-drift: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-shake: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  --font-display: 'Fraunces Variable', 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Karla Variable', 'Karla', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-mono:
+    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-celebrate: 'Shrikhand', 'Fraunces', Georgia, serif;
+  --font-empty: 'Bagel Fat One', 'Karla', system-ui, sans-serif;
+  --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+  --spring-pop: linear(
+    0,
+    0.063,
+    0.195,
+    0.363,
+    0.538,
+    0.701,
+    0.841,
+    0.952,
+    1.031,
+    1.083,
+    1.11,
+    1.118,
+    1.112,
+    1.097,
+    1.078,
+    1.057,
+    1.038,
+    1.021,
+    1.007,
+    0.997,
+    0.991,
+    0.987,
+    0.986,
+    0.987,
+    0.988,
+    0.991,
+    0.993,
+    0.995,
+    0.997,
+    0.999,
+    1,
+    1.001,
+    1.001,
+    1
+  );
+  --spring-pop-duration: 550ms;
+  --spring-settle: linear(
+    0,
+    0.066,
+    0.208,
+    0.389,
+    0.579,
+    0.756,
+    0.906,
+    1.021,
+    1.101,
+    1.146,
+    1.164,
+    1.159,
+    1.14,
+    1.112,
+    1.081,
+    1.051,
+    1.024,
+    1.003,
+    0.988,
+    0.978,
+    0.974,
+    0.973,
+    0.976,
+    0.98,
+    0.985,
+    0.99,
+    0.994,
+    0.998,
+    1.001,
+    1.003,
+    1.004,
+    1.004,
+    1.004,
+    1.004,
+    1.003,
+    1.002,
+    1.001,
+    1,
+    1,
+    1
+  );
+  --spring-settle-duration: 650ms;
+  --ease-pen: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-pen: 340ms;
+  --outline: var(--ink);
+  --outline-control: var(--ink);
+  --outline-field: var(--ink-line);
+  --outline-field-active: var(--ink);
+  --border-field: 1.5px;
+  --divider: var(--border-object) dotted var(--rule);
+  --focus-ring: 3px;
+  --focus-edge: var(--on-mustard);
+  --press: 3px;
+  --lift: -1px;
+  --radius-button: var(--radius-pill);
+  --radius-badge: var(--radius-pill);
+  --label-size: 12px;
+  --label-weight: 700;
+  --label-tracking: 0.12em;
+  --label-case: uppercase;
+  --field-label-size: 13px;
+  --field-label-tracking: 0;
+  --field-label-case: none;
+  --label-color: var(--ink-muted);
+  --ui-size: 16px;
+  --link: var(--rust);
+  --inverse: var(--chocolate);
+  --on-inverse: var(--on-chocolate);
+  --on-inverse-accent: var(--mustard);
+  --on-chocolate-accent: var(--mustard);
+  --selected-soft: var(--mustard-soft);
+  --text-display: 900 96px/0.9 var(--font-display);
+  --text-display-tracking: -0.03em;
+  --text-page-title: 800 56px/0.95 var(--font-display);
+  --text-page-title-tracking: -0.02em;
+  --text-title: 800 34px/1.05 var(--font-display);
+  --text-title-tracking: -0.01em;
+  --text-section: 700 24px/1.15 var(--font-display);
+  --text-section-tracking: 0;
+  --text-item: 700 20px/1.2 var(--font-display);
+  --text-item-tracking: 0;
+  --text-voice: italic 400 20px/1.3 var(--font-display);
+  --text-voice-tracking: 0;
+  --text-body-l: 400 18px/1.7 var(--font-body);
+  --text-body-l-tracking: 0;
+  --text-body: 400 16px/1.55 var(--font-body);
+  --text-body-tracking: 0;
+  --text-body-strong: 700 16px/1.55 var(--font-body);
+  --text-body-strong-tracking: 0;
+  --text-small: 400 14px/1.5 var(--font-body);
+  --text-small-tracking: 0;
+  --text-label: 700 12px/1.3 var(--font-body);
+  --text-label-tracking: 0.12em;
+  --text-code: 400 13px/1.65 var(--font-mono);
+  --text-code-tracking: 0;
+  --text-kbd: 600 12px/1.2 var(--font-mono);
+  --text-kbd-tracking: 0;
+  --text-celebrate: 400 40px/1 var(--font-celebrate);
+  --text-celebrate-tracking: 0;
+  --text-empty: 400 38px/1 var(--font-empty);
+  --text-empty-tracking: 0;
+  --gutter: var(--space-4);
+  --reading-width: 72ch;
+  --region-gap: var(--space-10);
+}
+@media (width >= 900px) {
+  :root {
+    --gutter: var(--space-6);
+  }
+}

@@ -1,0 +1,84 @@
+/* Devis's own moments, after the calm rules the build puts first. */
+
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='bands'] {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  pointer-events: none;
+  container-type: size;
+}
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='card'] {
+  animation: trentesix-hide 0s 560ms forwards;
+}
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='view'] {
+  animation: trentesix-show 0s 560ms backwards;
+}
+:root[data-look='devis'] [data-moment~='notary']:not([data-state]) {
+  --enter-scale: 1.5;
+  --enter-turn: 6deg;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) both;
+}
+:root[data-look='devis']
+  [data-moment~='notary']:not([data-state])
+  :is([data-part='ink'], [data-part='word'], [data-part='date']) {
+  animation: none;
+}
+
+/* ── Devis · what differs ───────────────────────────────────────────────────────────────────── */
+/* Devis, the quote tool, moves like a worksite with a notary: things land square and stay put. It
+   shares Folio's calm rules above (press, field-error, save, toast, code-cells, milestone,
+   arrival, develop, wind, unfold, dialog, lift) and keeps three of Discothèque's that suit a
+   site: the busy cue's rolling hazard stripes in hi-vis, the flash that hits at once, and the
+   sign-in curtain's bands, as hazard tape. Its own: the notary seal (above), a stamp pressed on
+   square rather than slammed, a 1 px jolt where something becomes binding, and a seal pill
+   without sparks. */
+
+:root[data-look='devis'] [data-moment~='stamp'] {
+  --enter-scale: 1.3;
+  rotate: -6deg;
+  animation:
+    trentesix-enter var(--motion-pop) var(--spring-pop) both,
+    trentesix-stamp-lift min(400ms, var(--motion-cap)) ease 1800ms forwards;
+}
+:root[data-look='devis'] [data-moment~='thud']:has([data-moment~='notary']:not([data-state])) {
+  animation: trentesix-thud-devis 220ms ease-out 140ms;
+}
+:root[data-look='devis'] [data-moment~='seal'] [data-part='rays'] {
+  display: none;
+}
+
+/* The sign-in curtain: five lengths of hazard tape, pulled across from alternate sides, the
+   stripes running as they come; they hold a beat over the card, then lift away like
+   Discothèque's bands. Under reduced motion the tape is just there, and fades. */
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='bands'] > * {
+  --m-side: 1;
+  border-block: 3px solid var(--ink);
+  background: repeating-linear-gradient(-45deg, var(--mustard) 0 28px, var(--ink) 28px 56px);
+  background-size: 200% 100%;
+  animation:
+    trentesix-tape-in min(320ms, var(--motion-cap)) var(--ease-glide) calc(var(--m-i) * 55ms) both,
+    trentesix-roll calc(900ms * var(--travel)) linear calc(var(--m-i) * 55ms) 1,
+    trentesix-band-out min(420ms, var(--motion-cap)) var(--ease-glide)
+      calc(600ms + (4 - var(--m-i)) * 45ms) forwards;
+}
+:root[data-look='devis']
+  [data-moment~='curtain'][data-state='done']
+  [data-part='bands']
+  > :nth-child(even) {
+  --m-side: -1;
+}
+@keyframes trentesix-thud-devis {
+  35% {
+    transform: translateY(calc(1px * var(--travel)));
+  }
+}
+@keyframes trentesix-tape-in {
+  from {
+    transform: translateX(calc(-100cqw * var(--m-side) * var(--travel)));
+  }
+}
+/* stylelint-enable trentesix/motion-tokens */

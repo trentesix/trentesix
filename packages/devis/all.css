@@ -1,0 +1,6 @@
+/* Devis, whole: the base, the look, its fonts and the moments. Generated from tokens.json by scripts/build.mjs. Do not edit. */
+@import '@trentesix/core/base.css';
+@import './look.css';
+@import './fonts.css';
+@import '@trentesix/core/moments.css';
+@import './moments.css';

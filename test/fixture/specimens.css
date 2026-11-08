@@ -1,0 +1,1252 @@
+/* The motion specimens: stand-ins for the components each moment lives in, scoped to
+   .moment-specimen. Every motion comes from moments.css and the helper. */
+.moment-specimen {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 16px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  font: 16px/1.55 var(--font-body);
+  border: var(--border-object) solid var(--outline);
+  border-radius: var(--radius-l);
+  max-width: 640px;
+}
+.moment-specimen h3 {
+  margin: 0;
+}
+.moment-specimen p {
+  margin: 0;
+}
+.moment-specimen button:focus-visible,
+.moment-specimen [tabindex]:focus-visible,
+.moment-specimen input:focus-visible {
+  outline: var(--focus-ring) solid var(--focus);
+  outline-offset: 2px;
+}
+.moment-specimen [hidden] {
+  display: none !important;
+}
+.moment-specimen .card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.moment-specimen .card-head h3 {
+  font: 600 16px var(--font-mono);
+}
+.moment-specimen .card-head .lives {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.moment-specimen .card-head .play {
+  margin-left: auto;
+}
+.moment-specimen .card .says {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.moment-specimen .card .helper {
+  font: 500 12px var(--font-mono);
+  color: var(--ink-subtle);
+}
+
+/* A stage is a small piece of the Studio or the site. */
+.moment-specimen .stage {
+  position: relative;
+  height: 220px;
+  border: var(--border-object) solid var(--outline);
+  border-radius: var(--radius-m);
+  background: var(--paper);
+  overflow: hidden;
+  isolation: isolate;
+}
+.moment-specimen .center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: 14px;
+}
+.moment-specimen .note {
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-align: center;
+}
+.moment-specimen .linky {
+  background: none;
+  border: 0;
+  padding: 2px 4px;
+  color: var(--ink-muted);
+  text-decoration: underline;
+  cursor: pointer;
+  font: 13px var(--font-body);
+}
+
+.moment-specimen .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border: var(--border-object) solid var(--outline-control);
+  border-radius: var(--radius-button);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font: 700 15px var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.moment-specimen .btn.primary {
+  background: var(--action);
+  color: var(--on-action);
+  box-shadow: var(--shadow-press);
+}
+.moment-specimen .btn.go {
+  background: var(--success);
+  color: #fff;
+  box-shadow: var(--shadow-press);
+}
+.moment-specimen .btn.danger {
+  background: var(--rust);
+  color: #fff;
+}
+.moment-specimen .btn.small {
+  min-height: 30px;
+  padding: 0 11px;
+  font-size: 13px;
+}
+:root[data-look='folio'] .moment-specimen .btn {
+  font-weight: 500;
+  min-height: 34px;
+  font-size: 14px;
+}
+:root[data-look='folio'] .moment-specimen .btn:is(.primary, .go) {
+  box-shadow: none;
+}
+.moment-specimen .btn svg {
+  width: 15px;
+  height: 15px;
+}
+.moment-specimen .btn kbd {
+  font: 600 11px var(--font-mono);
+  opacity: 0.75;
+}
+.moment-specimen .svg-line,
+.moment-specimen [data-part='ink'] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.moment-specimen .entry {
+  position: relative;
+  overflow: hidden;
+  width: min(300px, 92%);
+  padding: 12px 14px;
+  background: var(--paper-raised);
+  border: var(--border-object) solid var(--outline);
+  border-radius: var(--radius-m);
+  display: grid;
+  gap: 4px;
+}
+.moment-specimen .entry b {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+:root[data-look='folio'] .moment-specimen .entry b {
+  font-weight: 600;
+  font-size: 16px;
+}
+.moment-specimen .entry .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.moment-specimen .pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 1px 9px;
+  border-radius: var(--radius-badge);
+  background: var(--paper-sunk);
+  font: 700 12px var(--font-body);
+  color: var(--ink);
+}
+.moment-specimen .pill [data-part='fill'] {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--success-soft);
+}
+.moment-specimen .pill.asked [data-part='fill'] {
+  background: var(--rust-soft);
+}
+.moment-specimen .pill.sched [data-part='fill'] {
+  background: var(--mustard-soft);
+}
+.moment-specimen .pill svg {
+  width: 12px;
+  height: 12px;
+  color: var(--success);
+}
+.moment-specimen .pill svg [data-part='ink'] {
+  stroke-width: 3;
+}
+.moment-specimen .entry [data-part='edge'] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--success);
+}
+.moment-specimen .entry.asked [data-part='edge'] {
+  background: var(--rust);
+}
+
+/* switch */
+.moment-specimen .switch-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 700;
+}
+.moment-specimen .sw {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  flex: none;
+  padding: 0;
+  border: var(--border-object) solid var(--outline-control);
+  border-radius: var(--radius-pill);
+  background: var(--paper-sunk);
+  cursor: pointer;
+}
+.moment-specimen .sw[aria-checked='true'] {
+  background: var(--avocado);
+}
+.moment-specimen .sw [data-part='thumb'] {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--paper-raised);
+  border: var(--border-object) solid var(--outline-control);
+}
+:root[data-look='folio'] .moment-specimen .sw {
+  width: 44px;
+  height: 24px;
+}
+:root[data-look='folio'] .moment-specimen .sw[aria-checked='true'] {
+  background: var(--action);
+}
+:root[data-look='folio'] .moment-specimen .sw [data-part='thumb'] {
+  top: 3px;
+  left: 3px;
+  height: 16px;
+  border: 0;
+  box-shadow: var(--folio-shadow-xs, none);
+}
+
+/* slide */
+.moment-specimen .segd {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--paper-sunk);
+}
+:root[data-look='folio'] .moment-specimen .segd {
+  border-radius: var(--radius-m);
+}
+.moment-specimen .segd button {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 600 14px var(--font-body);
+  padding: 0 16px;
+  min-height: 34px;
+  cursor: pointer;
+}
+.moment-specimen .segd button[aria-pressed='true'] {
+  color: var(--on-inverse);
+}
+.moment-specimen .segd [data-part='indicator'] {
+  top: 4px;
+  bottom: 4px;
+  border-radius: var(--radius-button);
+  background: var(--inverse);
+}
+:root[data-look='folio'] .moment-specimen .segd [data-part='indicator'] {
+  background: var(--paper-raised);
+  box-shadow: 0 0 0 1px var(--rule);
+}
+:root[data-look='folio'] .moment-specimen .segd button[aria-pressed='true'] {
+  color: var(--ink);
+}
+
+/* fields */
+.moment-specimen .field {
+  display: grid;
+  gap: 6px;
+  width: min(300px, 92%);
+}
+.moment-specimen .field label {
+  font-size: var(--field-label-size);
+  font-weight: var(--label-weight);
+  color: var(--label-color);
+}
+.moment-specimen .field input,
+.moment-specimen .fake-field {
+  min-height: 40px;
+  padding: 8px 12px;
+  font: 15px var(--font-body);
+  color: var(--ink);
+  border: var(--border-field) solid var(--outline-field);
+  border-radius: var(--radius-m);
+  background: var(--field);
+  width: 100%;
+}
+.moment-specimen .field [data-invalid] input {
+  border-color: var(--rust);
+}
+.moment-specimen .field [data-part='message'] {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rust);
+  min-height: 22px;
+}
+.moment-specimen .field [data-moment~='field-error']:not([data-invalid]) ~ [data-part='message'] {
+  visibility: hidden;
+}
+
+/* save, copy */
+.moment-specimen .savebtn {
+  min-width: 112px;
+}
+.moment-specimen .savebtn [data-part='dot'] {
+  margin-right: -2px;
+}
+.moment-specimen .copy-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(330px, 94%);
+}
+.moment-specimen .copy-row code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: var(--radius-m);
+  background: var(--paper-sunk);
+}
+.moment-specimen .copybtn [data-part='icon'] {
+  width: 16px;
+  height: 16px;
+}
+.moment-specimen .copybtn [data-part='icon'] svg {
+  width: 16px;
+  height: 16px;
+}
+.moment-specimen .copybtn .done-tick {
+  color: var(--success);
+}
+.moment-specimen .copybtn [data-part='tag'] {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  translate: -50% 0;
+  padding: 3px 9px;
+  border-radius: var(--radius-badge);
+  background: var(--inverse);
+  color: var(--on-inverse);
+  font: 700 12px var(--font-body);
+}
+
+/* counter */
+.moment-specimen .nav {
+  width: min(240px, 86%);
+  background: var(--chocolate);
+  color: var(--on-chocolate);
+  border-radius: var(--radius-m);
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+}
+.moment-specimen .nav div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  font-size: 15px;
+}
+:root[data-look='folio'] .moment-specimen .nav {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+.moment-specimen .badge {
+  display: inline-flex;
+  min-width: 26px;
+  height: 24px;
+  padding: 0 7px;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-badge);
+  background: var(--mustard);
+  color: var(--on-mustard);
+  font: 700 13px/1.2 var(--font-body);
+}
+:root[data-look='folio'] .moment-specimen .badge {
+  background: var(--action);
+  color: var(--on-action);
+}
+.moment-specimen .row-btns {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* code cells */
+.moment-specimen .codebox {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+.moment-specimen .cells {
+  display: flex;
+  gap: 8px;
+}
+.moment-specimen .cell {
+  width: 36px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-m);
+  background: var(--field);
+  border: var(--border-field) solid var(--outline-field);
+  font: 600 21px var(--font-mono);
+}
+.moment-specimen .cmsg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--success);
+}
+.moment-specimen .cmsg svg {
+  width: 16px;
+  height: 16px;
+}
+.moment-specimen .cmsg.bad {
+  color: var(--rust);
+}
+
+/* toast */
+.moment-specimen .toast {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 5;
+  translate: -50% 0;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 16px 13px;
+  background: var(--chocolate);
+  color: var(--on-chocolate);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-highlight);
+  font-size: 14px;
+  overflow: hidden;
+}
+.moment-specimen .toast button {
+  background: none;
+  border: 0;
+  color: var(--on-chocolate-accent);
+  font: 700 14px var(--font-body);
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.moment-specimen .toast [data-part='timer'] {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--mustard);
+}
+:root[data-look='folio'] .moment-specimen .toast {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--folio-shadow-l, none);
+}
+:root[data-look='folio'] .moment-specimen .toast [data-part='timer'] {
+  height: 2px;
+  background: var(--folio-accent);
+}
+.moment-specimen .clock {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font: 600 12px var(--font-mono);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* stamp */
+.moment-specimen .stamp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  translate: -50% -50%;
+  padding: 6px 18px;
+  border: 5px solid var(--rust);
+  border-radius: var(--radius-m);
+  color: var(--rust);
+  background: color-mix(in srgb, var(--paper-raised) 80%, transparent);
+  font: 900 32px var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+/* avatars */
+.moment-specimen .av {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 700 12px var(--font-body);
+  color: #fff;
+  border: 3px solid var(--chocolate);
+  margin-left: -10px;
+}
+.moment-specimen .av.sm {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 0;
+  font-size: 10px;
+}
+:root[data-look='folio'] .moment-specimen .av {
+  border-color: var(--paper-raised);
+}
+.moment-specimen .av [data-part='ring'] svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  rotate: -90deg;
+  color: #e1a730;
+}
+.moment-specimen .av [data-part='ring'] [data-part='ink'] {
+  stroke-width: 3;
+}
+.moment-specimen .av [data-part='badge'] {
+  position: absolute;
+  right: -5px;
+  bottom: -4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--success);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+.moment-specimen .av [data-part='badge'] svg {
+  width: 10px;
+  height: 10px;
+}
+.moment-specimen .bar-top {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 60px;
+  background: var(--chocolate);
+  color: var(--on-chocolate);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+.moment-specimen .bar-top .brand {
+  font: 900 19px var(--font-display);
+}
+:root[data-look='folio'] .moment-specimen .bar-top {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+:root[data-look='folio'] .moment-specimen .bar-top .brand {
+  font: 600 16px var(--font-body);
+}
+.moment-specimen .stack {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.moment-specimen .ghost-page {
+  position: absolute;
+  inset: 100px 16px 16px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.moment-specimen .ghost-page i {
+  display: block;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--paper-sunk);
+}
+
+/* rows and lists */
+.moment-specimen .rows {
+  position: absolute;
+  inset: 14px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+.moment-specimen .row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: var(--radius-s);
+  background: var(--paper-raised);
+  border: var(--border-object) solid var(--rule);
+  font-size: 14px;
+}
+.moment-specimen .row small {
+  margin-left: auto;
+  font: 500 11px var(--font-mono);
+  color: var(--ink-muted);
+}
+.moment-specimen .row b {
+  font-weight: 700;
+}
+.moment-specimen .row [data-part='bar'] {
+  position: absolute;
+  left: -9px;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--mustard);
+}
+:root[data-look='folio'] .moment-specimen .row [data-part='bar'] {
+  width: 3px;
+  background: var(--folio-accent);
+}
+.moment-specimen .row [data-part='highlight'] {
+  position: absolute;
+  inset: 1px -3px 0;
+  z-index: -1;
+  border-radius: 3px 6px 4px 7px;
+  background: color-mix(in srgb, var(--mustard) 70%, transparent);
+}
+:root[data-look='folio'] .moment-specimen .row [data-part='highlight'] {
+  border-radius: 3px;
+  background: var(--folio-accent-soft);
+}
+.moment-specimen .hl {
+  position: relative;
+  isolation: isolate;
+}
+.moment-specimen .row .bin-btn {
+  margin-left: 8px;
+  background: none;
+  border: 0;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font: 700 13px var(--font-body);
+  padding: 4px 6px;
+  border-radius: var(--radius-s);
+}
+.moment-specimen .row .bin-btn:hover {
+  color: var(--rust);
+  background: var(--rust-soft);
+}
+.moment-specimen .undo-bar {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: var(--radius-m);
+  background: var(--inverse);
+  color: var(--on-inverse);
+  font-size: 13px;
+}
+.moment-specimen .undo-bar button {
+  background: none;
+  border: 0;
+  color: var(--on-inverse-accent);
+  font: 700 13px var(--font-body);
+  cursor: pointer;
+}
+.moment-specimen .bin-list {
+  position: absolute;
+  inset: 14px 14px 56px 22px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
+/* milestone */
+.moment-specimen .celebrate {
+  position: absolute;
+  inset: 12px 12px auto;
+  z-index: 4;
+  padding: 14px 16px;
+  border-radius: var(--radius-m);
+  background: var(--mustard);
+  color: var(--on-mustard);
+  border: var(--border-object) solid var(--outline);
+  box-shadow: var(--shadow-lift);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+.moment-specimen .celebrate .txt {
+  display: grid;
+  gap: 2px;
+}
+.moment-specimen .celebrate .big {
+  font: 400 26px/1.15 var(--font-celebrate);
+}
+.moment-specimen .celebrate small {
+  font-size: 13px;
+}
+.moment-specimen .celebrate .seal {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  color: var(--success);
+  overflow: visible;
+}
+.moment-specimen .celebrate .seal line {
+  stroke: var(--folio-accent, var(--action));
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+:root:not([data-look='folio']) .moment-specimen .celebrate .seal {
+  display: none;
+}
+:root[data-look='folio'] .moment-specimen .celebrate {
+  background: var(--success-soft);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  box-shadow: none;
+  text-align: left;
+  justify-content: start;
+}
+:root[data-look='folio'] .moment-specimen .celebrate .big {
+  font: 600 16px var(--font-body);
+}
+
+/* curtain */
+.moment-specimen .login {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.moment-specimen .lcard {
+  width: min(270px, 90%);
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  background: var(--paper-raised);
+  border: var(--border-object) solid var(--outline);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-lift);
+}
+.moment-specimen .lcard .lt {
+  font: 800 21px/1 var(--font-display);
+}
+:root[data-look='folio'] .moment-specimen .lcard .lt {
+  font: 600 17px var(--font-body);
+}
+.moment-specimen .studio {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  visibility: hidden;
+}
+.moment-specimen [data-moment~='curtain'][data-state='done'] .studio {
+  visibility: visible;
+}
+
+/* develop */
+.moment-specimen .tiles {
+  position: absolute;
+  inset: 14px 14px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.moment-specimen .tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: var(--border-object) solid var(--outline);
+  background: var(--paper-sunk);
+}
+.moment-specimen .tile .ph {
+  position: absolute;
+  inset: 0;
+}
+.moment-specimen .ph.a {
+  background: linear-gradient(180deg, #9cc4d6 0 45%, #e8e2cf 45% 52%, #4d6a73 52%);
+}
+.moment-specimen .ph.b {
+  background:
+    radial-gradient(circle at 70% 30%, #f3c25b 0 12%, transparent 13%),
+    linear-gradient(180deg, #e98a4f 0 55%, #5b3a2a 55%);
+}
+.moment-specimen .ph.c {
+  background:
+    radial-gradient(ellipse at 30% 110%, #2f5d3a 0 45%, transparent 46%),
+    radial-gradient(ellipse at 85% 105%, #3f7148 0 40%, transparent 41%),
+    linear-gradient(180deg, #cfe3ea, #8fb5c6);
+}
+.moment-specimen .tile [data-part='progress'] {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--mustard);
+}
+:root[data-look='folio'] .moment-specimen .tile [data-part='progress'] {
+  height: 2px;
+  background: var(--folio-accent);
+}
+.moment-specimen .tile [data-part='badge'] {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  color: var(--success);
+  display: grid;
+  place-items: center;
+}
+.moment-specimen .tile [data-part='badge'] svg {
+  width: 14px;
+  height: 14px;
+}
+:root:not([data-look='folio']) .moment-specimen .tile [data-part='badge'] {
+  display: none;
+}
+.moment-specimen .foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* pen */
+.moment-specimen .sugg {
+  position: absolute;
+  inset: 14px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+.moment-specimen .box {
+  padding: 12px 14px;
+  border-radius: var(--radius-m);
+  background: var(--field);
+  border: var(--border-object) solid var(--outline);
+  display: grid;
+  gap: 10px;
+}
+.moment-specimen .box.busy {
+  border-style: dashed;
+}
+.moment-specimen .tagl {
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--selected-soft);
+  font: 700 12px var(--font-body);
+}
+.moment-specimen .diff {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.moment-specimen .diff [data-part='del'] {
+  color: var(--rust);
+}
+.moment-specimen .diff [data-part='ins'] {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: bottom;
+  background: linear-gradient(transparent 60%, var(--selected-soft) 60%) no-repeat;
+  background-size: 100% 100%;
+  border-bottom: 2px dotted var(--orange);
+}
+.moment-specimen .acts {
+  display: flex;
+  gap: 8px;
+}
+
+/* wind */
+.moment-specimen .clock-ic {
+  width: 18px;
+  height: 18px;
+  overflow: visible;
+}
+.moment-specimen .clock-ic circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+.moment-specimen .clock-ic line {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.moment-specimen .when {
+  font: 600 13px var(--font-mono);
+  color: var(--ink-muted);
+}
+
+/* flight and grow */
+.moment-specimen .mini-list {
+  position: absolute;
+  inset: 0;
+  padding: 14px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+.moment-specimen .mini-list .row {
+  cursor: pointer;
+}
+.moment-specimen .mini-list h4 {
+  margin: 0 0 4px;
+  font: 900 24px var(--font-display);
+}
+:root[data-look='folio'] .moment-specimen .mini-list h4 {
+  font-weight: 600;
+  font-size: 19px;
+}
+.moment-specimen .mini-editor {
+  position: absolute;
+  inset: 0;
+  padding: 14px 16px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  background: var(--paper);
+}
+.moment-specimen .mini-editor .back {
+  font: 700 14px var(--font-body);
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+  justify-self: start;
+  padding: 2px 0;
+}
+.moment-specimen .mini-editor .heading {
+  font: 800 28px/1.1 var(--font-display);
+  justify-self: start;
+}
+:root[data-look='folio'] .moment-specimen .mini-editor .heading {
+  font-weight: 600;
+  font-size: 22px;
+}
+.moment-specimen .ln {
+  height: 34px;
+  border-radius: var(--radius-m);
+  background: var(--field);
+  border: var(--border-field) solid var(--outline-field);
+}
+.moment-specimen .ln.short {
+  width: 60%;
+}
+.moment-specimen .lbl {
+  height: 10px;
+  width: 70px;
+  border-radius: 4px;
+  background: var(--rule);
+}
+.moment-specimen .chead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.moment-specimen .chead h4 {
+  margin: 0;
+  font: 900 22px var(--font-display);
+}
+:root[data-look='folio'] .moment-specimen .chead h4 {
+  font: 600 18px var(--font-body);
+}
+.moment-specimen .grown {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--paper-raised);
+  border: var(--border-object) solid var(--outline);
+  border-radius: var(--radius-m);
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.moment-specimen .grown .gtitle {
+  font: 800 26px/1.1 var(--font-display);
+  color: var(--ink-subtle);
+}
+:root[data-look='folio'] .moment-specimen .grown .gtitle {
+  font: 600 21px var(--font-body);
+}
+
+/* unfold */
+.moment-specimen .drawer {
+  border: var(--border-object) dashed var(--outline);
+  border-radius: var(--radius-m);
+  padding: 10px 12px;
+  display: grid;
+  gap: 8px;
+  background: var(--paper-raised);
+}
+.moment-specimen .drawer-wrap {
+  position: absolute;
+  inset: 14px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  justify-items: start;
+}
+.moment-specimen .drawer-wrap .drawer {
+  justify-self: stretch;
+}
+
+/* dialog */
+.moment-specimen .scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--backdrop, color-mix(in srgb, var(--chocolate) 45%, transparent));
+}
+.moment-specimen .dlg {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: min(290px, 88%);
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  background: var(--paper-raised);
+  border: var(--border-strong) solid var(--outline);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-dialog);
+}
+.moment-specimen .dlg h5 {
+  margin: 0;
+  font: 800 19px var(--font-display);
+}
+:root[data-look='folio'] .moment-specimen .dlg {
+  box-shadow: var(--folio-shadow-l, none);
+}
+:root[data-look='folio'] .moment-specimen .dlg h5 {
+  font: 600 17px var(--font-body);
+}
+.moment-specimen .dlg p {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.moment-specimen .dlg .acts {
+  justify-content: flex-end;
+}
+
+/* lift */
+.moment-specimen .drag-list {
+  position: absolute;
+  inset: 14px;
+}
+.moment-specimen .drag-list .row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.moment-specimen .drag-list .grip {
+  font: 700 14px var(--font-mono);
+  color: var(--ink-subtle);
+  letter-spacing: -2px;
+}
+
+/* wait */
+.moment-specimen .load {
+  position: absolute;
+  inset: 14px 14px 52px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.moment-specimen .load [data-part='bone'] {
+  height: 38px;
+  border-radius: var(--radius-s);
+}
+
+/* ticker */
+.moment-specimen .band {
+  position: absolute;
+  inset: auto 0 50%;
+  translate: 0 50%;
+  background: var(--chocolate);
+  color: var(--on-chocolate);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+.moment-specimen .band .lbl2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 800 17px var(--font-display);
+  flex: none;
+}
+.moment-specimen .band [data-part='dot'] {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rust);
+}
+.moment-specimen .band .viewport {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+  display: flex;
+}
+.moment-specimen .band [data-part='track'] {
+  display: flex;
+  flex: none;
+  gap: 28px;
+  padding-right: 28px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.moment-specimen .band em {
+  color: var(--on-chocolate-accent);
+}
+.moment-specimen .band .pause {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: 700 11px var(--font-body);
+}
+:root[data-look='folio'] .moment-specimen .band {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-block: 1px solid var(--rule);
+}
+:root[data-look='folio'] .moment-specimen .band .lbl2 {
+  font: 600 14px var(--font-body);
+}
+:root[data-look='folio'] .moment-specimen .band [data-part='dot'] {
+  background: var(--success);
+}
+:root[data-look='folio'] .moment-specimen .band em {
+  color: var(--link);
+}
+
+/* postmark: where a sent reply wears its mark */
+.moment-specimen .sent {
+  position: relative;
+  min-width: 260px;
+}
+.moment-specimen .stamp-slot {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  width: 96px;
+  height: 52px;
+}
+.moment-specimen .postmark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* notary: where an accepted quote wears its seal */
+.moment-specimen .quote {
+  position: relative;
+  min-width: 300px;
+  min-height: 104px;
+  padding-right: 110px;
+}
+.moment-specimen .notary-slot {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 88px;
+  height: 88px;
+}
+.moment-specimen .notary {
+  width: 100%;
+  height: 100%;
+}

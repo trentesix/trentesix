@@ -1,0 +1,1867 @@
+{
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "--action",
+      "description": {
+        "kind": "markdown",
+        "value": "Primary buttons (Publish, Save, New). Pair with on-action.\n\n- Discothèque: Lights on `#b8491a`, Lights off `#e57a47`\n- Devis: Day `#0f5132`, Night `#74d1a0`\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`\n- Relais: Day `#1d3a8a`, Night `#8fb0ff`"
+      }
+    },
+    {
+      "name": "--avocado",
+      "description": {
+        "kind": "markdown",
+        "value": "Large fills for 'live' and success areas (tiles, stubs). Text on it: on-avocado, and only large (18.5px bold or 24px).\n\n- Discothèque: Lights on `#7a8b3a`, Lights off `#9db050`\n- Devis: Day `#2f7a50`, Night `#5dbb88`\n- Folio: Light `#18794e`, Dark `#5cc08f`\n- Relais: Day `#2f7a50`, Night `#6fd39a`"
+      }
+    },
+    {
+      "name": "--backdrop",
+      "description": {
+        "kind": "markdown",
+        "value": "The dimmed backdrop behind dialogs. Folio only; the default look tints each backdrop in its own rule.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: Light `var(--folio-overlay)` → `rgba(16, 24, 40, 0.45)`, Dark `var(--folio-overlay)` → `rgba(0, 0, 0, 0.6)`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--border-field",
+      "description": {
+        "kind": "markdown",
+        "value": "Width of a text input's edge.\n\n- Discothèque: `1.5px`\n- Devis: `2px`\n- Folio: `1px`\n- Relais: `1px`"
+      }
+    },
+    {
+      "name": "--border-object",
+      "description": {
+        "kind": "markdown",
+        "value": "Outline of every card, input, button and pill.\n\n- Discothèque: `2px`\n- Devis: `2px`\n- Folio: `1px`\n- Relais: `1px`"
+      }
+    },
+    {
+      "name": "--border-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "Dialogs, palette, selected presence ring.\n\n- Discothèque: `3px`\n- Devis: `2px`\n- Folio: `1px`\n- Relais: `2px`"
+      }
+    },
+    {
+      "name": "--chocolate",
+      "description": {
+        "kind": "markdown",
+        "value": "Top bar, command palette shadow, toasts, the offline banner. Code wells have --code.\n\n- Discothèque: Lights on `#3b2416`, Lights off `#0e0805`\n- Devis: Day `#13241d`, Night `#060b08`\n- Folio: Light `#ffffff`, Dark `#191d23`\n- Relais: Day `#14213d`, Night `#060a14`"
+      }
+    },
+    {
+      "name": "--chocolate-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Sidebar ground; inputs inside the top bar.\n\n- Discothèque: Lights on `#5a3822`, Lights off `#160d07`\n- Devis: Day `#1c3329`, Night `#0b1410`\n- Folio: Light `#ffffff`, Dark `#191d23`\n- Relais: Day `#1d2c4f`, Night `#0c1222`"
+      }
+    },
+    {
+      "name": "--code",
+      "description": {
+        "kind": "markdown",
+        "value": "Code wells: blocks of code, terminals, requests and answers. Dark in both themes, so code reads the same everywhere.\n\n- Discothèque: Lights on `#3b2416`, Lights off `#0e0805`\n- Devis: Day `#13241d`, Night `#060b08`\n- Folio: `#1a2029`\n- Relais: Day `#14213d`, Night `#060a14`"
+      }
+    },
+    {
+      "name": "--code-focus",
+      "description": {
+        "kind": "markdown",
+        "value": "The focus ring on controls inside a code well (draw it without --focus-edge there).\n\n- Discothèque: `#e1a730`\n- Devis: `#ffd23f`\n- Folio: `#6ea0f2`\n- Relais: `#ff9aa8`"
+      }
+    },
+    {
+      "name": "--code-function",
+      "description": {
+        "kind": "markdown",
+        "value": "Function names, numbers and constants in a code well.\n\n- Discothèque: `#f2b48f`\n- Devis: `#e8c46f`\n- Folio: `#f0b37e`\n- Relais: `#ffd27a`"
+      }
+    },
+    {
+      "name": "--code-keyword",
+      "description": {
+        "kind": "markdown",
+        "value": "Keywords, keys and the line being pointed at in a code well.\n\n- Discothèque: `#e1a730`\n- Devis: `#ffd23f`\n- Folio: `#8db4f5`\n- Relais: `#ff9aa8`"
+      }
+    },
+    {
+      "name": "--code-rule",
+      "description": {
+        "kind": "markdown",
+        "value": "Lines between rows and panes inside a code well. Decorative only.\n\n- Discothèque: Lights on `#5a3822`, Lights off `#160d07`\n- Devis: Day `#1c3329`, Night `#0b1410`\n- Folio: `#2c3440`\n- Relais: Day `#1d2c4f`, Night `#0c1222`"
+      }
+    },
+    {
+      "name": "--code-string",
+      "description": {
+        "kind": "markdown",
+        "value": "Strings and values in a code well.\n\n- Discothèque: `#c9d98a`\n- Devis: `#9ed9b5`\n- Folio: `#7fd4a8`\n- Relais: `#a8cbff`"
+      }
+    },
+    {
+      "name": "--divider",
+      "description": {
+        "kind": "markdown",
+        "value": "A whole border value for the line between rows.\n\n- Discothèque: Lights on `var(--border-object) dotted var(--rule)` → `2px dotted #d9c49a`, Lights off `var(--border-object) dotted var(--rule)` → `2px dotted #4a3020`\n- Devis: Day `1px solid var(--rule)` → `1px solid #a9b8ae`, Night `1px solid var(--rule)` → `1px solid #2e4238`\n- Folio: Light `1px solid var(--rule)` → `1px solid #dde1e6`, Dark `1px solid var(--rule)` → `1px solid #2c333c`\n- Relais: Day `1px solid var(--rule)` → `1px solid #c9d1df`, Night `1px solid var(--rule)` → `1px solid #2a3550`"
+      }
+    },
+    {
+      "name": "--duration-drift",
+      "description": {
+        "kind": "markdown",
+        "value": "Things arriving on their own: presence, live updates, page transitions.\n\n- Discothèque: `600ms`\n- Devis: `420ms`\n- Folio: `400ms`\n- Relais: `460ms`"
+      }
+    },
+    {
+      "name": "--duration-glide",
+      "description": {
+        "kind": "markdown",
+        "value": "Panels and drawers sliding, list items moving.\n\n- Discothèque: `360ms`\n- Devis: `260ms`\n- Folio: `250ms`\n- Relais: `280ms`"
+      }
+    },
+    {
+      "name": "--duration-pen",
+      "description": {
+        "kind": "markdown",
+        "value": "Lines that draw themselves: ticks, underlines, rings, the seal.\n\n- Discothèque: `340ms`\n- Devis: `380ms`\n- Folio: `420ms`\n- Relais: `420ms`"
+      }
+    },
+    {
+      "name": "--duration-pop",
+      "description": {
+        "kind": "markdown",
+        "value": "Things you caused appearing: ticks, chips, popovers.\n\n- Discothèque: `320ms`\n- Devis: `180ms`\n- Folio: `150ms`\n- Relais: `200ms`"
+      }
+    },
+    {
+      "name": "--duration-snap",
+      "description": {
+        "kind": "markdown",
+        "value": "Presses, hovers, toggles' squish.\n\n- Discothèque: `120ms`\n- Devis: `100ms`\n- Folio: `100ms`\n- Relais: `100ms`"
+      }
+    },
+    {
+      "name": "--ease-drift",
+      "description": {
+        "kind": "markdown",
+        "value": "Drift: symmetric, calm.\n\n- Discothèque: `cubic-bezier(0.45, 0, 0.55, 1)`\n- Devis: `cubic-bezier(0.45, 0, 0.55, 1)`\n- Folio: `cubic-bezier(0.2, 0, 0, 1)`\n- Relais: `cubic-bezier(0.45, 0, 0.55, 1)`"
+      }
+    },
+    {
+      "name": "--ease-glide",
+      "description": {
+        "kind": "markdown",
+        "value": "Glide: fast out, soft landing.\n\n- Discothèque: `cubic-bezier(0.2, 0.9, 0.3, 1)`\n- Devis: `cubic-bezier(0.2, 0, 0, 1)`\n- Folio: `cubic-bezier(0.2, 0, 0, 1)`\n- Relais: `cubic-bezier(0.2, 0, 0, 1)`"
+      }
+    },
+    {
+      "name": "--ease-pen",
+      "description": {
+        "kind": "markdown",
+        "value": "Lines that draw themselves: ticks, underlines, rings, the seal.\n\n- Discothèque: `cubic-bezier(0.65, 0, 0.35, 1)`\n- Devis: `cubic-bezier(0.65, 0, 0.35, 1)`\n- Folio: `cubic-bezier(0.65, 0, 0.35, 1)`\n- Relais: `cubic-bezier(0.6, 0, 0.3, 1)`"
+      }
+    },
+    {
+      "name": "--ease-shake",
+      "description": {
+        "kind": "markdown",
+        "value": "Error shake only.\n\n- Discothèque: `cubic-bezier(0.36, 0.07, 0.19, 0.97)`\n- Devis: `cubic-bezier(0.36, 0.07, 0.19, 0.97)`\n- Folio: `cubic-bezier(0.36, 0.07, 0.19, 0.97)`\n- Relais: `cubic-bezier(0.36, 0.07, 0.19, 0.97)`"
+      }
+    },
+    {
+      "name": "--ease-spring",
+      "description": {
+        "kind": "markdown",
+        "value": "Snap and pop: a small overshoot. Motion spring: stiffness 400, damping 22.\n\n- Discothèque: `cubic-bezier(0.3, 1.6, 0.5, 1)`\n- Devis: `cubic-bezier(0.2, 1.2, 0.4, 1)`\n- Folio: `cubic-bezier(0.2, 0, 0, 1)`\n- Relais: `cubic-bezier(0.25, 0.9, 0.3, 1)`"
+      }
+    },
+    {
+      "name": "--field",
+      "description": {
+        "kind": "markdown",
+        "value": "Inside text inputs and editors only, so typing surfaces read as paper you write on.\n\n- Discothèque: Lights on `#ffffff`, Lights off `#170e08`\n- Devis: Day `#ffffff`, Night `#09110d`\n- Folio: Light `#ffffff`, Dark `#14181d`\n- Relais: Day `#ffffff`, Night `#0a0f1c`"
+      }
+    },
+    {
+      "name": "--field-label-case",
+      "description": {
+        "kind": "markdown",
+        "value": "text-transform of field labels.\n\n- Discothèque: `none`\n- Devis: `uppercase`\n- Folio: `none`\n- Relais: `none`"
+      }
+    },
+    {
+      "name": "--field-label-size",
+      "description": {
+        "kind": "markdown",
+        "value": "Size of field labels.\n\n- Discothèque: `13px`\n- Devis: `13px`\n- Folio: `13px`\n- Relais: `13px`"
+      }
+    },
+    {
+      "name": "--field-label-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing of field labels.\n\n- Discothèque: `0`\n- Devis: `0.08em`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--focus",
+      "description": {
+        "kind": "markdown",
+        "value": "3px focus ring offset 2px, on every interactive element, with --focus-edge filling the gap inside it: mustard alone is 1.8:1 on Lights-on paper.\n\n- Discothèque: `#e1a730`\n- Devis: `#ffd23f`\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`\n- Relais: Day `#2f5bd3`, Night `#8fb0ff`"
+      }
+    },
+    {
+      "name": "--focus-edge",
+      "description": {
+        "kind": "markdown",
+        "value": "The focus ring's inner edge, drawn under the outline with `box-shadow: 0 0 0 2px var(--focus-edge)`. Transparent in Folio.\n\n- Discothèque: `var(--on-mustard)` → `#3b2416`\n- Devis: `var(--on-mustard)` → `#13241d`\n- Folio: Light `var(--paper)` → `#f5f6f8`, Dark `var(--paper)` → `#111418`\n- Relais: Day `var(--paper-raised)` → `#ffffff`, Night `var(--paper-raised)` → `#161e33`"
+      }
+    },
+    {
+      "name": "--focus-ring",
+      "description": {
+        "kind": "markdown",
+        "value": "Width of the focus ring, drawn 2px outside the element.\n\n- Discothèque: `3px`\n- Devis: `3px`\n- Folio: `2px`\n- Relais: `3px`"
+      }
+    },
+    {
+      "name": "--folio-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. The one brand colour: primary buttons, the selected tab's underline, checked switches and checkboxes, progress, the focus ring. Discothèque role: action (and mustard for selection).\n\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`"
+      }
+    },
+    {
+      "name": "--folio-accent-hover",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Primary button hover and press.\n\n- Folio: Light `#194fa6`, Dark `#8db4f5`"
+      }
+    },
+    {
+      "name": "--folio-accent-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Selected nav item, selected row, the active segment, highlighted search match, a field that just changed. Discothèque role: mustard as a selection fill.\n\n- Folio: Light `#e8f0fc`, Dark `#17253b`"
+      }
+    },
+    {
+      "name": "--folio-accent-text",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Links, the selected nav item's text, and text on accent-soft (≥5.5:1 on surface, canvas and accent-soft).\n\n- Folio: Light `#1c56b3`, Dark `#8db4f5`"
+      }
+    },
+    {
+      "name": "--folio-border",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. 1px hairline around cards, tables, panels and between rows. Decorative only: never the only edge of a control. Discothèque role: rule.\n\n- Folio: Light `#dde1e6`, Dark `#2c333c`"
+      }
+    },
+    {
+      "name": "--folio-border-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. 1px outline of inputs, switches, checkboxes and secondary buttons: ≥3:1 on surface, field, canvas and surface-sunk in both themes.\n\n- Folio: Light `#7d8794`, Dark `#6e7987`"
+      }
+    },
+    {
+      "name": "--folio-canvas",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Page ground behind lists, the editor and settings. Discothèque role: paper.\n\n- Folio: Light `#f5f6f8`, Dark `#111418`"
+      }
+    },
+    {
+      "name": "--folio-code",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Code wells: blocks of code, terminals, requests and answers. Dark in both themes. Discothèque role: code.\n\n- Folio: `#1a2029`"
+      }
+    },
+    {
+      "name": "--folio-code-border",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Lines between rows and panes inside a code well. Decorative only.\n\n- Folio: `#2c3440`"
+      }
+    },
+    {
+      "name": "--folio-code-focus",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. The focus ring on controls inside a code well: the dark theme's focus, since the well is dark in both. Discothèque role: code-focus.\n\n- Folio: `#6ea0f2`"
+      }
+    },
+    {
+      "name": "--folio-code-function",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Function names, numbers and constants in a code well.\n\n- Folio: `#f0b37e`"
+      }
+    },
+    {
+      "name": "--folio-code-keyword",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Keywords, keys and the line being pointed at in a code well.\n\n- Folio: `#8db4f5`"
+      }
+    },
+    {
+      "name": "--folio-code-string",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Strings and values in a code well.\n\n- Folio: `#7fd4a8`"
+      }
+    },
+    {
+      "name": "--folio-code-text",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Code and plain text in a code well (≥13:1).\n\n- Folio: `#e8ebef`"
+      }
+    },
+    {
+      "name": "--folio-code-text-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Comments, punctuation, line numbers and labels in a code well.\n\n- Folio: `#9aa4b2`"
+      }
+    },
+    {
+      "name": "--folio-danger",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Errors and destructive actions: text and icons on surface, canvas and danger-soft; danger button fill. Discothèque role: rust.\n\n- Folio: Light `#b42318`, Dark `#f2877d`"
+      }
+    },
+    {
+      "name": "--folio-danger-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Background of blocking problems, Changes-asked badges and deleted text in diffs. Discothèque role: rust-soft.\n\n- Folio: Light `#fdecea`, Dark `#3a1714`"
+      }
+    },
+    {
+      "name": "--folio-field",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Inside inputs, selects and the rich-text editor.\n\n- Folio: Light `#ffffff`, Dark `#14181d`"
+      }
+    },
+    {
+      "name": "--folio-focus",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. 2px focus ring, offset 2px, on every interactive element: ≥4.5:1 on canvas, surface and field in both themes.\n\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`"
+      }
+    },
+    {
+      "name": "--folio-info",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Scheduled state and informational notes: text and icons on surface, canvas and info-soft. Discothèque role: teal.\n\n- Folio: Light `#0b6e85`, Dark `#5ec2da`"
+      }
+    },
+    {
+      "name": "--folio-info-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Background of Scheduled badges and info notes. Discothèque role: teal-soft.\n\n- Folio: Light `#e2f3f7`, Dark `#10292f`"
+      }
+    },
+    {
+      "name": "--folio-inverse",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Toasts, tooltips and the offline banner: the one dark-on-light (or light-on-dark) object. Discothèque role: chocolate.\n\n- Folio: Light `#1a2029`, Dark `#e8ebef`"
+      }
+    },
+    {
+      "name": "--folio-on-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Text and icons on accent and accent-hover (≥5.7:1 light, ≥7:1 dark).\n\n- Folio: Light `#ffffff`, Dark `#0d1014`"
+      }
+    },
+    {
+      "name": "--folio-on-danger",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Text on a danger fill.\n\n- Folio: Light `#ffffff`, Dark `#0d1014`"
+      }
+    },
+    {
+      "name": "--folio-on-inverse",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Text on inverse (≥13:1).\n\n- Folio: Light `#f5f6f8`, Dark `#111418`"
+      }
+    },
+    {
+      "name": "--folio-on-inverse-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. The action word in a toast (Undo, View): ≥5:1 on inverse in both themes.\n\n- Folio: Light `#8db4f5`, Dark `#1c56b3`"
+      }
+    },
+    {
+      "name": "--folio-on-presence",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Initials and name-tab text on any presence colour (≥4.5:1 on all six in both themes).\n\n- Folio: Light `#ffffff`, Dark `#0d1014`"
+      }
+    },
+    {
+      "name": "--folio-on-success",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Text on a success fill.\n\n- Folio: Light `#ffffff`, Dark `#0d1014`"
+      }
+    },
+    {
+      "name": "--folio-overlay",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Dimmed backdrop behind dialogs and the command palette.\n\n- Folio: Light `rgba(16, 24, 40, 0.45)`, Dark `rgba(0, 0, 0, 0.6)`"
+      }
+    },
+    {
+      "name": "--folio-presence-1",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. First person on a screen: avatar, field tab, caret. Text on it: on-presence.\n\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`"
+      }
+    },
+    {
+      "name": "--folio-presence-2",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Second person. Text on it: on-presence.\n\n- Folio: Light `#18794e`, Dark `#5cc08f`"
+      }
+    },
+    {
+      "name": "--folio-presence-3",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Third person. Text on it: on-presence.\n\n- Folio: Light `#a04f06`, Dark `#eda25f`"
+      }
+    },
+    {
+      "name": "--folio-presence-4",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Fourth person. Text on it: on-presence.\n\n- Folio: Light `#0b6e85`, Dark `#5ec2da`"
+      }
+    },
+    {
+      "name": "--folio-presence-5",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Fifth person. Text on it: on-presence.\n\n- Folio: Light `#b42318`, Dark `#f2877d`"
+      }
+    },
+    {
+      "name": "--folio-presence-6",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Sixth person; never a status. Text on it: on-presence.\n\n- Folio: Light `#7a3fa0`, Dark `#c59be0`"
+      }
+    },
+    {
+      "name": "--folio-shadow-drag",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Anything being dragged.\n\n- Folio: Light `0 12px 24px rgba(16, 24, 40, 0.18)`, Dark `0 12px 24px rgba(0, 0, 0, 0.6)`"
+      }
+    },
+    {
+      "name": "--folio-shadow-l",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Dialogs, the command palette, drawers.\n\n- Folio: Light `0 16px 40px rgba(16, 24, 40, 0.18), 0 2px 6px rgba(16, 24, 40, 0.08)`, Dark `0 16px 40px rgba(0, 0, 0, 0.65)`"
+      }
+    },
+    {
+      "name": "--folio-shadow-m",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Menus, popovers, link previews, toasts.\n\n- Folio: Light `0 4px 12px rgba(16, 24, 40, 0.10), 0 1px 3px rgba(16, 24, 40, 0.06)`, Dark `0 4px 12px rgba(0, 0, 0, 0.55)`"
+      }
+    },
+    {
+      "name": "--folio-shadow-s",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Cards in a dashboard and hovered media cards. Lists and tables use border only.\n\n- Folio: Light `0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04)`, Dark `0 1px 3px rgba(0, 0, 0, 0.5)`"
+      }
+    },
+    {
+      "name": "--folio-shadow-xs",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Buttons and inputs at rest.\n\n- Folio: Light `0 1px 2px rgba(16, 24, 40, 0.05)`, Dark `0 1px 2px rgba(0, 0, 0, 0.4)`"
+      }
+    },
+    {
+      "name": "--folio-success",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Live badge fill, Approve buttons, done ticks; text on surface, canvas and success-soft.\n\n- Folio: Light `#18794e`, Dark `#5cc08f`"
+      }
+    },
+    {
+      "name": "--folio-success-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Approved badges, inserted text in diffs, 'all caught up' notices.\n\n- Folio: Light `#e6f4ec`, Dark `#12301f`"
+      }
+    },
+    {
+      "name": "--folio-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Cards, tables, panels, dialogs, the top bar and the sidebar. Discothèque role: paper-raised.\n\n- Folio: Light `#ffffff`, Dark `#191d23`"
+      }
+    },
+    {
+      "name": "--folio-surface-hover",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Hovered rows, nav items and menu options; empty translation cells. Discothèque role: paper-tint.\n\n- Folio: Light `#f0f3f7`, Dark `#222830`"
+      }
+    },
+    {
+      "name": "--folio-surface-sunk",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Board columns, progress tracks, code wells in light, skeleton base, the Draft badge. Discothèque role: paper-sunk.\n\n- Folio: Light `#edeff2`, Dark `#0d1014`"
+      }
+    },
+    {
+      "name": "--folio-text",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Primary text on canvas, surface, surface-sunk, surface-hover and field (≥13:1 in both themes). Discothèque role: ink.\n\n- Folio: Light `#1a2029`, Dark `#e8ebef`"
+      }
+    },
+    {
+      "name": "--folio-text-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Secondary text, metadata, field labels' hints, counts. ≥6:1 on canvas, surface and surface-sunk in both themes.\n\n- Folio: Light `#4f5a68`, Dark `#aab3bf`"
+      }
+    },
+    {
+      "name": "--folio-text-subtle",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Placeholders, timestamps in dense rows, disabled labels. ≥4.5:1 on canvas, surface and surface-sunk; never the only copy of an instruction.\n\n- Folio: Light `#5e6978`, Dark `#939daa`"
+      }
+    },
+    {
+      "name": "--folio-type-article",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Type square for articles in link chips and search results. Letter on it: on-presence.\n\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`"
+      }
+    },
+    {
+      "name": "--folio-type-event",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Type square for events.\n\n- Folio: Light `#0b6e85`, Dark `#5ec2da`"
+      }
+    },
+    {
+      "name": "--folio-type-media",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Type square for media.\n\n- Folio: Light `#7a3fa0`, Dark `#c59be0`"
+      }
+    },
+    {
+      "name": "--folio-type-person",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Type square for people.\n\n- Folio: Light `#18794e`, Dark `#5cc08f`"
+      }
+    },
+    {
+      "name": "--folio-warning",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. Warning text and icons: suggestions, counters near a limit, In-review badge text. Text on surface, canvas and warning-soft. Discothèque role: warning-ink.\n\n- Folio: Light `#8a5a00`, Dark `#e5b454`"
+      }
+    },
+    {
+      "name": "--folio-warning-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only. In-review and unpublished-edits badges, suggestion rows, freshly added rows. Discothèque role: mustard-soft.\n\n- Folio: Light `#fff4db`, Dark `#33270d`"
+      }
+    },
+    {
+      "name": "--font-body",
+      "description": {
+        "kind": "markdown",
+        "value": "Body and UI text.\n\n- Discothèque: `\"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", system-ui, sa…`\n- Devis: `'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI', system-ui,…`\n- Folio: `'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\", system-ui, s…`\n- Relais: `'Instrument Sans Variable', 'Instrument Sans', 'Segoe UI', system-u…`"
+      }
+    },
+    {
+      "name": "--font-celebrate",
+      "description": {
+        "kind": "markdown",
+        "value": "Celebrations only; at most once per session.\n\n- Discothèque: `\"Shrikhand\", \"Fraunces\", Georgia, serif`\n- Devis: `'Instrument Serif', 'Iowan Old Style', Georgia, serif`\n- Folio: `'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\", system-ui, s…`\n- Relais: `'Newsreader Variable', 'Newsreader', 'Iowan Old Style', Georgia, serif`"
+      }
+    },
+    {
+      "name": "--font-display",
+      "description": {
+        "kind": "markdown",
+        "value": "Display type: page and entry titles, headings.\n\n- Discothèque: `\"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Georgia, serif`\n- Devis: `'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system-ui, sans-serif`\n- Folio: `'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\", system-ui, s…`\n- Relais: `'Instrument Sans Variable', 'Instrument Sans', 'Segoe UI', system-u…`"
+      }
+    },
+    {
+      "name": "--font-empty",
+      "description": {
+        "kind": "markdown",
+        "value": "Empty states.\n\n- Discothèque: `\"Bagel Fat One\", \"Karla\", system-ui, sans-serif`\n- Devis: `'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif`\n- Folio: `'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\", system-ui, s…`\n- Relais: `'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif`"
+      }
+    },
+    {
+      "name": "--font-letter",
+      "description": {
+        "kind": "markdown",
+        "value": "Relais only: the text of messages people send and reply. Write `font-family: var(--font-letter, var(--font-body))` so other looks keep their body face.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `initial`\n- Relais: `'Newsreader Variable', 'Newsreader', 'Iowan Old Style', Georgia, serif`"
+      }
+    },
+    {
+      "name": "--font-mark",
+      "description": {
+        "kind": "markdown",
+        "value": "Relais only: the wordmark and stamps. Write `font-family: var(--font-mark, var(--font-display))` so other looks keep their display face.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `initial`\n- Relais: `'Archivo Variable', 'Archivo', 'Arial Narrow', system-ui, sans-serif`"
+      }
+    },
+    {
+      "name": "--font-money",
+      "description": {
+        "kind": "markdown",
+        "value": "Devis only: quote titles and money totals. Write `font-family: var(--font-money, var(--font-display))` so other looks keep their display face.\n\n- Discothèque: `initial`\n- Devis: `'Instrument Serif', 'Iowan Old Style', Georgia, serif`\n- Folio: `initial`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--font-mono",
+      "description": {
+        "kind": "markdown",
+        "value": "Code, ids, keys and keyboard hints.\n\n- Discothèque: `\"JetBrains Mono Variable\", \"JetBrains Mono\", ui-monospace, \"SFMono-…`\n- Devis: `'Martian Mono Variable', 'Martian Mono', ui-monospace, 'SFMono-Regu…`\n- Folio: `\"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace`\n- Relais: `'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace`"
+      }
+    },
+    {
+      "name": "--font-typewriter",
+      "description": {
+        "kind": "markdown",
+        "value": "Memo-style cards.\n\n- Discothèque: `\"Courier Prime\", \"Courier New\", monospace`\n- Devis: `\"Courier Prime\", \"Courier New\", monospace`\n- Folio: `\"Courier Prime\", \"Courier New\", monospace`\n- Relais: `\"Courier Prime\", \"Courier New\", monospace`"
+      }
+    },
+    {
+      "name": "--fs-14",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-14, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `13px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-15",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-15, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `14px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-16",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-16, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `14px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-17",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-17, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `15px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-18",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-18, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `16px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-dialog, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `18px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-empty",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-empty, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `16px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-entry",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-entry, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `26px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-field",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-field, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `16px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-hero",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-hero, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `28px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-item",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-item, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `14px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-mark",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-mark, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `15px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-num",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-num, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `20px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-page",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-page, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `22px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-poster",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-poster, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `48px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-section",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-section, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `16px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fs-sub",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the size Folio uses where component CSS writes `font-size: var(--fs-sub, …)` with the default size as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `15px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fw-bold",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the weight Folio uses where component CSS writes `font-weight: var(--fw-bold, …)` with the default weight as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `600`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fw-empty",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the weight Folio uses where component CSS writes `font-weight: var(--fw-empty, …)` with the default weight as the fallback.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `600`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--fw-heavy",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: the weight Folio uses where component CSS writes `font-weight: var(--fw-heavy, …)` with the default weight as the fallback.\n\n- Discothèque: `initial`\n- Devis: `700`\n- Folio: `600`\n- Relais: `700`"
+      }
+    },
+    {
+      "name": "--gutter",
+      "description": {
+        "kind": "markdown",
+        "value": "The page's side margin: --space-4 on phones, --space-6 from the medium breakpoint.\n\n- Discothèque: `var(--space-4)` → `16px`\n- Devis: `var(--space-4)` → `16px`\n- Folio: `var(--space-4)` → `16px`\n- Relais: `var(--space-4)` → `16px`"
+      }
+    },
+    {
+      "name": "--ink",
+      "description": {
+        "kind": "markdown",
+        "value": "Primary text and the 2px outline of every object (cards, dialogs, tables, buttons). 12:1 on paper.\n\n- Discothèque: Lights on `#3b2416`, Lights off `#f7ebd0`\n- Devis: Day `#13241d`, Night `#e6eee9`\n- Folio: Light `#1a2029`, Dark `#e8ebef`\n- Relais: Day `#14213d`, Night `#e6eaf3`"
+      }
+    },
+    {
+      "name": "--ink-line",
+      "description": {
+        "kind": "markdown",
+        "value": "The 1.5px edge of text inputs, search boxes and editors; ink on hover and focus. Objects keep ink. ≥3:1 on field, paper and paper-sunk in both themes.\n\n- Discothèque: Lights on `#8a7763`, Lights off `#8a7558`\n- Devis: Day `#5f7268`, Night `#7a8f84`\n- Folio: Light `#7d8794`, Dark `#6e7987`\n- Relais: Day `#66728c`, Night `#7d89a3`"
+      }
+    },
+    {
+      "name": "--ink-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "Secondary text, metadata, labels. ≥6:1 on paper and paper-raised in both themes.\n\n- Discothèque: Lights on `#6b4f36`, Lights off `#c9b28a`\n- Devis: Day `#43564d`, Night `#a6b5ad`\n- Folio: Light `#4f5a68`, Dark `#aab3bf`\n- Relais: Day `#4a5672`, Night `#a9b3c9`"
+      }
+    },
+    {
+      "name": "--ink-subtle",
+      "description": {
+        "kind": "markdown",
+        "value": "Placeholders, drag grips, disabled text. Still ≥5:1; never for the only copy of an instruction.\n\n- Discothèque: Lights on `#7a5d42`, Lights off `#a8906c`\n- Devis: Day `#53655c`, Night `#91a299`\n- Folio: Light `#5e6978`, Dark `#939daa`\n- Relais: Day `#56627d`, Night `#959fb7`"
+      }
+    },
+    {
+      "name": "--inverse",
+      "description": {
+        "kind": "markdown",
+        "value": "Toasts, tooltips and the offline banner: the one dark-on-light (or light-on-dark) object. Discothèque role: chocolate.\n\n- Discothèque: Lights on `var(--chocolate)` → `#3b2416`, Lights off `var(--chocolate)` → `#0e0805`\n- Devis: Day `var(--chocolate)` → `#13241d`, Night `var(--chocolate)` → `#060b08`\n- Folio: Light `var(--folio-inverse)` → `#1a2029`, Dark `var(--folio-inverse)` → `#e8ebef`\n- Relais: Day `var(--chocolate)` → `#14213d`, Night `var(--chocolate)` → `#060a14`"
+      }
+    },
+    {
+      "name": "--label-case",
+      "description": {
+        "kind": "markdown",
+        "value": "text-transform of eyebrows and section labels.\n\n- Discothèque: `uppercase`\n- Devis: `uppercase`\n- Folio: `none`\n- Relais: `uppercase`"
+      }
+    },
+    {
+      "name": "--label-color",
+      "description": {
+        "kind": "markdown",
+        "value": "Colour of labels.\n\n- Discothèque: Lights on `var(--ink-muted)` → `#6b4f36`, Lights off `var(--ink-muted)` → `#c9b28a`\n- Devis: Day `var(--ink-muted)` → `#43564d`, Night `var(--ink-muted)` → `#a6b5ad`\n- Folio: Light `var(--ink)` → `#1a2029`, Dark `var(--ink)` → `#e8ebef`\n- Relais: Day `var(--ink-muted)` → `#4a5672`, Night `var(--ink-muted)` → `#a9b3c9`"
+      }
+    },
+    {
+      "name": "--label-size",
+      "description": {
+        "kind": "markdown",
+        "value": "Size of eyebrows and section labels.\n\n- Discothèque: `12px`\n- Devis: `13px`\n- Folio: `13px`\n- Relais: `11px`"
+      }
+    },
+    {
+      "name": "--label-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing of eyebrows and section labels.\n\n- Discothèque: `0.12em`\n- Devis: `0.08em`\n- Folio: `0`\n- Relais: `0.08em`"
+      }
+    },
+    {
+      "name": "--label-weight",
+      "description": {
+        "kind": "markdown",
+        "value": "Weight of eyebrows and section labels.\n\n- Discothèque: `700`\n- Devis: `600`\n- Folio: `500`\n- Relais: `500`"
+      }
+    },
+    {
+      "name": "--lift",
+      "description": {
+        "kind": "markdown",
+        "value": "How far a hovered object rises.\n\n- Discothèque: `-1px`\n- Devis: `0px`\n- Folio: `0px`\n- Relais: `0px`"
+      }
+    },
+    {
+      "name": "--link",
+      "description": {
+        "kind": "markdown",
+        "value": "Links in text.\n\n- Discothèque: Lights on `var(--rust)` → `#a8401a`, Lights off `var(--rust)` → `#f0a27a`\n- Devis: Day `var(--action)` → `#0f5132`, Night `var(--action)` → `#74d1a0`\n- Folio: Light `var(--folio-accent-text)` → `#1c56b3`, Dark `var(--folio-accent-text)` → `#8db4f5`\n- Relais: Day `var(--action)` → `#1d3a8a`, Night `var(--action)` → `#8fb0ff`"
+      }
+    },
+    {
+      "name": "--mustard",
+      "description": {
+        "kind": "markdown",
+        "value": "The signature fill, for small things: the selected item, counts, review state, highlights. Always with ink text (6.7:1). A big 'needs you' panel takes panel-highlight.\n\n- Discothèque: `#e1a730`\n- Devis: `#ffd23f`\n- Folio: Light `#e8f0fc`, Dark `#17253b`\n- Relais: Day `#c8102e`, Night `#ff6b7d`"
+      }
+    },
+    {
+      "name": "--mustard-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Inserted text in diffs, freshly added rows, warning suggestions.\n\n- Discothèque: Lights on `#fff1c7`, Lights off `#3a2a0c`\n- Devis: Day `#fff3b8`, Night `#3a3010`\n- Folio: Light `#fff4db`, Dark `#33270d`\n- Relais: Day `#fbe3e6`, Night `#3a1520`"
+      }
+    },
+    {
+      "name": "--on-action",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on action: 5.2:1 light, 6.4:1 dark.\n\n- Discothèque: Lights on `#ffffff`, Lights off `#1c110a`\n- Devis: Day `#ffffff`, Night `#0b1410`\n- Folio: Light `#ffffff`, Dark `#0d1014`\n- Relais: Day `#ffffff`, Night `#0e1424`"
+      }
+    },
+    {
+      "name": "--on-avocado",
+      "description": {
+        "kind": "markdown",
+        "value": "Large text on avocado: ink in Lights on (3.8:1), Lights-off paper in Lights off (7.7:1), where cream ink would be 2.0:1.\n\n- Discothèque: Lights on `#3b2416`, Lights off `#1c110a`\n- Devis: Day `#ffffff`, Night `#0b1410`\n- Folio: Light `#ffffff`, Dark `#0d1014`\n- Relais: Day `#ffffff`, Night `#0e1424`"
+      }
+    },
+    {
+      "name": "--on-chocolate",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on chocolate and chocolate-soft (12:1).\n\n- Discothèque: `#f7ebd0`\n- Devis: Day `#eef2ee`, Night `#e6eee9`\n- Folio: Light `#1a2029`, Dark `#e8ebef`\n- Relais: Day `#eef1f6`, Night `#e6eaf3`"
+      }
+    },
+    {
+      "name": "--on-chocolate-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "An accent on the top bar and sidebar.\n\n- Discothèque: `var(--mustard)` → `#e1a730`\n- Devis: `var(--mustard)` → `#ffd23f`\n- Folio: Light `var(--folio-accent-text)` → `#1c56b3`, Dark `var(--folio-accent-text)` → `#8db4f5`\n- Relais: `var(--code-keyword)` → `#ff9aa8`"
+      }
+    },
+    {
+      "name": "--on-chocolate-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "Secondary text in the top bar and sidebar.\n\n- Discothèque: Lights on `#e9d6b0`, Lights off `#c9b28a`\n- Devis: Day `#b9c8bf`, Night `#a6b5ad`\n- Folio: Light `#4f5a68`, Dark `#aab3bf`\n- Relais: Day `#b6c0d6`, Night `#a9b3c9`"
+      }
+    },
+    {
+      "name": "--on-code",
+      "description": {
+        "kind": "markdown",
+        "value": "Code and plain text in a code well.\n\n- Discothèque: `#f7ebd0`\n- Devis: Day `#eef2ee`, Night `#e6eee9`\n- Folio: `#e8ebef`\n- Relais: Day `#eef1f6`, Night `#e6eaf3`"
+      }
+    },
+    {
+      "name": "--on-code-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "Comments, punctuation, line numbers and labels in a code well.\n\n- Discothèque: Lights on `#e9d6b0`, Lights off `#c9b28a`\n- Devis: Day `#b9c8bf`, Night `#a6b5ad`\n- Folio: `#9aa4b2`\n- Relais: Day `#b6c0d6`, Night `#a9b3c9`"
+      }
+    },
+    {
+      "name": "--on-inverse",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on inverse (≥13:1).\n\n- Discothèque: `var(--on-chocolate)` → `#f7ebd0`\n- Devis: Day `var(--on-chocolate)` → `#eef2ee`, Night `var(--on-chocolate)` → `#e6eee9`\n- Folio: Light `var(--folio-on-inverse)` → `#f5f6f8`, Dark `var(--folio-on-inverse)` → `#111418`\n- Relais: Day `var(--on-chocolate)` → `#eef1f6`, Night `var(--on-chocolate)` → `#e6eaf3`"
+      }
+    },
+    {
+      "name": "--on-inverse-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "The action word in a toast (Undo, View): ≥5:1 on inverse in both themes.\n\n- Discothèque: `var(--mustard)` → `#e1a730`\n- Devis: `var(--mustard)` → `#ffd23f`\n- Folio: Light `var(--folio-on-inverse-accent)` → `#8db4f5`, Dark `var(--folio-on-inverse-accent)` → `#1c56b3`\n- Relais: `var(--code-keyword)` → `#ff9aa8`"
+      }
+    },
+    {
+      "name": "--on-mustard",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on mustard in both themes (6.7:1).\n\n- Discothèque: `#3b2416`\n- Devis: `#13241d`\n- Folio: Light `#1c56b3`, Dark `#8db4f5`\n- Relais: Day `#ffffff`, Night `#0e1424`"
+      }
+    },
+    {
+      "name": "--on-panel-highlight",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on panel-highlight: on-mustard in Lights on (6.7:1), ink in Lights off.\n\n- Discothèque: Lights on `#3b2416`, Lights off `#f7ebd0`\n- Devis: Day `#13241d`, Night `#e6eee9`\n- Folio: Light `#1c56b3`, Dark `#8db4f5`\n- Relais: Day `#14213d`, Night `#e6eaf3`"
+      }
+    },
+    {
+      "name": "--on-plum",
+      "description": {
+        "kind": "markdown",
+        "value": "Text on plum and teal fills (presence tabs, type squares).\n\n- Discothèque: Lights on `#ffffff`, Lights off `#1c110a`\n- Devis: Day `#ffffff`, Night `#0b1410`\n- Folio: Light `#ffffff`, Dark `#0d1014`\n- Relais: Day `#ffffff`, Night `#0e1424`"
+      }
+    },
+    {
+      "name": "--orange",
+      "description": {
+        "kind": "markdown",
+        "value": "Decorative fills and display italics ≥28px, stripes, cursors. NOT for small text or white-on-orange buttons (3.7:1).\n\n- Discothèque: Lights on `#d9622b`, Lights off `#e57a47`\n- Devis: Day `#8a6d24`, Night `#d9b865`\n- Folio: Light `#1f5fc4`, Dark `#6ea0f2`\n- Relais: Day `#9e0c24`, Night `#ff9aa8`"
+      }
+    },
+    {
+      "name": "--outline",
+      "description": {
+        "kind": "markdown",
+        "value": "The edge of objects: cards, tables, panels.\n\n- Discothèque: Lights on `var(--ink)` → `#3b2416`, Lights off `var(--ink)` → `#f7ebd0`\n- Devis: Day `var(--ink)` → `#13241d`, Night `var(--ink)` → `#e6eee9`\n- Folio: Light `var(--folio-border)` → `#dde1e6`, Dark `var(--folio-border)` → `#2c333c`\n- Relais: Day `var(--rule)` → `#c9d1df`, Night `var(--rule)` → `#2a3550`"
+      }
+    },
+    {
+      "name": "--outline-control",
+      "description": {
+        "kind": "markdown",
+        "value": "The edge of controls: buttons, switches, checkboxes.\n\n- Discothèque: Lights on `var(--ink)` → `#3b2416`, Lights off `var(--ink)` → `#f7ebd0`\n- Devis: Day `var(--ink)` → `#13241d`, Night `var(--ink)` → `#e6eee9`\n- Folio: Light `var(--folio-border-strong)` → `#7d8794`, Dark `var(--folio-border-strong)` → `#6e7987`\n- Relais: Day `var(--ink-line)` → `#66728c`, Night `var(--ink-line)` → `#7d89a3`"
+      }
+    },
+    {
+      "name": "--outline-field",
+      "description": {
+        "kind": "markdown",
+        "value": "The edge of a text input at rest.\n\n- Discothèque: Lights on `var(--ink-line)` → `#8a7763`, Lights off `var(--ink-line)` → `#8a7558`\n- Devis: Day `var(--ink-line)` → `#5f7268`, Night `var(--ink-line)` → `#7a8f84`\n- Folio: Light `var(--ink-line)` → `#7d8794`, Dark `var(--ink-line)` → `#6e7987`\n- Relais: Day `var(--ink-line)` → `#66728c`, Night `var(--ink-line)` → `#7d89a3`"
+      }
+    },
+    {
+      "name": "--outline-field-active",
+      "description": {
+        "kind": "markdown",
+        "value": "The edge of a text input, hovered or focused.\n\n- Discothèque: Lights on `var(--ink)` → `#3b2416`, Lights off `var(--ink)` → `#f7ebd0`\n- Devis: Day `var(--ink)` → `#13241d`, Night `var(--ink)` → `#e6eee9`\n- Folio: Light `var(--folio-accent)` → `#1f5fc4`, Dark `var(--folio-accent)` → `#6ea0f2`\n- Relais: Day `var(--action)` → `#1d3a8a`, Night `var(--action)` → `#8fb0ff`"
+      }
+    },
+    {
+      "name": "--panel-highlight",
+      "description": {
+        "kind": "markdown",
+        "value": "A big panel that calls for you ('needs you', getting started): mustard in Lights on, mustard-soft in Lights off, where a wall of mustard glares. Pair with on-panel-highlight and shadow-panel-highlight. Selections, counts and small highlights stay mustard.\n\n- Discothèque: Lights on `#e1a730`, Lights off `#3a2a0c`\n- Devis: Day `#ffd23f`, Night `#3a3010`\n- Folio: Light `#e8f0fc`, Dark `#17253b`\n- Relais: Day `#fbe3e6`, Night `#3a1520`"
+      }
+    },
+    {
+      "name": "--paper",
+      "description": {
+        "kind": "markdown",
+        "value": "Page ground behind everything. The Studio never sits on white.\n\n- Discothèque: Lights on `#f7ebd0`, Lights off `#1c110a`\n- Devis: Day `#eef2ee`, Night `#0d1612`\n- Folio: Light `#f5f6f8`, Dark `#111418`\n- Relais: Day `#eef1f6`, Night `#0e1424`"
+      }
+    },
+    {
+      "name": "--paper-raised",
+      "description": {
+        "kind": "markdown",
+        "value": "Cards, tiles, inputs' surroundings, dialogs: anything that is an object on the page.\n\n- Discothèque: Lights on `#fffaf0`, Lights off `#2a1a10`\n- Devis: Day `#ffffff`, Night `#14201a`\n- Folio: Light `#ffffff`, Dark `#191d23`\n- Relais: Day `#ffffff`, Night `#161e33`"
+      }
+    },
+    {
+      "name": "--paper-sunk",
+      "description": {
+        "kind": "markdown",
+        "value": "Board columns, progress tracks, wells, skeleton base.\n\n- Discothèque: Lights on `#efdfbc`, Lights off `#24170e`\n- Devis: Day `#dfe6e0`, Night `#09110d`\n- Folio: Light `#edeff2`, Dark `#0d1014`\n- Relais: Day `#e2e7f0`, Night `#0a0f1c`"
+      }
+    },
+    {
+      "name": "--paper-tint",
+      "description": {
+        "kind": "markdown",
+        "value": "Hover on rows and tiles; empty translation cells; dashed drop zones.\n\n- Discothèque: Lights on `#fbefd6`, Lights off `#33200f`\n- Devis: Day `#f5f8f5`, Night `#1a2a22`\n- Folio: Light `#f0f3f7`, Dark `#222830`\n- Relais: Day `#f7f8fb`, Night `#1b2540`"
+      }
+    },
+    {
+      "name": "--plum",
+      "description": {
+        "kind": "markdown",
+        "value": "Sixth presence colour; never a status.\n\n- Discothèque: Lights on `#7a3b5a`, Lights off `#d9a0bc`\n- Devis: Day `#7a3b5a`, Night `#d9a0bc`\n- Folio: Light `#7a3fa0`, Dark `#c59be0`\n- Relais: Day `#5b3f8c`, Night `#c3a8f0`"
+      }
+    },
+    {
+      "name": "--postmark-rest",
+      "description": {
+        "kind": "markdown",
+        "value": "`postmark` moment setting: how faint the mark settles after pressing in (0.72 in Relais).\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `initial`\n- Relais: `0.72`"
+      }
+    },
+    {
+      "name": "--press",
+      "description": {
+        "kind": "markdown",
+        "value": "How far a primary button travels into its shadow when pressed.\n\n- Discothèque: `3px`\n- Devis: `0px`\n- Folio: `0px`\n- Relais: `0px`"
+      }
+    },
+    {
+      "name": "--r-10",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: Folio's corner where component CSS writes `border-radius: var(--r-10, 10px)`.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `6px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--r-12",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: Folio's corner where component CSS writes `border-radius: var(--r-12, 12px)`.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `6px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--r-16",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: Folio's corner where component CSS writes `border-radius: var(--r-16, 16px)`.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `8px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--r-22",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: Folio's corner where component CSS writes `border-radius: var(--r-22, 22px)`.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `8px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--r-9",
+      "description": {
+        "kind": "markdown",
+        "value": "Folio only: Folio's corner where component CSS writes `border-radius: var(--r-9, 9px)`.\n\n- Discothèque: `initial`\n- Devis: `initial`\n- Folio: `4px`\n- Relais: `initial`"
+      }
+    },
+    {
+      "name": "--radius-badge",
+      "description": {
+        "kind": "markdown",
+        "value": "Corner of badges and pills.\n\n- Discothèque: `var(--radius-pill)` → `999px`\n- Devis: `2px`\n- Folio: `4px`\n- Relais: `999px`"
+      }
+    },
+    {
+      "name": "--radius-button",
+      "description": {
+        "kind": "markdown",
+        "value": "Corner of buttons.\n\n- Discothèque: `var(--radius-pill)` → `999px`\n- Devis: `4px`\n- Folio: `6px`\n- Relais: `999px`"
+      }
+    },
+    {
+      "name": "--radius-l",
+      "description": {
+        "kind": "markdown",
+        "value": "Cards, tiles, panels.\n\n- Discothèque: `22px`\n- Devis: `6px`\n- Folio: `8px`\n- Relais: `12px`"
+      }
+    },
+    {
+      "name": "--radius-m",
+      "description": {
+        "kind": "markdown",
+        "value": "Inputs, list containers, sub-field rows.\n\n- Discothèque: `14px`\n- Devis: `4px`\n- Folio: `6px`\n- Relais: `10px`"
+      }
+    },
+    {
+      "name": "--radius-pill",
+      "description": {
+        "kind": "markdown",
+        "value": "Buttons, pills, segmented controls, avatars.\n\n- Discothèque: `999px`\n- Devis: `999px`\n- Folio: `999px`\n- Relais: `999px`"
+      }
+    },
+    {
+      "name": "--radius-s",
+      "description": {
+        "kind": "markdown",
+        "value": "Kbd boxes, link chips, thumbnails in rows.\n\n- Discothèque: `8px`\n- Devis: `2px`\n- Folio: `4px`\n- Relais: `4px`"
+      }
+    },
+    {
+      "name": "--radius-xl",
+      "description": {
+        "kind": "markdown",
+        "value": "Dialogs and the command palette.\n\n- Discothèque: `26px`\n- Devis: `8px`\n- Folio: `12px`\n- Relais: `16px`"
+      }
+    },
+    {
+      "name": "--reading-width",
+      "description": {
+        "kind": "markdown",
+        "value": "The longest a line of running text should be.\n\n- Discothèque: `72ch`\n- Devis: `72ch`\n- Folio: `72ch`\n- Relais: `72ch`"
+      }
+    },
+    {
+      "name": "--region-gap",
+      "description": {
+        "kind": "markdown",
+        "value": "The gap between a page's major regions.\n\n- Discothèque: `var(--space-10)` → `40px`\n- Devis: `var(--space-10)` → `40px`\n- Folio: `var(--space-10)` → `40px`\n- Relais: `var(--space-10)` → `40px`"
+      }
+    },
+    {
+      "name": "--relais-airmail",
+      "description": {
+        "kind": "markdown",
+        "value": "Relais only: the airmail stripe, a whole background value. Use it on a band --stripe-band tall.\n\n- Relais: Day `repeating-linear-gradient(135deg, var(--mustard) 0 14px, var(--pape…` → `repeating-linear-gradient(135deg, #c8102e 0 14px, #eef1f6 14px 22px…`, Night `repeating-linear-gradient(135deg, var(--mustard) 0 14px, var(--pape…` → `repeating-linear-gradient(135deg, #ff6b7d 0 14px, #0e1424 14px 22px…`"
+      }
+    },
+    {
+      "name": "--relais-note",
+      "description": {
+        "kind": "markdown",
+        "value": "Relais only: the ground of an internal note, which customers never see. Edge it with a dashed --relais-note-edge.\n\n- Relais: Day `#fff6d6`, Night `#2e2610`"
+      }
+    },
+    {
+      "name": "--relais-note-edge",
+      "description": {
+        "kind": "markdown",
+        "value": "Relais only: the dashed edge of an internal note.\n\n- Relais: Day `#a8861a`, Night `#8a7230`"
+      }
+    },
+    {
+      "name": "--rule",
+      "description": {
+        "kind": "markdown",
+        "value": "Dotted dividers between rows and fields (2px dotted). Decorative only.\n\n- Discothèque: Lights on `#d9c49a`, Lights off `#4a3020`\n- Devis: Day `#a9b8ae`, Night `#2e4238`\n- Folio: Light `#dde1e6`, Dark `#2c333c`\n- Relais: Day `#c9d1df`, Night `#2a3550`"
+      }
+    },
+    {
+      "name": "--rust",
+      "description": {
+        "kind": "markdown",
+        "value": "Danger and errors: text on paper (5.2:1), deletions in diffs, stamps, links.\n\n- Discothèque: Lights on `#a8401a`, Lights off `#f0a27a`\n- Devis: Day `#a3261b`, Night `#ff9d91`\n- Folio: Light `#b42318`, Dark `#f2877d`\n- Relais: Day `#b42318`, Night `#ff9d91`"
+      }
+    },
+    {
+      "name": "--rust-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Background of blocking problems and deleted text.\n\n- Discothèque: Lights on `#fbe6dc`, Lights off `#3b1a0e`\n- Devis: Day `#f8e1dd`, Night `#3b1a16`\n- Folio: Light `#fdecea`, Dark `#3a1714`\n- Relais: Day `#fbe1de`, Night `#3b1a16`"
+      }
+    },
+    {
+      "name": "--selected-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "A soft selection fill.\n\n- Discothèque: Lights on `var(--mustard-soft)` → `#fff1c7`, Lights off `var(--mustard-soft)` → `#3a2a0c`\n- Devis: Day `var(--mustard-soft)` → `#fff3b8`, Night `var(--mustard-soft)` → `#3a3010`\n- Folio: Light `var(--folio-accent-soft)` → `#e8f0fc`, Dark `var(--folio-accent-soft)` → `#17253b`\n- Relais: Day `var(--teal-soft)` → `#dde6fa`, Night `var(--teal-soft)` → `#14254a`"
+      }
+    },
+    {
+      "name": "--shadow-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": "Command palette, popovers, side panels.\n\n- Discothèque: Lights on `8px 8px 0 #3b2416`, Lights off `8px 8px 0 #000000`\n- Devis: Day `0 16px 40px rgba(19,36,29,0.22)`, Night `0 16px 40px rgba(0,0,0,0.6)`\n- Folio: Light `0 16px 40px rgba(16, 24, 40, 0.18), 0 2px 6px rgba(16, 24, 40, 0.08)`, Dark `0 16px 40px rgba(0, 0, 0, 0.65)`\n- Relais: Day `0 16px 40px rgba(20,33,61,0.22)`, Night `0 16px 40px rgba(0,0,0,0.6)`"
+      }
+    },
+    {
+      "name": "--shadow-drag",
+      "description": {
+        "kind": "markdown",
+        "value": "Anything being dragged.\n\n- Discothèque: Lights on `10px 14px 0 rgba(59,36,22,0.35)`, Lights off `10px 14px 0 rgba(0,0,0,0.6)`\n- Devis: Day `0 12px 28px rgba(19,36,29,0.25)`, Night `0 12px 28px rgba(0,0,0,0.6)`\n- Folio: Light `0 12px 24px rgba(16, 24, 40, 0.18)`, Dark `0 12px 24px rgba(0, 0, 0, 0.6)`\n- Relais: Day `0 12px 28px rgba(20,33,61,0.25)`, Night `0 12px 28px rgba(0,0,0,0.6)`"
+      }
+    },
+    {
+      "name": "--shadow-highlight",
+      "description": {
+        "kind": "markdown",
+        "value": "A preview or field that just changed (new structure preview, toast).\n\n- Discothèque: `4px 4px 0 #e1a730`\n- Devis: `0 0 0 3px #ffd23f`\n- Folio: Light `0 0 0 3px #e8f0fc`, Dark `0 0 0 3px #17253b`\n- Relais: Day `0 0 0 3px #1d3a8a`, Night `0 0 0 3px #8fb0ff`"
+      }
+    },
+    {
+      "name": "--shadow-lift",
+      "description": {
+        "kind": "markdown",
+        "value": "Hovered cards, selected nav item.\n\n- Discothèque: Lights on `4px 4px 0 #3b2416`, Lights off `4px 4px 0 #000000`\n- Devis: `none`\n- Folio: Light `0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04)`, Dark `0 1px 3px rgba(0, 0, 0, 0.5)`\n- Relais: Day `0 1px 3px rgba(20,33,61,0.10)`, Night `0 1px 3px rgba(0,0,0,0.5)`"
+      }
+    },
+    {
+      "name": "--shadow-panel-highlight",
+      "description": {
+        "kind": "markdown",
+        "value": "The shadow of a panel-highlight panel: none in Lights on, where the panel is mustard already; a mustard offset in Lights off, so the soft panel still reads as the one that calls for you.\n\n- Discothèque: Lights on `none`, Lights off `4px 4px 0 #e1a730`\n- Devis: `none`\n- Folio: `none`\n- Relais: `none`"
+      }
+    },
+    {
+      "name": "--shadow-press",
+      "description": {
+        "kind": "markdown",
+        "value": "Primary buttons at rest; collapses to 0 on press.\n\n- Discothèque: Lights on `3px 3px 0 #3b2416`, Lights off `3px 3px 0 #000000`\n- Devis: `none`\n- Folio: Light `0 1px 2px rgba(16, 24, 40, 0.05)`, Dark `0 1px 2px rgba(0, 0, 0, 0.4)`\n- Relais: `none`"
+      }
+    },
+    {
+      "name": "--space-1",
+      "description": {
+        "kind": "markdown",
+        "value": "Icon to label, avatar overlap step.\n\n- Discothèque: `4px`\n- Devis: `4px`\n- Folio: `4px`\n- Relais: `4px`"
+      }
+    },
+    {
+      "name": "--space-10",
+      "description": {
+        "kind": "markdown",
+        "value": "Between major page regions.\n\n- Discothèque: `40px`\n- Devis: `40px`\n- Folio: `40px`\n- Relais: `40px`"
+      }
+    },
+    {
+      "name": "--space-14",
+      "description": {
+        "kind": "markdown",
+        "value": "Above page titles on wide screens.\n\n- Discothèque: `56px`\n- Devis: `56px`\n- Folio: `56px`\n- Relais: `56px`"
+      }
+    },
+    {
+      "name": "--space-2",
+      "description": {
+        "kind": "markdown",
+        "value": "Chip gaps, button groups.\n\n- Discothèque: `8px`\n- Devis: `8px`\n- Folio: `8px`\n- Relais: `8px`"
+      }
+    },
+    {
+      "name": "--space-3",
+      "description": {
+        "kind": "markdown",
+        "value": "Row padding, field label to input.\n\n- Discothèque: `12px`\n- Devis: `12px`\n- Folio: `12px`\n- Relais: `12px`"
+      }
+    },
+    {
+      "name": "--space-4",
+      "description": {
+        "kind": "markdown",
+        "value": "Card padding, phone gutter.\n\n- Discothèque: `16px`\n- Devis: `16px`\n- Folio: `16px`\n- Relais: `16px`"
+      }
+    },
+    {
+      "name": "--space-5",
+      "description": {
+        "kind": "markdown",
+        "value": "Tile padding, list gaps.\n\n- Discothèque: `20px`\n- Devis: `20px`\n- Folio: `20px`\n- Relais: `20px`"
+      }
+    },
+    {
+      "name": "--space-6",
+      "description": {
+        "kind": "markdown",
+        "value": "Desktop gutter, between sections in a panel.\n\n- Discothèque: `24px`\n- Devis: `24px`\n- Folio: `24px`\n- Relais: `24px`"
+      }
+    },
+    {
+      "name": "--space-8",
+      "description": {
+        "kind": "markdown",
+        "value": "Main content padding.\n\n- Discothèque: `32px`\n- Devis: `32px`\n- Folio: `32px`\n- Relais: `32px`"
+      }
+    },
+    {
+      "name": "--spring-pop",
+      "description": {
+        "kind": "markdown",
+        "value": "Things you caused appearing: ticks, chips, stamps, the pill after publishing. A visible bounce. A spring as a CSS `linear()` curve; pair it with `--spring-pop-duration`.\n\n- Discothèque: `linear(…) (34 points)`\n- Devis: `linear(…) (26 points)`\n- Folio: `linear(…) (26 points)`\n- Relais: `linear(…) (32 points)`"
+      }
+    },
+    {
+      "name": "--spring-pop-duration",
+      "description": {
+        "kind": "markdown",
+        "value": "How long the pop spring takes to settle.\n\n- Discothèque: `550ms`\n- Devis: `417ms`\n- Folio: `417ms`\n- Relais: `517ms`"
+      }
+    },
+    {
+      "name": "--spring-settle",
+      "description": {
+        "kind": "markdown",
+        "value": "Things landing after a move: lifted rows, the flying title, a dialog. Bounces once. A spring as a CSS `linear()` curve; pair it with `--spring-settle-duration`.\n\n- Discothèque: `linear(…) (40 points)`\n- Devis: `linear(…) (20 points)`\n- Folio: `linear(…) (23 points)`\n- Relais: `linear(…) (32 points)`"
+      }
+    },
+    {
+      "name": "--spring-settle-duration",
+      "description": {
+        "kind": "markdown",
+        "value": "How long the settle spring takes to settle.\n\n- Discothèque: `650ms`\n- Devis: `317ms`\n- Folio: `367ms`\n- Relais: `517ms`"
+      }
+    },
+    {
+      "name": "--stripe-band",
+      "description": {
+        "kind": "markdown",
+        "value": "Height of each of the four rainbow stripes under the top bar.\n\n- Discothèque: `6px`\n- Devis: `6px`\n- Folio: `0px`\n- Relais: `6px`"
+      }
+    },
+    {
+      "name": "--success",
+      "description": {
+        "kind": "markdown",
+        "value": "Live status pill and success buttons. White text on it in light (6.4:1), paper text in dark.\n\n- Discothèque: Lights on `#56651f`, Lights off `#9db050`\n- Devis: Day `#0f5132`, Night `#74d1a0`\n- Folio: Light `#18794e`, Dark `#5cc08f`\n- Relais: Day `#1f6b3e`, Night `#6fd39a`"
+      }
+    },
+    {
+      "name": "--success-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Background of live pills and 'all caught up' notices.\n\n- Discothèque: Lights on `#e7edcf`, Lights off `#232b10`\n- Devis: Day `#d8eedf`, Night `#163024`\n- Folio: Light `#e6f4ec`, Dark `#12301f`\n- Relais: Day `#dcefe3`, Night `#12301f`"
+      }
+    },
+    {
+      "name": "--teal",
+      "description": {
+        "kind": "markdown",
+        "value": "Scheduled and informational: 'goes out Nov 13', scheduled pills, info notes.\n\n- Discothèque: Lights on `#1f4b5a`, Lights off `#7fb3c4`\n- Devis: Day `#1f4b6e`, Night `#8cc4ff`\n- Folio: Light `#0b6e85`, Dark `#5ec2da`\n- Relais: Day `#1f5f8b`, Night `#8cc8f0`"
+      }
+    },
+    {
+      "name": "--teal-soft",
+      "description": {
+        "kind": "markdown",
+        "value": "Background of scheduled pills.\n\n- Discothèque: Lights on `#dcebef`, Lights off `#10262e`\n- Devis: Day `#dce8f3`, Night `#10223a`\n- Folio: Light `#e2f3f7`, Dark `#10292f`\n- Relais: Day `#dde6fa`, Night `#14254a`"
+      }
+    },
+    {
+      "name": "--temper",
+      "description": {
+        "kind": "markdown",
+        "value": "How the look moves: `lively` or `calm`. The motion helper and the calm moments read it; set by the look.\n\n- Discothèque: `lively`\n- Devis: `calm`\n- Folio: `calm`\n- Relais: `calm`"
+      }
+    },
+    {
+      "name": "--text-body",
+      "description": {
+        "kind": "markdown",
+        "value": "Default UI text and inputs. A whole font value: write `font: var(--text-body)`, with `letter-spacing: var(--text-body-tracking)`.\n\n- Discothèque: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+      }
+    },
+    {
+      "name": "--text-body-l",
+      "description": {
+        "kind": "markdown",
+        "value": "Rich text and previews. A whole font value: write `font: var(--text-body-l)`, with `letter-spacing: var(--text-body-l-tracking)`.\n\n- Discothèque: `400 18px/1.7 var(--font-body)` → `400 18px/1.7 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", …`\n- Devis: `400 18px/1.7 var(--font-body)` → `400 18px/1.7 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI…`\n- Folio: `400 16px/1.65 var(--font-body)` → `400 16px/1.65 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\"…`\n- Relais: `400 18px/1.7 var(--font-body)` → `400 18px/1.7 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+      }
+    },
+    {
+      "name": "--text-body-l-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-body-l.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-body-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "Names and button labels. A whole font value: write `font: var(--text-body-strong)`, with `letter-spacing: var(--text-body-strong-tracking)`.\n\n- Discothèque: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `500 14px/1.5 var(--font-body)` → `500 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+      }
+    },
+    {
+      "name": "--text-body-strong-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-body-strong.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-body-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-body.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-celebrate",
+      "description": {
+        "kind": "markdown",
+        "value": "Celebrations only; at most once per session. A whole font value: write `font: var(--text-celebrate)`, with `letter-spacing: var(--text-celebrate-tracking)`.\n\n- Discothèque: `400 40px/1 var(--font-celebrate)` → `400 40px/1 \"Shrikhand\", \"Fraunces\", Georgia, serif`\n- Devis: `400 40px/1 var(--font-celebrate)` → `400 40px/1 'Instrument Serif', 'Iowan Old Style', Georgia, serif`\n- Folio: `600 28px/1.2 var(--font-display)` → `600 28px/1.2 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 40px/1 var(--font-celebrate)` → `400 40px/1 'Newsreader Variable', 'Newsreader', 'Iowan Old Style', …`"
+      }
+    },
+    {
+      "name": "--text-celebrate-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-celebrate.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-code",
+      "description": {
+        "kind": "markdown",
+        "value": "Endpoints, JSON, ids, keys. A whole font value: write `font: var(--text-code)`, with `letter-spacing: var(--text-code-tracking)`.\n\n- Discothèque: `400 13px/1.65 var(--font-mono)` → `400 13px/1.65 \"JetBrains Mono Variable\", \"JetBrains Mono\", ui-monos…`\n- Devis: `400 13px/1.65 var(--font-mono)` → `400 13px/1.65 'Martian Mono Variable', 'Martian Mono', ui-monospace…`\n- Folio: `400 13px/1.6 var(--font-mono)` → `400 13px/1.6 \"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo…`\n- Relais: `400 13px/1.65 var(--font-mono)` → `400 13px/1.65 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menl…`"
+      }
+    },
+    {
+      "name": "--text-code-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-code.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-display",
+      "description": {
+        "kind": "markdown",
+        "value": "The one big line on a screen: a greeting, a poster number. A whole font value: write `font: var(--text-display)`, with `letter-spacing: var(--text-display-tracking)`.\n\n- Discothèque: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 28px/1.2 var(--font-body)` → `600 28px/1.2 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+      }
+    },
+    {
+      "name": "--text-display-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-display.\n\n- Discothèque: `-0.03em`\n- Devis: `-0.03em`\n- Folio: `-0.01em`\n- Relais: `-0.03em`"
+      }
+    },
+    {
+      "name": "--text-empty",
+      "description": {
+        "kind": "markdown",
+        "value": "Empty states: one line. A whole font value: write `font: var(--text-empty)`, with `letter-spacing: var(--text-empty-tracking)`.\n\n- Discothèque: `400 38px/1 var(--font-empty)` → `400 38px/1 \"Bagel Fat One\", \"Karla\", system-ui, sans-serif`\n- Devis: `400 38px/1 var(--font-empty)` → `400 38px/1 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 38px/1 var(--font-empty)` → `400 38px/1 'Instrument Sans Variable', 'Instrument Sans', system-ui…`"
+      }
+    },
+    {
+      "name": "--text-empty-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-empty.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-item",
+      "description": {
+        "kind": "markdown",
+        "value": "Names in rows and on cards. A whole font value: write `font: var(--text-item)`, with `letter-spacing: var(--text-item-tracking)`.\n\n- Discothèque: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 14px/1.4 var(--font-body)` → `600 14px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+      }
+    },
+    {
+      "name": "--text-item-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-item.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-kbd",
+      "description": {
+        "kind": "markdown",
+        "value": "Keyboard hints. A whole font value: write `font: var(--text-kbd)`, with `letter-spacing: var(--text-kbd-tracking)`.\n\n- Discothèque: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 \"JetBrains Mono Variable\", \"JetBrains Mono\", ui-monosp…`\n- Devis: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 'Martian Mono Variable', 'Martian Mono', ui-monospace,…`\n- Folio: `500 11px/1.2 var(--font-mono)` → `500 11px/1.2 \"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo…`\n- Relais: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo…`"
+      }
+    },
+    {
+      "name": "--text-kbd-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-kbd.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-label",
+      "description": {
+        "kind": "markdown",
+        "value": "Eyebrows and section labels (with --label-case). A whole font value: write `font: var(--text-label)`, with `letter-spacing: var(--text-label-tracking)`.\n\n- Discothèque: `700 12px/1.3 var(--font-body)` → `700 12px/1.3 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", …`\n- Devis: `600 13px/1.3 var(--font-body)` → `600 13px/1.3 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI…`\n- Folio: `500 13px/1.4 var(--font-body)` → `500 13px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `500 11px/1.3 var(--font-body)` → `500 11px/1.3 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+      }
+    },
+    {
+      "name": "--text-label-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-label.\n\n- Discothèque: `0.12em`\n- Devis: `0.08em`\n- Folio: `0`\n- Relais: `0.08em`"
+      }
+    },
+    {
+      "name": "--text-page-title",
+      "description": {
+        "kind": "markdown",
+        "value": "Page and entry titles. A whole font value: write `font: var(--text-page-title)`, with `letter-spacing: var(--text-page-title-tracking)`.\n\n- Discothèque: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 22px/1.3 var(--font-body)` → `600 22px/1.3 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+      }
+    },
+    {
+      "name": "--text-page-title-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-page-title.\n\n- Discothèque: `-0.02em`\n- Devis: `-0.02em`\n- Folio: `0`\n- Relais: `-0.02em`"
+      }
+    },
+    {
+      "name": "--text-section",
+      "description": {
+        "kind": "markdown",
+        "value": "Card, tile and form-section headings. A whole font value: write `font: var(--text-section)`, with `letter-spacing: var(--text-section-tracking)`.\n\n- Discothèque: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+      }
+    },
+    {
+      "name": "--text-section-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-section.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-small",
+      "description": {
+        "kind": "markdown",
+        "value": "Metadata, help text, table cells. A whole font value: write `font: var(--text-small)`, with `letter-spacing: var(--text-small-tracking)`.\n\n- Discothèque: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", …`\n- Devis: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI…`\n- Folio: `400 13px/1.45 var(--font-body)` → `400 13px/1.45 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\"…`\n- Relais: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+      }
+    },
+    {
+      "name": "--text-small-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-small.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--text-title",
+      "description": {
+        "kind": "markdown",
+        "value": "Panel and dialog titles. A whole font value: write `font: var(--text-title)`, with `letter-spacing: var(--text-title-tracking)`.\n\n- Discothèque: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+      }
+    },
+    {
+      "name": "--text-title-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-title.\n\n- Discothèque: `-0.01em`\n- Devis: `-0.01em`\n- Folio: `0`\n- Relais: `-0.01em`"
+      }
+    },
+    {
+      "name": "--text-voice",
+      "description": {
+        "kind": "markdown",
+        "value": "The app speaking: a gentle note, an empty translation. A whole font value: write `font: var(--text-voice)`, with `letter-spacing: var(--text-voice-tracking)`.\n\n- Discothèque: `italic 400 20px/1.3 var(--font-display)` → `italic 400 20px/1.3 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Sty…`\n- Devis: `italic 400 20px/1.3 var(--font-display)` → `italic 400 20px/1.3 'Barlow Condensed', 'Arial Narrow', 'Segoe UI',…`\n- Folio: `italic 400 16px/1.65 var(--font-body)` → `italic 400 16px/1.65 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Se…`\n- Relais: `italic 400 20px/1.3 var(--font-display)` → `italic 400 20px/1.3 'Instrument Sans Variable', 'Instrument Sans', …`"
+      }
+    },
+    {
+      "name": "--text-voice-tracking",
+      "description": {
+        "kind": "markdown",
+        "value": "Letter spacing for --text-voice.\n\n- Discothèque: `0`\n- Devis: `0`\n- Folio: `0`\n- Relais: `0`"
+      }
+    },
+    {
+      "name": "--ui-size",
+      "description": {
+        "kind": "markdown",
+        "value": "Default size of UI text.\n\n- Discothèque: `16px`\n- Devis: `15px`\n- Folio: `14px`\n- Relais: `15px`"
+      }
+    },
+    {
+      "name": "--warning-ink",
+      "description": {
+        "kind": "markdown",
+        "value": "Warning text on paper (5.2:1): suggestions, counters near their limit.\n\n- Discothèque: Lights on `#875700`, Lights off `#e1a730`\n- Devis: Day `#7a5a00`, Night `#ffd23f`\n- Folio: Light `#8a5a00`, Dark `#e5b454`\n- Relais: Day `#6b5200`, Night `#f2c94c`"
+      }
+    },
+    {
+      "name": "--travel",
+      "description": {
+        "kind": "markdown",
+        "value": "Reduced motion: 1 normally, 0 under reduced motion. Multiply distances, scales and turns by it, inside a calc().\n\n`1`, `0` under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--loop",
+      "description": {
+        "kind": "markdown",
+        "value": "Reduced motion: the iteration count for anything that repeats. `infinite` normally, `1` under reduced motion.\n\n`infinite`, `1` under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-cap",
+      "description": {
+        "kind": "markdown",
+        "value": "Reduced motion: the longest a fade or drawn line may last. Use `min(var(--duration-pop), var(--motion-cap))`.\n\n`100s`, `200ms` under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-snap",
+      "description": {
+        "kind": "markdown",
+        "value": "`--duration-snap` capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-pop",
+      "description": {
+        "kind": "markdown",
+        "value": "`--spring-pop-duration` (pairs with `--spring-pop`) capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-settle",
+      "description": {
+        "kind": "markdown",
+        "value": "`--spring-settle-duration` (pairs with `--spring-settle`) capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-glide",
+      "description": {
+        "kind": "markdown",
+        "value": "`--duration-glide` capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-drift",
+      "description": {
+        "kind": "markdown",
+        "value": "`--duration-drift` capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-pen",
+      "description": {
+        "kind": "markdown",
+        "value": "`--duration-pen` capped by `--motion-cap`: the duration for an animation that fades or draws, such as `trentesix-enter`.\n\nthe token, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--motion-linger",
+      "description": {
+        "kind": "markdown",
+        "value": "Three drifts, capped by `--motion-cap`: how long something you just changed stays marked (`trentesix-flash`).\n\n`calc(var(--duration-drift) * 3)`, `200ms` at most under reduced motion. Set by moments.css."
+      }
+    },
+    {
+      "name": "--flash",
+      "description": {
+        "kind": "markdown",
+        "value": "The fill of `trentesix-flash` and the `flash` moment, for something you just changed. Set it on the element, or on a part of the page.\n\nDiscothèque `color-mix(in srgb, var(--mustard) 40%, transparent)`, Folio `var(--folio-accent-soft)`, Relais `var(--selected-soft)`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--enter-x",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-enter` comes in from an offset along x, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--enter-y",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-enter` comes in from an offset along y, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--enter-scale",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-enter` comes in from a scale, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`1`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--enter-turn",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-enter` comes in from a turn, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0deg`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--enter-opacity",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-enter` comes in from an opacity. Set it on the element that animates: it does not inherit.\n\n`0`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--leave-x",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-leave` goes out to an offset along x, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--leave-y",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-leave` goes out to an offset along y, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--leave-scale",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-leave` goes out to a scale, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`1`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--leave-turn",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-leave` goes out to a turn, times `--travel`. Set it on the element that animates: it does not inherit.\n\n`0deg`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--leave-opacity",
+      "description": {
+        "kind": "markdown",
+        "value": "`trentesix-leave` goes out to an opacity. Set it on the element that animates: it does not inherit.\n\n`0`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--switch-thumb",
+      "description": {
+        "kind": "markdown",
+        "value": "`switch` moment setting: the thumb's size.\n\nDiscothèque `20px`, Folio `16px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--switch-travel",
+      "description": {
+        "kind": "markdown",
+        "value": "`switch` moment setting: how far the thumb travels.\n\nDiscothèque `24px`, Folio `20px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--switch-stretch",
+      "description": {
+        "kind": "markdown",
+        "value": "`switch` moment setting: how much the thumb stretches while pressed.\n\nDiscothèque `6px`, Folio `4px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--toast-time",
+      "description": {
+        "kind": "markdown",
+        "value": "`toast` moment setting: how long the toast shows. Its timer bar is the clock.\n\n`5s`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--sweep-height",
+      "description": {
+        "kind": "markdown",
+        "value": "`sweep` moment setting: how tall the band is.\n\nRelais `var(--stripe-band)`, other looks `3px`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--sweep-fill",
+      "description": {
+        "kind": "markdown",
+        "value": "`sweep` moment setting: the band's background.\n\nRelais `var(--relais-airmail)`, other looks `var(--mustard)`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--postmark-rest",
+      "description": {
+        "kind": "markdown",
+        "value": "`postmark` moment setting (Relais): the opacity the mark settles to after it is pressed in.\n\n`0.72`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--ticker-time",
+      "description": {
+        "kind": "markdown",
+        "value": "`ticker` moment setting: how long one pass of the track takes.\n\n`70s`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--progress",
+      "description": {
+        "kind": "markdown",
+        "value": "`develop` moment setting: the upload's progress, from 0 to 1.\n\n`0` to `1`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--hour",
+      "description": {
+        "kind": "markdown",
+        "value": "`wind` moment setting: where the hour hand lands.\n\n`270deg`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--x",
+      "description": {
+        "kind": "markdown",
+        "value": "`slide` moment: the indicator's left edge, set by `slide()`.\n\nset by `slide()`. Set by moments.css."
+      }
+    },
+    {
+      "name": "--w",
+      "description": {
+        "kind": "markdown",
+        "value": "`slide` moment: the indicator's width, set by `slide()`.\n\nset by `slide()`. Set by moments.css."
+      }
+    }
+  ]
+}

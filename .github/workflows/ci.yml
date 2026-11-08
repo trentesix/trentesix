@@ -1,0 +1,34 @@
+# Every push and pull request: the generated files are current, every colour pair passes, the
+# hand-written moments pass the stylelint config, the formatting holds, every moment plays in
+# every look, and the packages work once packed and installed.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # changeset status compares with main, which needs the history.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm exec playwright-core install --with-deps chromium
+      - run: pnpm test
+      - run: pnpm smoke
+      # A changeset is due when a package changed (not for the docs or the tests alone).
+      - if: github.event_name == 'pull_request'
+        run: pnpm changeset status --since=origin/main

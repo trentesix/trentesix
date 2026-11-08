@@ -1,0 +1,25 @@
+{
+  "name": "trentesix",
+  "private": true,
+  "type": "module",
+  "description": "Trentesix, a design system in looks (from se mettre sur son trente-six, to put on one's finest): @trentesix/core and one package per look.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check && stylelint packages/core/moments.css packages/core/src/calm.css \"packages/*/src/moments.css\" && prettier --check .",
+    "test": "node --test \"test/*.test.mjs\"",
+    "smoke": "node scripts/smoke.mjs",
+    "site": "node scripts/site.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "changeset": "changeset",
+    "release": "pnpm build && pnpm check && pnpm test && pnpm smoke && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "3.0.3",
+    "playwright-core": "1.57.0",
+    "postcss": "8.5.32",
+    "prettier": "^3.9.10",
+    "stylelint": "^17.16.0"
+  },
+  "packageManager": "pnpm@11.22.0",
+  "license": "MIT"
+}

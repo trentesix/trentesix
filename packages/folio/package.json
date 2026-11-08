@@ -1,0 +1,54 @@
+{
+  "name": "@trentesix/folio",
+  "version": "0.1.0",
+  "description": "Folio, the calm look: cool greys, 1px borders, soft shadows, one sans-serif.",
+  "keywords": [
+    "design-system",
+    "css-variables",
+    "design-tokens",
+    "motion",
+    "theme",
+    "folio"
+  ],
+  "homepage": "https://github.com/trentesix/trentesix/tree/main/packages/folio#readme",
+  "bugs": "https://github.com/trentesix/trentesix/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentesix/trentesix.git",
+    "directory": "packages/folio"
+  },
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "look.css",
+    "fonts.css",
+    "moments.css",
+    "all.css",
+    "tokens.js",
+    "tokens.d.ts",
+    "tokens.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./tokens.d.ts",
+      "default": "./tokens.js"
+    },
+    "./look.css": "./look.css",
+    "./fonts.css": "./fonts.css",
+    "./moments.css": "./moments.css",
+    "./all.css": "./all.css",
+    "./tokens.json": "./tokens.json"
+  },
+  "dependencies": {
+    "@trentesix/core": "workspace:^",
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0"
+  }
+}

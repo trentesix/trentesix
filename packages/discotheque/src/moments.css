@@ -1,0 +1,61 @@
+/* Discothèque's own moments: what plays only in Discothèque, on top of @trentesix/core's. It is
+   the default look, so these apply when the page sets no data-look, or data-look="discotheque". */
+
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='press']:is(:active, [data-pressed]):not(:disabled, [aria-disabled='true']) {
+  box-shadow: none;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  :is(
+    [data-moment~='code-cells'][data-state='failed']:has(> [data-part='cell']),
+    [data-moment~='code-cells'][data-state='failed'] :has(> [data-part='cell'])
+  ) {
+  animation: trentesix-shake 360ms var(--ease-shake);
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='change-mark']
+  [data-part='highlight'] {
+  rotate: -1deg;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='milestone']
+  [data-part='rays'] {
+  display: none;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='curtain'][data-state='done']
+  [data-part='bands'] {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  pointer-events: none;
+  container-type: size;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='curtain'][data-state='done']
+  [data-part='card'] {
+  animation: trentesix-hide 0s 560ms forwards;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='curtain'][data-state='done']
+  [data-part='view'] {
+  animation: trentesix-show 0s 560ms backwards;
+}
+:root:is(:not([data-look]), [data-look='discotheque'])
+  [data-moment~='develop'][data-state='done']
+  [data-part='image'] {
+  animation: trentesix-develop-flash min(420ms, var(--motion-cap)) ease-out;
+}
+@keyframes trentesix-develop-flash {
+  from {
+    filter: brightness(1.35);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+/* stylelint-enable trentesix/motion-tokens */

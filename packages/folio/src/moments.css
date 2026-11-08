@@ -1,0 +1,42 @@
+/* Folio's own moments, after the calm rules the build puts first. */
+
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root[data-look='folio'] {
+  --flash: var(--folio-accent-soft);
+  --switch-thumb: 16px;
+  --switch-travel: 20px;
+  --switch-stretch: 4px;
+}
+:root[data-look='folio']
+  :is([data-moment~='press'], [data-moment~='save'])[data-state='busy']::before {
+  inset: auto auto 0 0;
+  width: 40%;
+  height: 2px;
+  background: currentColor;
+  translate: 75% 0;
+  animation: trentesix-edge-run calc(1100ms * var(--travel)) var(--ease-pen) var(--loop);
+}
+:root[data-look='folio'] [data-moment~='code-cells'] [data-part='cell'][data-filled] {
+  border-color: var(--folio-accent);
+}
+/* Folio soaks in and holds (--m-soak), then the fade starts where the soak ends: one after the
+   other, since an animation's start is whatever the one beneath it shows. */
+:root[data-look='folio'] [data-moment~='flash'] {
+  --m-soak: min(calc(var(--duration-pen) + var(--duration-snap)), var(--motion-cap));
+  animation:
+    trentesix-flash-in var(--m-soak) var(--ease-pen),
+    trentesix-flash var(--motion-linger) var(--ease-drift) var(--m-soak);
+}
+:root[data-look='folio'] [data-moment~='curtain'][data-state='done'] [data-part='card'] {
+  --leave-scale: 0.98;
+  animation: trentesix-leave min(200ms, var(--motion-cap)) ease-in forwards;
+}
+:root[data-look='folio'] [data-moment~='curtain'][data-state='done'] [data-part='view'] {
+  --enter-y: 8px;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) 200ms both;
+}
+:root[data-look='folio'] [data-moment~='lift'][data-state='lifted'] {
+  box-shadow: var(--folio-shadow-l);
+}
+/* stylelint-enable trentesix/motion-tokens */

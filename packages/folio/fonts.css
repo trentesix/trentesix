@@ -1,0 +1,5 @@
+/* Folio's faces, self-hosted: IBM Plex Sans and Mono. Load them only when someone picks Folio. */
+@import '@fontsource-variable/ibm-plex-sans/index.css';
+@import '@fontsource-variable/ibm-plex-sans/standard-italic.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';

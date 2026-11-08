@@ -1,0 +1,211 @@
+/* Devis's moments, after @trentesix/core/moments.css. Generated from tokens.json by scripts/build.mjs. Do not edit. */
+/* The calm rules, from @trentesix/core (packages/core/src/calm.css). */
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root[data-look='devis']
+  [data-moment~='press']:is(:active, [data-pressed]):not(:disabled, [aria-disabled='true']) {
+  translate: 0 calc(1px * var(--travel));
+  filter: brightness(0.92);
+}
+:root[data-look='devis'] [data-moment~='field-error'][data-invalid] {
+  animation: none;
+}
+:root[data-look='devis'] [data-moment~='field-error']::after {
+  content: '';
+  position: absolute;
+  inset: auto 1px 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--rust);
+  transform-origin: left;
+  scale: 0 1;
+  pointer-events: none;
+}
+:root[data-look='devis']
+  [data-moment~='field-error'][data-invalid]:not([data-invalid='false'])::after {
+  scale: 1 1;
+  animation: trentesix-line-x var(--motion-pen) var(--ease-pen) both;
+}
+:root[data-look='devis']
+  :is(
+    [data-moment~='field-error'][data-invalid]:not([data-invalid='false']) [data-part='message'],
+    [data-moment~='field-error'][data-invalid]:not([data-invalid='false']) ~ [data-part='message']
+  ) {
+  --enter-y: 4px;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) 160ms both;
+}
+:root[data-look='devis'] [data-moment~='save'][data-state='failed'] {
+  animation: none;
+}
+:where(:root[data-look='devis'] [data-moment~='save'][data-state='failed']) {
+  position: relative;
+}
+:root[data-look='devis'] [data-moment~='save'][data-state='failed']::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--rust);
+  transform-origin: left;
+  pointer-events: none;
+  animation: trentesix-line-x var(--motion-pen) var(--ease-pen) both;
+}
+:root[data-look='devis'] [data-moment~='save'][data-shortcut] {
+  animation-name: trentesix-press-in-calm, trentesix-press-out-calm;
+}
+:root[data-look='devis'] [data-moment~='code-cells'] {
+  --m-cell-y: 4px;
+  --m-cell-time: var(--motion-settle);
+  --m-cell-ease: var(--spring-settle);
+}
+:root[data-look='devis'] [data-moment~='code-cells'][data-state='failed'] [data-part='cell'] > * {
+  --leave-y: 0px;
+}
+:root[data-look='devis'] [data-moment~='toast'] {
+  --enter-y: 12px;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) both;
+}
+:root[data-look='devis'] [data-moment~='toast'][data-state='leaving'] {
+  --leave-y: 8px;
+  animation: trentesix-leave min(140ms, var(--motion-cap)) var(--ease-glide) forwards;
+}
+:root[data-look='devis'] [data-moment~='milestone'] [data-part='card'] {
+  --enter-y: -10px;
+  rotate: none;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) both;
+}
+:root[data-look='devis'] [data-moment~='milestone'] [data-part='confetti'] {
+  display: none;
+}
+:root[data-look='devis'] [data-moment~='arrival'] [data-part='ring'] {
+  opacity: 1;
+  animation: none;
+}
+:root[data-look='devis'] [data-moment~='arrival'] [data-part='ink'] {
+  animation: trentesix-draw min(700ms, var(--motion-cap)) var(--ease-pen)
+    calc(var(--duration-drift) * 0.5) both;
+}
+:root[data-look='devis'] [data-moment~='develop'] [data-part='image'] {
+  filter: grayscale(calc(1 - var(--progress, 1))) opacity(calc(0.55 + 0.45 * var(--progress, 1)));
+}
+:root[data-look='devis']
+  [data-moment~='wind'][data-state='done']
+  :is([data-part='minute'], [data-part='hour']) {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+:root[data-look='devis'] [data-moment~='unfold'][data-state='open'] {
+  transition:
+    height calc(var(--duration-glide) * var(--travel)) var(--ease-glide),
+    opacity var(--motion-glide) var(--ease-glide),
+    visibility 0s;
+}
+:root[data-look='devis'] [data-moment~='unfold'] {
+  --m-stagger: 20ms;
+}
+:root[data-look='devis'] [data-moment~='dialog'] {
+  --enter-y: 8px;
+  --enter-scale: 0.98;
+  animation: trentesix-enter var(--motion-settle) var(--spring-settle) both;
+}
+:root[data-look='devis'] [data-moment~='lift'][data-state='lifted'] {
+  scale: calc(1 + 0.015 * var(--travel));
+  rotate: none;
+}
+/* Under reduced motion the arrival's ring fades in where it stands, as in every look: these say
+   so for a calm look too, outranking its "the ring is simply there" above whatever loads last. */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-look='devis']:not([data-motion='full']) [data-moment~='arrival'] [data-part='ring'] {
+    opacity: 0.9;
+    animation: trentesix-fade-in var(--motion-cap) calc(var(--duration-drift) * 0.6) both;
+  }
+}
+:root[data-look='devis'][data-motion='reduce'] [data-moment~='arrival'] [data-part='ring'] {
+  opacity: 0.9;
+  animation: trentesix-fade-in var(--motion-cap) calc(var(--duration-drift) * 0.6) both;
+}
+/* stylelint-enable trentesix/motion-tokens */
+
+/* Devis's own moments, after the calm rules the build puts first. */
+
+/* stylelint-disable trentesix/motion-tokens -- each moment's own timings, as in @trentesix/core's
+   moments.css (docs/motion.md) */
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='bands'] {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  pointer-events: none;
+  container-type: size;
+}
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='card'] {
+  animation: trentesix-hide 0s 560ms forwards;
+}
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='view'] {
+  animation: trentesix-show 0s 560ms backwards;
+}
+:root[data-look='devis'] [data-moment~='notary']:not([data-state]) {
+  --enter-scale: 1.5;
+  --enter-turn: 6deg;
+  animation: trentesix-enter var(--motion-pop) var(--spring-pop) both;
+}
+:root[data-look='devis']
+  [data-moment~='notary']:not([data-state])
+  :is([data-part='ink'], [data-part='word'], [data-part='date']) {
+  animation: none;
+}
+
+/* ── Devis · what differs ───────────────────────────────────────────────────────────────────── */
+/* Devis, the quote tool, moves like a worksite with a notary: things land square and stay put. It
+   shares Folio's calm rules above (press, field-error, save, toast, code-cells, milestone,
+   arrival, develop, wind, unfold, dialog, lift) and keeps three of Discothèque's that suit a
+   site: the busy cue's rolling hazard stripes in hi-vis, the flash that hits at once, and the
+   sign-in curtain's bands, as hazard tape. Its own: the notary seal (above), a stamp pressed on
+   square rather than slammed, a 1 px jolt where something becomes binding, and a seal pill
+   without sparks. */
+
+:root[data-look='devis'] [data-moment~='stamp'] {
+  --enter-scale: 1.3;
+  rotate: -6deg;
+  animation:
+    trentesix-enter var(--motion-pop) var(--spring-pop) both,
+    trentesix-stamp-lift min(400ms, var(--motion-cap)) ease 1800ms forwards;
+}
+:root[data-look='devis'] [data-moment~='thud']:has([data-moment~='notary']:not([data-state])) {
+  animation: trentesix-thud-devis 220ms ease-out 140ms;
+}
+:root[data-look='devis'] [data-moment~='seal'] [data-part='rays'] {
+  display: none;
+}
+
+/* The sign-in curtain: five lengths of hazard tape, pulled across from alternate sides, the
+   stripes running as they come; they hold a beat over the card, then lift away like
+   Discothèque's bands. Under reduced motion the tape is just there, and fades. */
+:root[data-look='devis'] [data-moment~='curtain'][data-state='done'] [data-part='bands'] > * {
+  --m-side: 1;
+  border-block: 3px solid var(--ink);
+  background: repeating-linear-gradient(-45deg, var(--mustard) 0 28px, var(--ink) 28px 56px);
+  background-size: 200% 100%;
+  animation:
+    trentesix-tape-in min(320ms, var(--motion-cap)) var(--ease-glide) calc(var(--m-i) * 55ms) both,
+    trentesix-roll calc(900ms * var(--travel)) linear calc(var(--m-i) * 55ms) 1,
+    trentesix-band-out min(420ms, var(--motion-cap)) var(--ease-glide)
+      calc(600ms + (4 - var(--m-i)) * 45ms) forwards;
+}
+:root[data-look='devis']
+  [data-moment~='curtain'][data-state='done']
+  [data-part='bands']
+  > :nth-child(even) {
+  --m-side: -1;
+}
+@keyframes trentesix-thud-devis {
+  35% {
+    transform: translateY(calc(1px * var(--travel)));
+  }
+}
+@keyframes trentesix-tape-in {
+  from {
+    transform: translateX(calc(-100cqw * var(--m-side) * var(--travel)));
+  }
+}
+/* stylelint-enable trentesix/motion-tokens */
