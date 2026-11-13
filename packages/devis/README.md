@@ -23,7 +23,7 @@ On `<html>`: `data-look="devis"`. Its temper is calm.
 
 | File          | What it is                                                                                                                       |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `all.css`     | Everything, in order: core's base, this look, its fonts, core's moments, its moments                                             |
+| `all.css`     | Everything, in order: core's base, this look, its fonts, core's moments, its moments, core's rich text                           |
 | `look.css`    | Its colours and what differs from the base, light and dark                                                                       |
 | `fonts.css`   | Its fonts, self-hosted                                                                                                           |
 | `moments.css` | Its moments, after `@trentesix/core/moments.css`                                                                                 |

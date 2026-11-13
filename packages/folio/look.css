@@ -199,6 +199,13 @@
   --field-label-tracking: 0;
   --field-label-case: none;
   --label-color: var(--ink);
+  --strong-weight: 600;
+  --prose-h1: var(--text-page-title);
+  --prose-h1-tracking: var(--text-page-title-tracking);
+  --prose-h2: 600 18px/1.35 var(--font-body);
+  --prose-h2-tracking: 0;
+  --prose-h3: 600 16px/1.4 var(--font-body);
+  --prose-h3-tracking: 0;
   --backdrop: var(--folio-overlay);
   --fs-hero: 28px;
   --fs-poster: 48px;
@@ -267,6 +274,8 @@
   --font-money: initial;
   --font-letter: initial;
   --font-mark: initial;
+  --mark: var(--mustard);
+  --on-mark: var(--on-mustard);
   --postmark-rest: initial;
   color-scheme: light;
 }

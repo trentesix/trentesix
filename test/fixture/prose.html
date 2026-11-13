@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rich text</title>
+    <!-- The base, every look, and prose.css: the look comes from ?look= as on the moments page. -->
+    <link rel="stylesheet" href="../../packages/core/base.css" />
+    <link rel="stylesheet" href="../../packages/discotheque/look.css" />
+    <link rel="stylesheet" href="../../packages/folio/look.css" />
+    <link rel="stylesheet" href="../../packages/devis/look.css" />
+    <link rel="stylesheet" href="../../packages/relais/look.css" />
+    <link rel="stylesheet" href="../../packages/core/prose.css" />
+    <style>
+      /* The kind of reset an app starts from: prose.css has to win over it. */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      ul,
+      ol,
+      blockquote,
+      figure,
+      pre {
+        margin: 0;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+      ul,
+      ol {
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        display: block;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--paper);
+        color: var(--ink);
+        font: var(--text-body);
+      }
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+        gap: 48px;
+        align-items: start;
+      }
+      .label {
+        margin-block-end: 12px;
+        color: var(--label-color);
+        font: var(--text-label);
+        letter-spacing: var(--text-label-tracking);
+        text-transform: var(--label-case);
+      }
+      /* The compact text inside a field, as an editor shows it. */
+      .field {
+        padding: 12px 14px;
+        border: var(--border-field) solid var(--outline-field);
+        border-radius: var(--radius-s);
+        background: var(--field);
+      }
+      .swatch {
+        display: block;
+        inline-size: 100%;
+        block-size: 120px;
+        border-radius: var(--radius-m);
+        background: repeating-linear-gradient(
+          135deg,
+          var(--paper-sunk) 0 12px,
+          var(--paper-tint) 12px 24px
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <p class="label">Reading</p>
+        <article data-prose id="reading"></article>
+      </section>
+      <section>
+        <p class="label">Compact, in a field</p>
+        <div class="field"><div data-prose="compact" id="compact"></div></div>
+      </section>
+    </main>
+    <template id="sample">
+      <h1>Moving the shop to the new address</h1>
+      <p>
+        We move on <strong>Monday 4 May</strong>. Orders placed before Friday ship from the old
+        address; anything after waits <em>at most</em> two days. See the
+        <a href="#plan">full plan</a> or ask <abbr title="Customer service">CS</abbr>.
+      </p>
+      <h2>What changes</h2>
+      <p>
+        Pick-ups move to <mark>the side door</mark>. The old hours are <s>9 to 5</s> 8 to 6, and the
+        phone line is <del>514 555 0100</del> <ins>514 555 0136</ins>. Press <kbd>Ctrl</kbd> +
+        <kbd>K</kbd> to find an order, or run <code>orders --since 2026-05-04</code>. Water is
+        H<sub>2</sub>O and the area is 40 m<sup>2</sup>. <u>Underlined</u>,
+        <small>small print</small>, <b>bold</b> and <i>italic</i> words.
+      </p>
+      <h3>Before the move</h3>
+      <ul>
+        <li>Pack the samples, labelled by shelf.</li>
+        <li>
+          Tell the regulars:
+          <ul>
+            <li>by email, a week before;</li>
+            <li>on the door, the Friday.</li>
+          </ul>
+        </li>
+        <li>
+          <p>Return the keys.</p>
+          <p>Both sets, with the alarm code.</p>
+        </li>
+      </ul>
+      <ol>
+        <li>Unplug the printers.</li>
+        <li>
+          Load the van
+          <ol>
+            <li>heavy boxes first,</li>
+            <li>then the shelves.</li>
+          </ol>
+        </li>
+      </ol>
+      <ul>
+        <li><input type="checkbox" checked disabled /> Book the van</li>
+        <li><input type="checkbox" disabled /> Change the address online</li>
+      </ul>
+      <blockquote>
+        <p>Every move is two half-moves: leaving, and arriving. Plan both.</p>
+      </blockquote>
+      <h4>The van</h4>
+      <p>Twelve cubic metres, booked for the whole day.</p>
+      <pre><code>curl -X POST /api/orders/hold \
+  -d '{"until": "2026-05-06"}'</code></pre>
+      <figure>
+        <span class="swatch" role="img" aria-label="A placeholder picture"></span>
+        <figcaption>The new shop front, from the street.</figcaption>
+      </figure>
+      <table>
+        <caption>
+          Opening hours
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Opens</th>
+            <th scope="col">Closes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Monday to Friday</th>
+            <td>8:00</td>
+            <td>18:00</td>
+          </tr>
+          <tr>
+            <th scope="row">Saturday</th>
+            <td>10:00</td>
+            <td>16:00</td>
+          </tr>
+        </tbody>
+      </table>
+      <dl>
+        <dt>Side door</dt>
+        <dd>On Rue Saint-Denis, past the café.</dd>
+        <dt>Loading bay</dt>
+        <dd>Behind the building; ring twice.</dd>
+      </dl>
+      <details>
+        <summary>What if it rains?</summary>
+        <p>We move anyway, under tarps.</p>
+      </details>
+      <details open>
+        <summary>Who to call</summary>
+        <p>Sam, at the old shop, until noon.</p>
+      </details>
+      <hr />
+      <h5>Last updated</h5>
+      <p>Thursday, by the front desk.</p>
+      <h6 id="plan">The plan</h6>
+      <p>Attached to the email.</p>
+    </template>
+    <script type="module">
+      const query = new URLSearchParams(location.search);
+      const html = document.documentElement;
+      if (query.get('look')) html.dataset.look = query.get('look');
+      if (query.get('theme')) html.dataset.theme = query.get('theme');
+      const sample = document.getElementById('sample').content;
+      for (const id of ['reading', 'compact'])
+        document.getElementById(id).append(sample.cloneNode(true));
+    </script>
+  </body>
+</html>

@@ -307,6 +307,18 @@ export function htmlData({ momentsCss, motionMd, looks }) {
           { name: 'full', description: md('Full motion, whatever the system says.') },
         ],
       },
+      {
+        name: 'data-prose',
+        description: md(
+          'Rich text from `@trentesix/core/prose.css`: the headings, lists, quotes, links, code and tables inside this element, in the look. Empty for text to read, at most `--reading-width` wide.',
+        ),
+        values: [
+          {
+            name: 'compact',
+            description: md('At UI size, the full width: editors in fields, tickets, comments.'),
+          },
+        ],
+      },
     ],
   };
 }

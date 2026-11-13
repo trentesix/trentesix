@@ -1,7 +1,7 @@
 # @trentesix/core
 
 The base every Trentesix look starts from: spacing, radii, borders, motion, families and the look
-variables (`base.css`), the moments (`moments.css`), the motion helper (`motion`), the contrast
+variables (`base.css`), the moments (`moments.css`), rich text (`prose.css`), the motion helper (`motion`), the contrast
 checker (`contrast`), the stylelint config (`stylelint`) and the editor help (`vscode/`).
 
 An app installs core and a look, and loads the look's `all.css`:

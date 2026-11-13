@@ -135,6 +135,15 @@
   --field-label-tracking: 0;
   --field-label-case: none;
   --label-color: var(--ink-muted);
+  --strong-weight: 700;
+  --prose-h1: var(--text-title);
+  --prose-h1-tracking: var(--text-title-tracking);
+  --prose-h2: var(--text-section);
+  --prose-h2-tracking: var(--text-section-tracking);
+  --prose-h3: var(--text-item);
+  --prose-h3-tracking: var(--text-item-tracking);
+  --mark: var(--mustard);
+  --on-mark: var(--on-mustard);
   --ui-size: 16px;
   --link: var(--rust);
   --inverse: var(--chocolate);

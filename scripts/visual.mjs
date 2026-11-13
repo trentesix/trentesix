@@ -1,6 +1,7 @@
 // Visual regression: the moments page in every look and theme, photographed once every moment has
-// played, and compared with the approved pictures in test/visual/. The moments' tests check what
-// moves and what ends visible; this checks colour, type and shape.
+// played, and the rich-text page (prose.css), compared with the approved pictures in
+// test/visual/. The moments' tests check what moves and what ends visible; this checks colour,
+// type and shape.
 //   pnpm visual            compare; on a difference, writes <look>-<theme>.actual.png and
 //                          .diff.png (the changed pixels in magenta) to test/visual/results/
 //   pnpm visual --update   approve what the page looks like now
@@ -38,51 +39,55 @@ const browser = await chromium.launch();
 fs.rmSync(results, { recursive: true, force: true });
 const changed = [];
 try {
-  for (const look of looks)
-    for (const theme of ['light', 'dark']) {
-      const name = `${look}-${theme}`;
-      const page = await browser.newPage({
-        viewport: { width: 1280, height: 900 },
-        reducedMotion: 'reduce',
-        colorScheme: theme,
-      });
-      await page.goto(`${server.url}?look=${look}&theme=${theme}&motion=reduce`);
-      const height = await page.evaluate(async () => {
-        document.querySelector('nav')?.remove();
-        await document.fonts.ready;
-        // Every moment but lights, which switches the whole page to the other theme.
-        await window.playMoments(window.momentNames.filter((n) => n !== 'lights'));
-        await Promise.all(
-          document
-            .getAnimations()
-            .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
-            .map((a) => a.finished.catch(() => {})),
-        );
-        return Math.ceil(document.documentElement.scrollHeight);
-      });
-      // A viewport as tall as the page rather than fullPage, which re-lays the page out mid-shot.
-      await page.setViewportSize({ width: 1280, height });
-      const shot = await page.screenshot({
-        animations: 'disabled',
-        caret: 'hide',
-        mask: [page.locator('[data-name="toast"] .clock')],
-      });
-      const file = path.join(approved, `${name}.png`);
-      if (update || !fs.existsSync(file)) {
-        fs.mkdirSync(approved, { recursive: true });
-        fs.writeFileSync(file, shot);
-        console.log(`${update ? 'Approved' : 'New'}: ${path.relative(repo, file)}`);
-      } else {
-        const diff = await compare(page, fs.readFileSync(file), shot);
-        if (diff.share > SHARE || diff.size) {
-          changed.push(`${name}: ${diff.size || `${(diff.share * 100).toFixed(3)}% of pixels`}`);
-          fs.mkdirSync(results, { recursive: true });
-          fs.writeFileSync(path.join(results, `${name}.actual.png`), shot);
-          if (diff.png) fs.writeFileSync(path.join(results, `${name}.diff.png`), diff.png);
-        } else console.log(`Same: ${name}`);
+  for (const [prefix, pageFile, moments] of [
+    ['', '', true],
+    ['prose-', 'prose.html', false],
+  ])
+    for (const look of looks)
+      for (const theme of ['light', 'dark']) {
+        const name = `${prefix}${look}-${theme}`;
+        const page = await browser.newPage({
+          viewport: { width: 1280, height: 900 },
+          reducedMotion: 'reduce',
+          colorScheme: theme,
+        });
+        await page.goto(`${server.url}${pageFile}?look=${look}&theme=${theme}&motion=reduce`);
+        const height = await page.evaluate(async (moments) => {
+          document.querySelector('nav')?.remove();
+          await document.fonts.ready;
+          // Every moment but lights, which switches the whole page to the other theme.
+          if (moments) await window.playMoments(window.momentNames.filter((n) => n !== 'lights'));
+          await Promise.all(
+            document
+              .getAnimations()
+              .filter((a) => a.effect?.getComputedTiming().endTime !== Infinity)
+              .map((a) => a.finished.catch(() => {})),
+          );
+          return Math.ceil(document.documentElement.scrollHeight);
+        }, moments);
+        // A viewport as tall as the page rather than fullPage, which re-lays the page out mid-shot.
+        await page.setViewportSize({ width: 1280, height });
+        const shot = await page.screenshot({
+          animations: 'disabled',
+          caret: 'hide',
+          mask: [page.locator('[data-name="toast"] .clock')],
+        });
+        const file = path.join(approved, `${name}.png`);
+        if (update || !fs.existsSync(file)) {
+          fs.mkdirSync(approved, { recursive: true });
+          fs.writeFileSync(file, shot);
+          console.log(`${update ? 'Approved' : 'New'}: ${path.relative(repo, file)}`);
+        } else {
+          const diff = await compare(page, fs.readFileSync(file), shot);
+          if (diff.share > SHARE || diff.size) {
+            changed.push(`${name}: ${diff.size || `${(diff.share * 100).toFixed(3)}% of pixels`}`);
+            fs.mkdirSync(results, { recursive: true });
+            fs.writeFileSync(path.join(results, `${name}.actual.png`), shot);
+            if (diff.png) fs.writeFileSync(path.join(results, `${name}.diff.png`), diff.png);
+          } else console.log(`Same: ${name}`);
+        }
+        await page.close();
       }
-      await page.close();
-    }
 } finally {
   await browser.close();
   await server.close();

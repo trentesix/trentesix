@@ -1,4 +1,4 @@
-// Builds site/: the moments page (test/fixture) as a static site, with every look's fonts, for
+// Builds site/: the moments page and the rich-text page (test/fixture) as a static site, with every look's fonts, for
 // GitHub Pages and the README screenshots. The fonts are copied out of node_modules (only the
 // files the stylesheets reach), since a browser can't resolve their package names.
 //   node scripts/site.mjs   →   site/index.html
@@ -52,18 +52,18 @@ for (const p of packages) {
   fontLinks.push(`    <link rel="stylesheet" href="../../packages/${p}/fonts.css" />`);
 }
 
-// The page itself, with the fonts, and the site's root sending visitors to it.
-const page = path.join(out, 'test/fixture/index.html');
-fs.writeFileSync(
-  page,
-  fs
-    .readFileSync(page, 'utf8')
-    .replace('<title>Moments</title>', '<title>Trentesix: the moments</title>')
-    .replace(
-      '    <link rel="stylesheet" href="specimens.css" />',
-      (m) => `${fontLinks.join('\n')}\n${m}`,
-    ),
-);
+// The pages themselves, with the fonts, and the site's root sending visitors to the moments.
+for (const f of fs.readdirSync(path.join(out, 'test/fixture')).filter((f) => f.endsWith('.html'))) {
+  const page = path.join(out, 'test/fixture', f);
+  fs.writeFileSync(
+    page,
+    fs
+      .readFileSync(page, 'utf8')
+      .replace('<title>Moments</title>', '<title>Trentesix: the moments</title>')
+      .replace('<title>Rich text</title>', '<title>Trentesix: rich text</title>')
+      .replace('  </head>', `${fontLinks.join('\n')}\n  </head>`),
+  );
+}
 fs.writeFileSync(
   path.join(out, 'index.html'),
   '<!doctype html><meta charset="utf-8"><title>Trentesix</title>' +

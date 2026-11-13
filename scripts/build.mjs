@@ -355,6 +355,15 @@ function folioCss({ id, tokens: folio }) {
     ['field-label-tracking', '0'],
     ['field-label-case', 'none'],
     ['label-color', 'var(--ink)'],
+    ['strong-weight', '600'],
+    // Rich text reads at 16px, which is Folio's section and title size; its headings step up
+    // from the page title instead.
+    ['prose-h1', 'var(--text-page-title)'],
+    ['prose-h1-tracking', 'var(--text-page-title-tracking)'],
+    ['prose-h2', '600 18px/1.35 var(--font-body)'],
+    ['prose-h2-tracking', '0'],
+    ['prose-h3', '600 16px/1.4 var(--font-body)'],
+    ['prose-h3-tracking', '0'],
     // Dialog backdrops: the default look tints chocolate in each rule; Folio dims with its overlay.
     ['backdrop', 'var(--folio-overlay)'],
     // Type sizes: component CSS writes "font-size: var(--fs-page, <default size>)", so these exist
@@ -447,12 +456,13 @@ ${calm}${own}`;
 
   // Everything for a page that wears this look, in order.
   files[`packages/${id}/all.css`] =
-    `/* ${tokens.name}, whole: the base, the look, its fonts and the moments. ${HEADER} */
+    `/* ${tokens.name}, whole: the base, the look, its fonts, the moments and rich text. ${HEADER} */
 @import '@trentesix/core/base.css';
 @import './look.css';
 @import './fonts.css';
 @import '@trentesix/core/moments.css';
 @import './moments.css';
+@import '@trentesix/core/prose.css';
 `;
 }
 
