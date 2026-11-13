@@ -6,7 +6,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const types = {
   '.html': 'text/html',
   '.css': 'text/css',
@@ -16,8 +16,11 @@ const types = {
   '.woff2': 'font/woff2',
 };
 
-/** Starts the server; resolves to its base URL and a close function. port 0 picks a free one. */
-export function serve(port = 0) {
+/**
+ * Starts the server; resolves to its base URL and a close function. port 0 picks a free one; root
+ * is the folder served (the repository, or the built site/, which has the fonts).
+ */
+export function serve(port = 0, root = repo) {
   const server = http.createServer((req, res) => {
     let file;
     try {

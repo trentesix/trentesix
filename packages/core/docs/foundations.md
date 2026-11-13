@@ -1,9 +1,9 @@
 # Foundations
 
-Colour, type, space, shape, elevation, focus, icons and layout: the parts every screen is made
-of. Every value here comes from the token JSON (`packages/core/tokens.json` for the base, then each
-look's `packages/<look>/tokens.json`) and from the CSS that `scripts/build.mjs` generates from it.
-When they disagree, the JSON wins; run `pnpm build`.
+Colour, type, space, shape, elevation, focus, forced colours, icons and layout: the parts every
+screen is made of. Every value here comes from the token JSON (`packages/core/tokens.json` for the
+base, then each look's `packages/<look>/tokens.json`) and from the CSS that `scripts/build.mjs`
+generates from it. When they disagree, the JSON wins; run `pnpm build`.
 
 There are four looks:
 
@@ -330,26 +330,26 @@ The type scale is a set of roles, the same names in every look, as CSS variables
 ```
 
 The base gives each role Discothèque's values; a look sets the roles it changes (Folio all of
-them; Devis and Relais none yet, so they read the base with their own families). Size / line
-height / weight:
+them, Devis and Relais a few) and reads the rest from the base, in its own families. Size / line
+height / weight, and "base" where a look keeps the base's:
 
-| Variable             | Base (Discothèque)                | Folio                    | Use                                                        |
-| -------------------- | --------------------------------- | ------------------------ | ---------------------------------------------------------- |
-| `--text-display`     | 96px / 0.9 / 900 (display)        | 28px / 1.2 / 600         | The one big line on a screen: a greeting, a poster number. |
-| `--text-page-title`  | 56px / 0.95 / 800 (display)       | 22px / 1.3 / 600         | Page and entry titles.                                     |
-| `--text-title`       | 34px / 1.05 / 800 (display)       | 16px / 1.4 / 600         | Panel and dialog titles.                                   |
-| `--text-section`     | 24px / 1.15 / 700 (display)       | 16px / 1.4 / 600         | Card, tile and form-section headings.                      |
-| `--text-item`        | 20px / 1.2 / 700 (display)        | 14px / 1.4 / 600         | Names in rows and on cards.                                |
-| `--text-voice`       | 20px / 1.3 / 400 italic (display) | 16px / 1.65 / 400 italic | The app speaking: a gentle note, an empty translation.     |
-| `--text-body-l`      | 18px / 1.7 / 400 (body)           | 16px / 1.65 / 400        | Rich text and previews.                                    |
-| `--text-body`        | 16px / 1.55 / 400 (body)          | 14px / 1.5 / 400         | Default UI text and inputs.                                |
-| `--text-body-strong` | 16px / 1.55 / 700 (body)          | 14px / 1.5 / 500         | Names and button labels.                                   |
-| `--text-small`       | 14px / 1.5 / 400 (body)           | 13px / 1.45 / 400        | Metadata, help text, table cells.                          |
-| `--text-label`       | 12px / 1.3 / 700 (body)           | 13px / 1.4 / 500         | Eyebrows and section labels (with --label-case).           |
-| `--text-code`        | 13px / 1.65 / 400 (mono)          | 13px / 1.6 / 400         | Endpoints, JSON, ids, keys.                                |
-| `--text-kbd`         | 12px / 1.2 / 600 (mono)           | 11px / 1.2 / 500         | Keyboard hints.                                            |
-| `--text-celebrate`   | 40px / 1 / 400 (celebrate)        | 28px / 1.2 / 600         | Celebrations only; at most once per session.               |
-| `--text-empty`       | 38px / 1 / 400 (empty)            | 16px / 1.4 / 600         | Empty states: one line.                                    |
+| Variable             | Base (Discothèque)                | Folio                    | Devis                          | Relais                         | Use                                                        |
+| -------------------- | --------------------------------- | ------------------------ | ------------------------------ | ------------------------------ | ---------------------------------------------------------- |
+| `--text-display`     | 96px / 0.9 / 900 (display)        | 28px / 1.2 / 600         | 88px / 0.9 / 700               | 56px / 1 / 700                 | The one big line on a screen: a greeting, a poster number. |
+| `--text-page-title`  | 56px / 0.95 / 800 (display)       | 22px / 1.3 / 600         | 44px / 1 / 700                 | 25px / 1.2 / 600               | Page and entry titles.                                     |
+| `--text-title`       | 34px / 1.05 / 800 (display)       | 16px / 1.4 / 600         | 32px / 1.05 / 700              | 28px / 1.2 / 600               | Panel and dialog titles.                                   |
+| `--text-section`     | 24px / 1.15 / 700 (display)       | 16px / 1.4 / 600         | base                           | 18px / 1.3 / 600               | Card, tile and form-section headings.                      |
+| `--text-item`        | 20px / 1.2 / 700 (display)        | 14px / 1.4 / 600         | base                           | 21px / 1.3 / 600               | Names in rows and on cards.                                |
+| `--text-voice`       | 20px / 1.3 / 400 italic (display) | 16px / 1.65 / 400 italic | base                           | base                           | The app speaking: a gentle note, an empty translation.     |
+| `--text-body-l`      | 18px / 1.7 / 400 (body)           | 16px / 1.65 / 400        | base                           | base                           | Rich text and previews.                                    |
+| `--text-body`        | 16px / 1.55 / 400 (body)          | 14px / 1.5 / 400         | 15px / 1.55 / 400              | 15px / 1.55 / 400              | Default UI text and inputs.                                |
+| `--text-body-strong` | 16px / 1.55 / 700 (body)          | 14px / 1.5 / 500         | 15px / 1.55 / 600              | 15px / 1.55 / 600              | Names and button labels.                                   |
+| `--text-small`       | 14px / 1.5 / 400 (body)           | 13px / 1.45 / 400        | base                           | 13px / 1.45 / 400              | Metadata, help text, table cells.                          |
+| `--text-label`       | 12px / 1.3 / 700 (body)           | 13px / 1.4 / 500         | 13px / 1.3 / 600 (`--label-*`) | 11px / 1.3 / 500 (`--label-*`) | Eyebrows and section labels (with --label-case).           |
+| `--text-code`        | 13px / 1.65 / 400 (mono)          | 13px / 1.6 / 400         | base                           | base                           | Endpoints, JSON, ids, keys.                                |
+| `--text-kbd`         | 12px / 1.2 / 600 (mono)           | 11px / 1.2 / 500         | base                           | 12px / 1.2 / 500               | Keyboard hints.                                            |
+| `--text-celebrate`   | 40px / 1 / 400 (celebrate)        | 28px / 1.2 / 600         | base                           | base                           | Celebrations only; at most once per session.               |
+| `--text-empty`       | 38px / 1 / 400 (empty)            | 16px / 1.4 / 600         | base                           | 30px / 1.1 / 600               | Empty states: one line.                                    |
 
 `--ui-size` (16px Discothèque, 14px Folio, 15px Devis and Relais) and the `--label-*` set below
 remain, and Folio still sets its `--fs-*` sizes, which let CSS written with Discothèque's sizes
@@ -401,6 +401,14 @@ size grows: -0.03em, -0.02em, -0.01em.
 
 Folio has no weight above 600 and no celebration or empty-state face: those variables point at
 IBM Plex Sans.
+
+**Devis and Relais** take their sizes from the apps (surveyed in November 2026) and their weights
+from the faces they load. Barlow Condensed comes at 500 to 700, so Devis's headings stop at 700
+(the base's 800 and 900 would be faked); its body follows its 15px `--ui-size`. Relais is
+compact and light: Instrument Sans tops out at 700, its headings sit at 600, and IBM Plex Mono is
+loaded at 400 and 500, so its `kbd` is 500. Page titles in both apps shrink on narrow screens;
+the token is the widest size, and the app clamps it (`font-size: clamp(32px, 6vw, 44px)` in
+Devis).
 
 ### Labels
 
@@ -549,6 +557,26 @@ The edge is a `box-shadow`, so an element with a shadow of its own lists both, e
 - Show focus on the element that has it, or on its visible box when the real element is hidden
   (a checkbox's square, a switch's track).
 - Don't show the ring on mouse click: use `:focus-visible`.
+
+## Forced colours
+
+Windows' high-contrast themes (`forced-colors: active`) repaint the page in a handful of system
+colours: every text in one colour, every background in another, every shadow gone. What survives
+is text, borders, outlines and SVG strokes, in the system's colours, and anything written in a
+system colour (`Highlight`, `CanvasText`, `Mark`…), which forced colours keep.
+
+- **The focus ring holds.** It is an `outline`, which stays (in the system's colour); the
+  `--focus-edge` band is a `box-shadow` and drops out, which is fine. Never draw focus with a
+  shadow alone.
+- **Seals, stamps and postmarks hold.** They are strokes and borders.
+- **What was only a colour is drawn again by `moments.css`**, as a line in `Highlight` so no text
+  sits on it: the slide's indicator becomes a ring, a hold's fill a bar along the bottom, a
+  change-mark's highlighter an underline (its bar stays a bar) and a flash a ring for as long as
+  its colour would have shown. A seal's fill goes; its label says the new state.
+- **Component CSS follows the same rule.** A state shown only by a background (a selected row, a
+  filled pill, an error tint) needs a border, an outline, an icon or words as well. Check with
+  Chromium's DevTools (Rendering › Emulate CSS media feature `forced-colors`), or with
+  `forcedColors: 'active'` in Playwright, as `test/forced-colors.test.mjs` does.
 
 ## Icons
 

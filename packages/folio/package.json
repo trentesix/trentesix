@@ -33,6 +33,7 @@
     "tokens.js",
     "tokens.d.ts",
     "tokens.json",
+    "dtcg",
     "README.md"
   ],
   "exports": {
@@ -44,7 +45,9 @@
     "./fonts.css": "./fonts.css",
     "./moments.css": "./moments.css",
     "./all.css": "./all.css",
-    "./tokens.json": "./tokens.json"
+    "./tokens.json": "./tokens.json",
+    "./dtcg/light.tokens.json": "./dtcg/light.tokens.json",
+    "./dtcg/dark.tokens.json": "./dtcg/dark.tokens.json"
   },
   "dependencies": {
     "@trentesix/core": "workspace:^",

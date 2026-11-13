@@ -1,6 +1,6 @@
 # Every push and pull request: the generated files are current, every colour pair passes, the
 # hand-written moments pass the stylelint config, the formatting holds, every moment plays in
-# every look, and the packages work once packed and installed.
+# every look, the packages work once packed and installed, and every look looks as approved.
 name: CI
 
 on:
@@ -29,6 +29,15 @@ jobs:
       - run: pnpm exec playwright-core install --with-deps chromium
       - run: pnpm test
       - run: pnpm smoke
+      # Every look and theme looks as approved in test/visual/.
+      - run: pnpm visual
+      # What differed, for a look (or to approve: copy the .actual.png files into test/visual/).
+      - if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: visual-results
+          path: test/visual/results/
+          if-no-files-found: ignore
       # A changeset is due when a package changed (not for the docs or the tests alone).
       - if: github.event_name == 'pull_request'
         run: pnpm changeset status --since=origin/main

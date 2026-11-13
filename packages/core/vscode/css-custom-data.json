@@ -1412,7 +1412,7 @@
       "name": "--text-body",
       "description": {
         "kind": "markdown",
-        "value": "Default UI text and inputs. A whole font value: write `font: var(--text-body)`, with `letter-spacing: var(--text-body-tracking)`.\n\n- Discothèque: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+        "value": "Default UI text and inputs. A whole font value: write `font: var(--text-body)`, with `letter-spacing: var(--text-body-tracking)`.\n\n- Discothèque: `400 16px/1.55 var(--font-body)` → `400 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `400 15px/1.55 var(--font-body)` → `400 15px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 15px/1.55 var(--font-body)` → `400 15px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
       }
     },
     {
@@ -1433,7 +1433,7 @@
       "name": "--text-body-strong",
       "description": {
         "kind": "markdown",
-        "value": "Names and button labels. A whole font value: write `font: var(--text-body-strong)`, with `letter-spacing: var(--text-body-strong-tracking)`.\n\n- Discothèque: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `500 14px/1.5 var(--font-body)` → `500 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+        "value": "Names and button labels. A whole font value: write `font: var(--text-body-strong)`, with `letter-spacing: var(--text-body-strong-tracking)`.\n\n- Discothèque: `700 16px/1.55 var(--font-body)` → `700 16px/1.55 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\",…`\n- Devis: `600 15px/1.55 var(--font-body)` → `600 15px/1.55 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe U…`\n- Folio: `500 14px/1.5 var(--font-body)` → `500 14px/1.5 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 15px/1.55 var(--font-body)` → `600 15px/1.55 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
       }
     },
     {
@@ -1482,21 +1482,21 @@
       "name": "--text-display",
       "description": {
         "kind": "markdown",
-        "value": "The one big line on a screen: a greeting, a poster number. A whole font value: write `font: var(--text-display)`, with `letter-spacing: var(--text-display-tracking)`.\n\n- Discothèque: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 28px/1.2 var(--font-body)` → `600 28px/1.2 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+        "value": "The one big line on a screen: a greeting, a poster number. A whole font value: write `font: var(--text-display)`, with `letter-spacing: var(--text-display-tracking)`.\n\n- Discothèque: `900 96px/0.9 var(--font-display)` → `900 96px/0.9 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `700 88px/0.9 var(--font-display)` → `700 88px/0.9 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 28px/1.2 var(--font-body)` → `600 28px/1.2 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 56px/1 var(--font-display)` → `700 56px/1 'Instrument Sans Variable', 'Instrument Sans', 'Segoe UI…`"
       }
     },
     {
       "name": "--text-display-tracking",
       "description": {
         "kind": "markdown",
-        "value": "Letter spacing for --text-display.\n\n- Discothèque: `-0.03em`\n- Devis: `-0.03em`\n- Folio: `-0.01em`\n- Relais: `-0.03em`"
+        "value": "Letter spacing for --text-display.\n\n- Discothèque: `-0.03em`\n- Devis: `-0.01em`\n- Folio: `-0.01em`\n- Relais: `-0.02em`"
       }
     },
     {
       "name": "--text-empty",
       "description": {
         "kind": "markdown",
-        "value": "Empty states: one line. A whole font value: write `font: var(--text-empty)`, with `letter-spacing: var(--text-empty-tracking)`.\n\n- Discothèque: `400 38px/1 var(--font-empty)` → `400 38px/1 \"Bagel Fat One\", \"Karla\", system-ui, sans-serif`\n- Devis: `400 38px/1 var(--font-empty)` → `400 38px/1 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `400 38px/1 var(--font-empty)` → `400 38px/1 'Instrument Sans Variable', 'Instrument Sans', system-ui…`"
+        "value": "Empty states: one line. A whole font value: write `font: var(--text-empty)`, with `letter-spacing: var(--text-empty-tracking)`.\n\n- Discothèque: `400 38px/1 var(--font-empty)` → `400 38px/1 \"Bagel Fat One\", \"Karla\", system-ui, sans-serif`\n- Devis: `400 38px/1 var(--font-empty)` → `400 38px/1 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 30px/1.1 var(--font-empty)` → `600 30px/1.1 'Instrument Sans Variable', 'Instrument Sans', system-…`"
       }
     },
     {
@@ -1510,7 +1510,7 @@
       "name": "--text-item",
       "description": {
         "kind": "markdown",
-        "value": "Names in rows and on cards. A whole font value: write `font: var(--text-item)`, with `letter-spacing: var(--text-item-tracking)`.\n\n- Discothèque: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 14px/1.4 var(--font-body)` → `600 14px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+        "value": "Names in rows and on cards. A whole font value: write `font: var(--text-item)`, with `letter-spacing: var(--text-item-tracking)`.\n\n- Discothèque: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", Ge…`\n- Devis: `700 20px/1.2 var(--font-display)` → `700 20px/1.2 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system…`\n- Folio: `600 14px/1.4 var(--font-body)` → `600 14px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 21px/1.3 var(--font-display)` → `600 21px/1.3 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
       }
     },
     {
@@ -1524,7 +1524,7 @@
       "name": "--text-kbd",
       "description": {
         "kind": "markdown",
-        "value": "Keyboard hints. A whole font value: write `font: var(--text-kbd)`, with `letter-spacing: var(--text-kbd-tracking)`.\n\n- Discothèque: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 \"JetBrains Mono Variable\", \"JetBrains Mono\", ui-monosp…`\n- Devis: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 'Martian Mono Variable', 'Martian Mono', ui-monospace,…`\n- Folio: `500 11px/1.2 var(--font-mono)` → `500 11px/1.2 \"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo…`\n- Relais: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo…`"
+        "value": "Keyboard hints. A whole font value: write `font: var(--text-kbd)`, with `letter-spacing: var(--text-kbd-tracking)`.\n\n- Discothèque: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 \"JetBrains Mono Variable\", \"JetBrains Mono\", ui-monosp…`\n- Devis: `600 12px/1.2 var(--font-mono)` → `600 12px/1.2 'Martian Mono Variable', 'Martian Mono', ui-monospace,…`\n- Folio: `500 11px/1.2 var(--font-mono)` → `500 11px/1.2 \"IBM Plex Mono\", ui-monospace, \"SFMono-Regular\", Menlo…`\n- Relais: `500 12px/1.2 var(--font-mono)` → `500 12px/1.2 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo…`"
       }
     },
     {
@@ -1552,21 +1552,21 @@
       "name": "--text-page-title",
       "description": {
         "kind": "markdown",
-        "value": "Page and entry titles. A whole font value: write `font: var(--text-page-title)`, with `letter-spacing: var(--text-page-title-tracking)`.\n\n- Discothèque: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 22px/1.3 var(--font-body)` → `600 22px/1.3 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+        "value": "Page and entry titles. A whole font value: write `font: var(--text-page-title)`, with `letter-spacing: var(--text-page-title-tracking)`.\n\n- Discothèque: `800 56px/0.95 var(--font-display)` → `800 56px/0.95 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `700 44px/1 var(--font-display)` → `700 44px/1 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', system-u…`\n- Folio: `600 22px/1.3 var(--font-body)` → `600 22px/1.3 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 25px/1.2 var(--font-display)` → `600 25px/1.2 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
       }
     },
     {
       "name": "--text-page-title-tracking",
       "description": {
         "kind": "markdown",
-        "value": "Letter spacing for --text-page-title.\n\n- Discothèque: `-0.02em`\n- Devis: `-0.02em`\n- Folio: `0`\n- Relais: `-0.02em`"
+        "value": "Letter spacing for --text-page-title.\n\n- Discothèque: `-0.02em`\n- Devis: `-0.01em`\n- Folio: `0`\n- Relais: `-0.01em`"
       }
     },
     {
       "name": "--text-section",
       "description": {
         "kind": "markdown",
-        "value": "Card, tile and form-section headings. A whole font value: write `font: var(--text-section)`, with `letter-spacing: var(--text-section-tracking)`.\n\n- Discothèque: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+        "value": "Card, tile and form-section headings. A whole font value: write `font: var(--text-section)`, with `letter-spacing: var(--text-section-tracking)`.\n\n- Discothèque: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `700 24px/1.15 var(--font-display)` → `700 24px/1.15 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 18px/1.3 var(--font-display)` → `600 18px/1.3 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
       }
     },
     {
@@ -1580,7 +1580,7 @@
       "name": "--text-small",
       "description": {
         "kind": "markdown",
-        "value": "Metadata, help text, table cells. A whole font value: write `font: var(--text-small)`, with `letter-spacing: var(--text-small-tracking)`.\n\n- Discothèque: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", …`\n- Devis: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI…`\n- Folio: `400 13px/1.45 var(--font-body)` → `400 13px/1.45 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\"…`\n- Relais: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
+        "value": "Metadata, help text, table cells. A whole font value: write `font: var(--text-small)`, with `letter-spacing: var(--text-small-tracking)`.\n\n- Discothèque: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 \"Karla Variable\", \"Karla\", \"Avenir Next\", \"Segoe UI\", …`\n- Devis: `400 14px/1.5 var(--font-body)` → `400 14px/1.5 'Hanken Grotesk Variable', 'Hanken Grotesk', 'Segoe UI…`\n- Folio: `400 13px/1.45 var(--font-body)` → `400 13px/1.45 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\"…`\n- Relais: `400 13px/1.45 var(--font-body)` → `400 13px/1.45 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
       }
     },
     {
@@ -1594,14 +1594,14 @@
       "name": "--text-title",
       "description": {
         "kind": "markdown",
-        "value": "Panel and dialog titles. A whole font value: write `font: var(--text-title)`, with `letter-spacing: var(--text-title-tracking)`.\n\n- Discothèque: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 'Instrument Sans Variable', 'Instrument Sans', 'Segoe…`"
+        "value": "Panel and dialog titles. A whole font value: write `font: var(--text-title)`, with `letter-spacing: var(--text-title-tracking)`.\n\n- Discothèque: `800 34px/1.05 var(--font-display)` → `800 34px/1.05 \"Fraunces Variable\", \"Fraunces\", \"Iowan Old Style\", G…`\n- Devis: `700 32px/1.05 var(--font-display)` → `700 32px/1.05 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', syste…`\n- Folio: `600 16px/1.4 var(--font-body)` → `600 16px/1.4 'IBM Plex Sans Variable', \"IBM Plex Sans\", \"Segoe UI\",…`\n- Relais: `600 28px/1.2 var(--font-display)` → `600 28px/1.2 'Instrument Sans Variable', 'Instrument Sans', 'Segoe …`"
       }
     },
     {
       "name": "--text-title-tracking",
       "description": {
         "kind": "markdown",
-        "value": "Letter spacing for --text-title.\n\n- Discothèque: `-0.01em`\n- Devis: `-0.01em`\n- Folio: `0`\n- Relais: `-0.01em`"
+        "value": "Letter spacing for --text-title.\n\n- Discothèque: `-0.01em`\n- Devis: `0`\n- Folio: `0`\n- Relais: `-0.01em`"
       }
     },
     {
