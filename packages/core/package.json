@@ -1,6 +1,6 @@
 {
   "name": "@trentesix/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Trentesix core: the base variables every look starts from, the moments, rich text, the motion helper, the contrast checker and the stylelint rules.",
   "keywords": [
     "design-system",
