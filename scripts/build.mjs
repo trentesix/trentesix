@@ -18,6 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as prettier from 'prettier';
 import { docTables, failures } from '../packages/core/contrast.mjs';
+import { dtcg } from './dtcg.mjs';
 import { cssData, htmlData } from './vscode.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -655,6 +656,17 @@ const contrastFailures = failures(declared, contrast.pairs, lookInfo);
   files['packages/core/vscode/html-custom-data.json'] = JSON.stringify(
     htmlData({ momentsCss, motionMd, looks: htmlLooks }),
   );
+
+  // ── Design tools: each look's dtcg/<theme>.tokens.json (scripts/dtcg.mjs) ──────────────────────
+  for (const info of lookInfo) {
+    const [light, dark] = info.themes;
+    const lightValues = { ...declared.base.light, ...declared[info.id].light };
+    const byTheme = { [light]: lightValues, [dark]: { ...lightValues, ...declared[info.id].dark } };
+    for (const theme of info.themes)
+      files[`packages/${info.id}/dtcg/${theme}.tokens.json`] = JSON.stringify(
+        dtcg({ values: byTheme[theme], usage, look: info, theme }),
+      );
+  }
 }
 
 const prettierConfig = await prettier.resolveConfig(path.join(root, 'package.json'));

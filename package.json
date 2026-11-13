@@ -10,6 +10,7 @@
     "smoke": "node scripts/smoke.mjs",
     "site": "node scripts/site.mjs",
     "screenshots": "node scripts/screenshots.mjs",
+    "visual": "node scripts/visual.mjs",
     "changeset": "changeset",
     "release": "pnpm build && pnpm check && pnpm test && pnpm smoke && changeset publish"
   },

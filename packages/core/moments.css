@@ -1343,3 +1343,45 @@
     rotate(calc(var(--m-d) * 3deg));
   animation: trentesix-fade-in var(--motion-cap) both;
 }
+
+/* ── Forced colours (Windows high contrast) ──────────────────────────────────────────────────── */
+/* When the system picks the colours, every background and shadow is repainted in the page's own
+   colour, so a part that is only a colour disappears: the slide's indicator, a hold's fill, a
+   change-mark, a flash. These draw them in system colours instead (which forced colours keep),
+   as lines rather than fills, so no text ever sits on Highlight. They are !important because the
+   component's own rules for the same parts (more specific, and repainted anyway) would win. The
+   seal's fill is left to go: its label says the new state. docs/foundations.md › Forced colours. */
+
+@media (forced-colors: active) {
+  /* The selected option: a ring where the filled pill was. */
+  [data-moment~='slide'] [data-part='indicator'] {
+    outline: 2px solid Highlight !important;
+    outline-offset: -2px;
+  }
+  /* The hold: a bar along the bottom fills instead of the whole button. */
+  [data-moment~='hold'] [data-part='fill'] {
+    inset-block-start: auto !important;
+    block-size: 4px !important;
+    background: Highlight !important;
+  }
+  /* Someone else's change: the bar in Highlight, the highlighter as an underline. */
+  [data-moment~='change-mark'] [data-part='bar'] {
+    background: Highlight !important;
+  }
+  [data-moment~='change-mark'] [data-part='highlight'] {
+    background: none !important;
+    border-block-end: 2px solid Highlight !important;
+  }
+  /* Your own change: a ring for as long as the colour would have shown. */
+  [data-moment~='flash'] {
+    animation: trentesix-flash-ring var(--motion-linger) ease-out var(--duration-pop) backwards !important;
+  }
+}
+/* Held to the end: outline-style can't fade, so it would drop at the halfway mark. */
+@keyframes trentesix-flash-ring {
+  from,
+  90% {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
