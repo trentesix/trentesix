@@ -38,6 +38,7 @@ jobs:
           name: visual-results
           path: test/visual/results/
           if-no-files-found: ignore
-      # A changeset is due when a package changed (not for the docs or the tests alone).
-      - if: github.event_name == 'pull_request'
+      # A changeset is due when a package changed (not for the docs or the tests alone). Not on a
+      # release branch (release-x.y.z), whose version bump uses the changesets up.
+      - if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'release-')
         run: pnpm changeset status --since=origin/main
