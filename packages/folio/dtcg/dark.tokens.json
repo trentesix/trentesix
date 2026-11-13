@@ -458,6 +458,16 @@
       "$type": "color",
       "$value": "{color.paper}"
     },
+    "mark": {
+      "$description": "Highlighted text: mark in rich text, search hits. Pair with --on-mark.",
+      "$type": "color",
+      "$value": "{color.mustard}"
+    },
+    "on-mark": {
+      "$description": "Text on --mark.",
+      "$type": "color",
+      "$value": "{color.on-mustard}"
+    },
     "link": {
       "$description": "Links in text.",
       "$type": "color",

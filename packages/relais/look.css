@@ -164,6 +164,13 @@
   --field-label-tracking: 0;
   --field-label-case: none;
   --label-color: var(--ink-muted);
+  --strong-weight: 600;
+  --prose-h2: var(--text-item);
+  --prose-h2-tracking: var(--text-item-tracking);
+  --prose-h3: var(--text-section);
+  --prose-h3-tracking: var(--text-section-tracking);
+  --mark: var(--teal-soft);
+  --on-mark: var(--ink);
   --fw-heavy: 700;
   --ui-size: 15px;
   --link: var(--action);
@@ -205,6 +212,8 @@
   --text-label-tracking: 0.08em;
   --font-typewriter: 'Courier Prime', 'Courier New', monospace;
   --font-money: initial;
+  --prose-h1: var(--text-title);
+  --prose-h1-tracking: var(--text-title-tracking);
   --backdrop: initial;
   --fs-hero: initial;
   --fs-poster: initial;

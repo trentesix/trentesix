@@ -92,6 +92,24 @@
       "for": "any text"
     },
     {
+      "fg": "on-mark",
+      "bg": "mark",
+      "min": 4.5,
+      "for": "highlighted text"
+    },
+    {
+      "fg": "ink",
+      "bg": "mustard-soft",
+      "min": 4.5,
+      "for": "inserted text in rich text"
+    },
+    {
+      "fg": "ink",
+      "bg": "rust-soft",
+      "min": 4.5,
+      "for": "deleted text in rich text"
+    },
+    {
       "fg": "on-panel-highlight",
       "bg": "panel-highlight",
       "min": 4.5,

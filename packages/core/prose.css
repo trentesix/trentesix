@@ -1,0 +1,402 @@
+/* Rich text: what a person wrote, shown as text to read. Headings, paragraphs, lists, quotes,
+   links, emphasis, code, tables, figures and the rest of the elements Markdown and rich-text
+   editors produce, in the page's look. The contract is docs/foundations.md, "Rich text".
+
+   Put data-prose on the element that holds the HTML (a rendered Markdown body, an article, an
+   editor's content); nothing outside it is styled. data-prose="compact" sets the same text at UI
+   size, for editors in fields, tickets and comments. Load after base.css and a look.
+
+   Every rule weighs one attribute ([data-prose] then :where(…)), so it beats an app's element
+   reset (ul { list-style: none }) and loses to a class the app writes after it. Spacing is set on
+   the elements that follow others, so the first and last child sit flush with the box. */
+
+[data-prose] {
+  /* Between blocks, and above a heading. */
+  --prose-gap: var(--space-4);
+  --prose-head-gap: var(--space-8);
+
+  max-inline-size: var(--reading-width);
+  color: var(--ink);
+  font: var(--text-body-l);
+  letter-spacing: var(--text-body-l-tracking);
+  overflow-wrap: break-word;
+}
+[data-prose='compact'] {
+  --prose-gap: var(--space-2);
+  --prose-head-gap: var(--space-4);
+
+  max-inline-size: none;
+  font: var(--text-body);
+  letter-spacing: var(--text-body-tracking);
+}
+
+/* ── Rhythm ─────────────────────────────────────────────────────────────────────────────────── */
+
+[data-prose]
+  :where(
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    dl,
+    dt,
+    dd,
+    blockquote,
+    pre,
+    figure,
+    table,
+    hr,
+    details,
+    div,
+    address
+  ) {
+  margin-block: 0;
+}
+[data-prose]
+  :where(
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    dl,
+    dt,
+    blockquote,
+    pre,
+    figure,
+    table,
+    details,
+    div,
+    address
+  ):where(:not(:first-child)) {
+  margin-block-start: var(--prose-gap);
+}
+[data-prose] :where(h1, h2, h3, h4, h5, h6):where(:not(:first-child)) {
+  margin-block-start: var(--prose-head-gap);
+}
+/* A heading stays with what it heads. */
+[data-prose] :where(h1, h2, h3, h4, h5, h6) + :where(*) {
+  margin-block-start: calc(var(--prose-gap) / 2);
+}
+[data-prose] :where(p) {
+  text-wrap: pretty;
+}
+
+/* ── Headings ───────────────────────────────────────────────────────────────────────────────── */
+
+/* Under the page's own title, in steps each look sets (--prose-h1 to --prose-h3: a title, a
+   section and an item in most looks); h4 is bold text, h5 and h6 labels. Compact text starts
+   lower, its h1 at the h3 step. */
+[data-prose] :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--ink);
+  text-wrap: balance;
+}
+[data-prose] :where(h1) {
+  font: var(--prose-h1);
+  letter-spacing: var(--prose-h1-tracking);
+}
+[data-prose] :where(h2) {
+  font: var(--prose-h2);
+  letter-spacing: var(--prose-h2-tracking);
+}
+[data-prose] :where(h3) {
+  font: var(--prose-h3);
+  letter-spacing: var(--prose-h3-tracking);
+}
+[data-prose] :where(h4) {
+  font: inherit;
+  font-weight: var(--strong-weight);
+}
+[data-prose] :where(h5, h6) {
+  color: var(--label-color);
+  font: var(--text-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: var(--label-case);
+}
+[data-prose='compact'] :where(h1) {
+  font: var(--prose-h3);
+  letter-spacing: var(--prose-h3-tracking);
+}
+[data-prose='compact'] :where(h2, h3, h4) {
+  font: inherit;
+  font-weight: var(--strong-weight);
+  letter-spacing: inherit;
+}
+
+/* ── Words ──────────────────────────────────────────────────────────────────────────────────── */
+
+[data-prose] :where(strong, b) {
+  font-weight: var(--strong-weight);
+}
+/* Bold inside what is already bold keeps its weight, which may be heavier. */
+[data-prose] :where(h1, h2, h3, h4, h5, h6, dt, th, summary) :where(strong, b) {
+  font-weight: inherit;
+}
+[data-prose] :where(em, i, cite, dfn, var) {
+  font-style: italic;
+}
+[data-prose] :where(u) {
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.06em);
+  text-underline-offset: 0.2em;
+}
+[data-prose] :where(s, strike) {
+  text-decoration-line: line-through;
+}
+/* Edits keep their line, so they read without the colour too. */
+[data-prose] :where(ins) {
+  background: var(--mustard-soft);
+  color: var(--ink);
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.06em);
+  text-underline-offset: 0.2em;
+}
+[data-prose] :where(del) {
+  background: var(--rust-soft);
+  color: var(--ink);
+  text-decoration-line: line-through;
+}
+[data-prose] :where(mark) {
+  padding-inline: 0.1em;
+  border-radius: 2px;
+  background: var(--mark);
+  color: var(--on-mark);
+  box-decoration-break: clone;
+}
+[data-prose] :where(small) {
+  font-size: 0.85em;
+}
+[data-prose] :where(sub, sup) {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+[data-prose] :where(sup) {
+  inset-block-start: -0.5em;
+}
+[data-prose] :where(sub) {
+  inset-block-start: 0.25em;
+}
+[data-prose] :where(abbr[title]) {
+  cursor: help;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.2em;
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────────────────────────── */
+
+[data-prose] :where(a) {
+  border-radius: 2px;
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-thickness: max(1px, 0.06em);
+  text-underline-offset: 0.18em;
+}
+[data-prose] :where(a:hover) {
+  text-decoration-thickness: max(2px, 0.12em);
+}
+[data-prose] :where(a, summary, pre):where(:focus-visible) {
+  outline: var(--focus-ring) solid var(--focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--focus-edge);
+}
+
+/* ── Code ───────────────────────────────────────────────────────────────────────────────────── */
+
+/* In a line: the code face, a little smaller than the words around it, on a ground of the ink
+   itself, faint, so it shows on any paper in either theme. The transparent border is drawn in
+   forced colours, where the ground goes. */
+[data-prose] :where(code, samp) {
+  padding: 0.1em 0.3em;
+  border: 1px solid transparent;
+  border-radius: min(var(--radius-s), 4px);
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+  color: var(--ink);
+  font: var(--text-code);
+  font-size: 0.875em;
+  line-height: inherit;
+  letter-spacing: var(--text-code-tracking);
+  box-decoration-break: clone;
+}
+[data-prose] :where(kbd) {
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--ink-line);
+  border-block-end-width: 2px;
+  border-radius: min(var(--radius-s), 4px);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font: var(--text-kbd);
+  font-size: 0.8em;
+  line-height: inherit;
+  letter-spacing: var(--text-kbd-tracking);
+  white-space: nowrap;
+}
+/* A block: a code well, dark in both themes. It scrolls sideways rather than wrapping. */
+[data-prose] :where(pre) {
+  max-inline-size: 100%;
+  padding: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
+  background: var(--code);
+  color: var(--on-code);
+  font: var(--text-code);
+  letter-spacing: var(--text-code-tracking);
+  white-space: pre;
+  tab-size: 2;
+}
+[data-prose='compact'] :where(pre) {
+  padding: var(--space-3);
+  border-radius: var(--radius-s);
+}
+[data-prose] :where(pre) :where(code, samp, kbd) {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  white-space: inherit;
+}
+
+/* ── Lists ──────────────────────────────────────────────────────────────────────────────────── */
+
+[data-prose] :where(ul, ol) {
+  padding-inline-start: 1.5em;
+}
+[data-prose] :where(ul) {
+  list-style-type: disc;
+}
+[data-prose] :where(ul ul) {
+  list-style-type: circle;
+}
+[data-prose] :where(ul ul ul) {
+  list-style-type: square;
+}
+/* An ol's own type="a" or type="i" is kept. */
+[data-prose] :where(ol:not([type])) {
+  list-style-type: decimal;
+}
+[data-prose] :where(ol ol:not([type])) {
+  list-style-type: lower-alpha;
+}
+[data-prose] :where(ol ol ol:not([type])) {
+  list-style-type: lower-roman;
+}
+[data-prose] :where(li)::marker {
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+[data-prose] :where(li + li, li > ul, li > ol) {
+  margin-block-start: calc(var(--prose-gap) / 4);
+}
+/* A task list (Markdown's "- [ ]"): the box stands in for the bullet. */
+[data-prose] :where(li:has(> input[type='checkbox']:first-child)) {
+  list-style-type: none;
+}
+[data-prose] :where(li > input[type='checkbox']:first-child) {
+  margin: 0 0.5em 0 -1.4em;
+  accent-color: var(--action);
+}
+
+/* Terms and their definitions. */
+[data-prose] :where(dt) {
+  font-weight: var(--strong-weight);
+}
+[data-prose] :where(dd) {
+  margin-inline-start: 1.5em;
+}
+[data-prose] :where(dt + dd, dd + dd) {
+  margin-block-start: calc(var(--prose-gap) / 4);
+}
+
+/* ── Blocks ─────────────────────────────────────────────────────────────────────────────────── */
+
+[data-prose] :where(blockquote) {
+  margin-inline: 0;
+  padding-inline-start: var(--space-4);
+  border-inline-start: var(--border-strong) solid var(--ink-line);
+  color: var(--ink-muted);
+}
+[data-prose] :where(hr) {
+  block-size: 0;
+  margin-block: var(--prose-head-gap);
+  border: 0;
+  border-block-start: var(--divider);
+}
+[data-prose] :where(img, video, svg, canvas) {
+  max-inline-size: 100%;
+}
+[data-prose] :where(img, video) {
+  block-size: auto;
+}
+[data-prose] :where(figure) {
+  margin-inline: 0;
+}
+[data-prose] :where(figure > img, figure > video, figure > picture) {
+  display: block;
+}
+[data-prose] :where(figcaption) {
+  margin-block-start: var(--space-2);
+  color: var(--ink-muted);
+  font: var(--text-small);
+  letter-spacing: var(--text-small-tracking);
+}
+[data-prose] :where(summary) {
+  border-radius: 2px;
+  font-weight: var(--strong-weight);
+  cursor: pointer;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────────────────────────── */
+
+/* At the size of table cells. A table wider than the text needs a scrolling box around it, which
+   the app adds (a table that scrolls itself loses its role in some screen readers). */
+[data-prose] :where(table) {
+  border-collapse: collapse;
+  font: var(--text-small);
+  letter-spacing: var(--text-small-tracking);
+  font-variant-numeric: tabular-nums;
+}
+[data-prose] :where(caption) {
+  padding-block-end: var(--space-2);
+  color: var(--ink-muted);
+  text-align: start;
+}
+[data-prose] :where(th, td) {
+  padding: var(--space-2) var(--space-3);
+  border-block-end: var(--divider);
+  text-align: start;
+  vertical-align: top;
+}
+[data-prose] :where(th) {
+  font-weight: var(--strong-weight);
+}
+[data-prose] :where(thead th) {
+  border-block-end: var(--border-object) solid var(--outline);
+  vertical-align: bottom;
+}
+[data-prose] :where(th, td):where(:first-child) {
+  padding-inline-start: 0;
+}
+[data-prose] :where(th, td):where(:last-child) {
+  padding-inline-end: 0;
+}
+
+/* ── Forced colours ─────────────────────────────────────────────────────────────────────────── */
+
+/* Forced colours paint every ground in the page's colour, and nothing here needs a rule of its
+   own: mark takes the system highlighter (the browser's own stylesheet), edits keep their lines,
+   and code and code wells keep the transparent border, which forced colours draw. */

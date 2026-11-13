@@ -1,7 +1,7 @@
 # Foundations
 
-Colour, type, space, shape, elevation, focus, forced colours, icons and layout: the parts every
-screen is made of. Every value here comes from the token JSON (`packages/core/tokens.json` for the
+Colour, type, rich text, space, shape, elevation, focus, forced colours, icons and layout: the
+parts every screen is made of. Every value here comes from the token JSON (`packages/core/tokens.json` for the
 base, then each look's `packages/<look>/tokens.json`) and from the CSS that `scripts/build.mjs`
 generates from it. When they disagree, the JSON wins; run `pnpm build`.
 
@@ -166,6 +166,8 @@ differently. Prefer them to the raw colour.
 | `--on-inverse-accent`    | `--mustard`              | `--folio-on-inverse-accent` | `--mustard`             | `--code-keyword`        | the action word in a toast (Undo)          |
 | `--selected-soft`        | `--mustard-soft`         | `--folio-accent-soft`       | `--mustard-soft`        | `--teal-soft`           | a soft selection fill                      |
 | `--backdrop`             | (not set)                | `--folio-overlay`           | (not set)               | (not set)               | the dimmed backdrop behind dialogs         |
+| `--mark`                 | `--mustard`              | `--mustard`                 | `--mustard`             | `--teal-soft`           | highlighted text: `mark`, search hits      |
+| `--on-mark`              | `--on-mustard`           | `--on-mustard`              | `--on-mustard`          | `--ink`                 | text on `--mark`                           |
 
 `--chocolate` is white in Folio: Folio has no dark band, so the top bar and sidebar are plain
 surfaces. For a toast or tooltip that must stay dark in every look, use `--inverse`.
@@ -237,6 +239,9 @@ needs (4.5:1 for text, 3:1 for large text and for focus rings and the edges of c
 | `--link`                    | `--paper-raised`    | 4.5:1 | 5.9 / 8.0   | 9.3 / 9.0   | 6.9 / 8.0   | 10.3 / 7.7  | links                          |
 | `--on-action`               | `--action`          | 4.5:1 | 5.2 / 6.3   | 9.3 / 10.1  | 6.0 / 7.2   | 10.3 / 8.5  | button labels                  |
 | `--on-mustard`              | `--mustard`         | 4.5:1 | 6.7 / 6.7   | 11.2 / 11.2 | 6.0 / 7.3   | 5.8 / 6.6   | any text                       |
+| `--on-mark`                 | `--mark`            | 4.5:1 | 6.7 / 6.7   | 11.2 / 11.2 | 6.0 / 7.3   | 12.7 / 12.5 | highlighted text               |
+| `--ink`                     | `--mustard-soft`    | 4.5:1 | 12.8 / 11.7 | 14.4 / 11.0 | 14.9 / 12.2 | 13.1 / 13.3 | inserted text in rich text     |
+| `--ink`                     | `--rust-soft`       | 4.5:1 | 12.0 / 13.2 | 12.9 / 13.2 | 14.3 / 13.3 | 12.8 / 12.9 | deleted text in rich text      |
 | `--on-panel-highlight`      | `--panel-highlight` | 4.5:1 | 6.7 / 11.7  | 11.2 / 11.0 | 6.0 / 7.3   | 13.1 / 13.3 | any text                       |
 | `--rust`                    | `--paper`           | 4.5:1 | 5.2 / 8.9   | 6.5 / 9.1   | 6.0 / 7.5   | 5.8 / 9.1   | error text                     |
 | `--rust`                    | `--rust-soft`       | 4.5:1 | 5.1 / 7.5   | 5.8 / 7.7   | 5.7 / 6.5   | 5.2 / 7.7   | error text in a problem box    |
@@ -424,6 +429,71 @@ Labels and eyebrows read four variables, so one rule works in every look:
 
 Field labels have their own set, the same in every look: `--field-label-size` 13px,
 `--field-label-tracking` 0, `--field-label-case` none.
+
+## Rich text
+
+`@trentesix/core/prose.css` styles what people write: a rendered Markdown body, an article, an
+email, the inside of a rich-text editor. Put `data-prose` on the element that holds the HTML;
+nothing outside it is touched, so it sits beside an app's own reset and components. It is in
+every look's `all.css`; on its own, import it after the base and the look.
+
+```html
+<article data-prose>…</article>
+<!-- At UI size and the full width, for editors in fields, tickets and comments: -->
+<div class="field"><div data-prose="compact" contenteditable>…</div></div>
+```
+
+| Element                   | Reading (`data-prose`)                                    | Compact (`data-prose="compact"`) |
+| ------------------------- | --------------------------------------------------------- | -------------------------------- |
+| the box                   | `--text-body-l`, `--ink`, at most `--reading-width` wide  | `--text-body`, the full width    |
+| between blocks            | `--space-4` (`--prose-gap`)                               | `--space-2`                      |
+| above a heading           | `--space-8` (`--prose-head-gap`), half a gap below it     | `--space-4`                      |
+| `h1`, `h2`, `h3`          | `--prose-h1`, `--prose-h2`, `--prose-h3`                  | `h1` at `--prose-h3`, then bold  |
+| `h4`                      | the text, in `--strong-weight`                            | the same                         |
+| `h5`, `h6`                | a label (`--text-label`, `--label-case`, `--label-color`) | the same                         |
+| `strong`, `b`, `dt`, `th` | `--strong-weight`                                         | the same                         |
+| `a`                       | `--link`, underlined; thicker on hover; the focus ring    | the same                         |
+| `mark`                    | `--mark` and `--on-mark`                                  | the same                         |
+| `ins`, `del`              | `--mustard-soft` underlined, `--rust-soft` struck         | the same                         |
+| `code`, `samp`            | the code face at 0.875em on a faint ink ground            | the same                         |
+| `kbd`                     | `--text-kbd` at 0.8em, in a key with an `--ink-line` edge | the same                         |
+| `pre`                     | a code well (`--code`, `--on-code`, `--text-code`)        | smaller padding and corner       |
+| `blockquote`              | `--ink-muted`, a `--border-strong` bar in `--ink-line`    | the same                         |
+| `ul`, `ol`                | bullets disc, circle, square; numbers 1, a, i             | the same                         |
+| `hr`                      | `--divider`, with a heading's space each side             | the same                         |
+| `table`                   | `--text-small`, rows on `--divider`, head on `--outline`  | the same                         |
+| `figcaption`              | `--text-small`, `--ink-muted`                             | the same                         |
+
+Also styled: `em`, `i`, `cite`, `dfn`, `u`, `s`, `small`, `sub`, `sup`, `abbr[title]`, `dl`,
+`figure`, `img`, `video`, `details` and `summary`, and Markdown task lists (`- [ ]`, an `li`
+starting with a checkbox).
+
+The heading steps are look variables, since the type roles don't step the same way in every
+look:
+
+| Variable     | Discothèque, Devis | Folio                      | Relais                  |
+| ------------ | ------------------ | -------------------------- | ----------------------- |
+| `--prose-h1` | `--text-title`     | `--text-page-title` (22px) | `--text-title` (28px)   |
+| `--prose-h2` | `--text-section`   | 600 18px/1.35              | `--text-item` (21px)    |
+| `--prose-h3` | `--text-item`      | 600 16px/1.4               | `--text-section` (18px) |
+
+Folio reads at 16px, which is also its section and title size, so its headings step up from the
+page title instead. Relais's item is larger than its section, so the two swap. Each has a
+`-tracking` partner. `--strong-weight` is 700 in Discothèque and 600 in the others: the weight
+each body face really has, so bold is never faked.
+
+- **The weight of each rule is one attribute** (`[data-prose]` then `:where(…)`). It beats an
+  app's element reset (`ul { list-style: none }`) and loses to a class the app writes after it.
+- **The first and last block sit flush** with the box: spacing goes above the blocks that follow
+  another. Override `--prose-gap` and `--prose-head-gap` on the box to loosen or tighten it.
+- **A wide table** needs a box that scrolls around it, which the app adds; a table that scrolls
+  itself loses its role in some screen readers. A code block scrolls on its own; where
+  the browser lets the keyboard reach a scrolling box, it shows the focus ring there.
+- **Forced colours need nothing more.** `mark` takes the system highlighter, `ins` and `del`
+  keep their lines, and code and code wells have a transparent border, which forced colours
+  draw.
+- See it in every look on the rich-text page (`test/fixture/prose.html`, or the site's
+  `test/fixture/prose.html?look=folio`).
 
 ## Spacing
 

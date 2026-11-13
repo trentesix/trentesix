@@ -5,7 +5,7 @@
   "description": "Trentesix, a design system in looks (from se mettre sur son trente-six, to put on one's finest): @trentesix/core and one package per look.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node scripts/build.mjs --check && stylelint packages/core/moments.css packages/core/src/calm.css \"packages/*/src/moments.css\" && prettier --check .",
+    "check": "node scripts/build.mjs --check && stylelint packages/core/moments.css packages/core/prose.css packages/core/src/calm.css \"packages/*/src/moments.css\" && prettier --check .",
     "test": "node --test \"test/*.test.mjs\"",
     "smoke": "node scripts/smoke.mjs",
     "site": "node scripts/site.mjs",

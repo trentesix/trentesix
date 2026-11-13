@@ -62,6 +62,7 @@ which is the same as:
 @import '@trentesix/devis/fonts.css';
 @import '@trentesix/core/moments.css';
 @import '@trentesix/devis/moments.css';
+@import '@trentesix/core/prose.css';
 ```
 
 The same values are available to scripts, and as JSON:
@@ -89,6 +90,15 @@ durations that reduced motion already caps (`--motion-pop`, `--motion-linger` an
   --enter-y: 6px;
   animation: trentesix-enter var(--motion-pop) var(--spring-pop) both;
 }
+```
+
+**Rich text.** What people write (a Markdown body, an article, an email, the inside of an
+editor) in the look: headings, lists, quotes, links, emphasis, code, tables and the rest, under
+an element with `data-prose`. Nothing outside it is styled, and an app's own reset doesn't undo
+it. `data-prose="compact"` sets it at UI size, for editors in fields and comments.
+
+```html
+<article data-prose>…</article>
 ```
 
 **Helper.** A small ES module for the few moments CSS can't do alone: a title flying from a list
@@ -206,18 +216,18 @@ generated from its `tokens.json`, and so are the contrast tables in
 pnpm build   # writes core/base.css and tokens.*, each look's look.css, moments.css, all.css,
              # tokens.* and dtcg/*, core's vscode/* and the contrast tables
 pnpm check   # fails if any of those are out of date, if a colour pair is below its contrast,
-             # if the hand-written moments break the stylelint config, or on formatting
+             # if the hand-written CSS breaks the stylelint config, or on formatting
 pnpm test    # plays every moment in a browser, in every look, with and without reduced motion
-             # and in forced colours, and tests the helper, the contrast checker and the
-             # stylelint rules
+             # and in forced colours, checks rich text in every look and theme, and tests the
+             # helper, the contrast checker and the stylelint rules
 pnpm smoke   # packs every package, installs the tarballs in an empty app and checks every
              # export and every stylesheet import resolves
-pnpm site    # builds site/: the moments page with every look's fonts (GitHub Pages)
+pnpm site    # builds site/: the moments and rich-text pages with every look's fonts (GitHub Pages)
 pnpm screenshots   # photographs it in every look and theme, into media/ for the READMEs
-pnpm visual  # photographs it in every look and theme and compares with test/visual/
+pnpm visual  # photographs both pages in every look and theme and compares with test/visual/
 ```
 
-Written by hand: core's `moments.css`, `motion.js` and `src/calm.css` (the calm rules), and each
+Written by hand: core's `moments.css`, `prose.css`, `motion.js` and `src/calm.css` (the calm rules), and each
 look's `src/moments.css` and `fonts.css`.
 
 **Releasing.** The five packages share one version. A change users would notice comes with a
@@ -247,8 +257,8 @@ something only with a colour (the slide's indicator, a hold, a change-mark, a fl
 seen. See [docs/foundations.md › Forced colours](packages/core/docs/foundations.md#forced-colours).
 
 **Visual regression.** `pnpm visual` builds the site, plays every moment under reduced motion (so
-each lands where it ends), photographs the page in every look and theme and compares the pictures
-with the approved ones in `test/visual/`. A difference writes the new picture and a diff (changed
+each lands where it ends), photographs the page in every look and theme, and the rich-text page
+beside it, and compares the pictures with the approved ones in `test/visual/`. A difference writes the new picture and a diff (changed
 pixels in magenta) to `test/visual/results/`, which CI keeps as an artifact. When the change is
 meant, `pnpm visual --update` approves it; commit the pictures with the change.
 

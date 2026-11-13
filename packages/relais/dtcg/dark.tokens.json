@@ -454,6 +454,12 @@
       "$type": "color",
       "$value": "{color.paper-raised}"
     },
+    "mark": {
+      "$description": "Highlighted text: mark in rich text, search hits. Pair with --on-mark.",
+      "$type": "color",
+      "$value": "{color.teal-soft}"
+    },
+    "on-mark": { "$description": "Text on --mark.", "$type": "color", "$value": "{color.ink}" },
     "link": { "$description": "Links in text.", "$type": "color", "$value": "{color.action}" },
     "inverse": {
       "$description": "Toasts, tooltips and the offline banner: the one dark-on-light (or light-on-dark) object. Discothèque role: chocolate.",

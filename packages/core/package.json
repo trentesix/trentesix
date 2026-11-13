@@ -1,7 +1,7 @@
 {
   "name": "@trentesix/core",
   "version": "0.1.0",
-  "description": "Trentesix core: the base variables every look starts from, the moments, the motion helper, the contrast checker and the stylelint rules.",
+  "description": "Trentesix core: the base variables every look starts from, the moments, rich text, the motion helper, the contrast checker and the stylelint rules.",
   "keywords": [
     "design-system",
     "css-variables",
@@ -34,6 +34,7 @@
     "moments.css",
     "motion.d.ts",
     "motion.js",
+    "prose.css",
     "stylelint",
     "tokens.d.ts",
     "tokens.js",
@@ -47,6 +48,7 @@
     },
     "./base.css": "./base.css",
     "./moments.css": "./moments.css",
+    "./prose.css": "./prose.css",
     "./motion": {
       "types": "./motion.d.ts",
       "default": "./motion.js"

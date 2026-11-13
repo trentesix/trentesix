@@ -1,6 +1,7 @@
-/* Relais, whole: the base, the look, its fonts and the moments. Generated from tokens.json by scripts/build.mjs. Do not edit. */
+/* Relais, whole: the base, the look, its fonts, the moments and rich text. Generated from tokens.json by scripts/build.mjs. Do not edit. */
 @import '@trentesix/core/base.css';
 @import './look.css';
 @import './fonts.css';
 @import '@trentesix/core/moments.css';
 @import './moments.css';
+@import '@trentesix/core/prose.css';
